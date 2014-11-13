@@ -108,4 +108,4 @@
 (global-set-key "\C-h" 'backward-kill-word)
 
 ;; overrides mark-whole-buffer
-(global-set-key "\C-xh" 'help-command)
+(global-set-key "\C-x\C-h" 'help-command)
