@@ -54,19 +54,22 @@
 
 ;; Auto complete
 
-(require 'auto-complete-config nil 'noerror)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/lisp/ac-dict")
-(ac-config-default)
-(global-auto-complete-mode t)
-(setq ac-auto-start 2)
-;; show menu immediately...
-(setq ac-auto-show-menu t)
-;; explicit call to auto-complete
-(define-key ac-mode-map [(control return)] 'auto-complete)
-(setq-default ac-sources (append ac-sources '(ac-source-semantic)))
+(when (require 'auto-complete-config nil 'noerror)
+  (add-to-list 'ac-dictionary-directories "~/.emacs.d/lisp/ac-dict")
+  (ac-config-default)
+  (global-auto-complete-mode t)
+  (setq ac-auto-start 2)
+  ;; show menu immediately...
+  (setq ac-auto-show-menu t)
+  ;; explicit call to auto-complete
+  (define-key ac-mode-map [(control return)] 'auto-complete)
+  (setq-default ac-sources (append ac-sources '(ac-source-semantic))))
 
 ;; ESS
 ;;(require 'ess-site)
+
+;; python
+(load-file "~/.emacs.d/lisp/emacs-for-python/epy-init.el")
 
 ;; Shell color
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
