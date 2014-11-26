@@ -70,6 +70,12 @@
 
 ;; python
 (load-file "~/.emacs.d/lisp/emacs-for-python/epy-init.el")
+(autoload 'pymacs-apply "pymacs")
+(autoload 'pymacs-call "pymacs")
+(autoload 'pymacs-eval "pymacs" nil t)
+(autoload 'pymacs-exec "pymacs" nil t)
+(autoload 'pymacs-load "pymacs" nil t)
+(autoload 'pymacs-autoload "pymacs")
 
 ;; Shell color
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)

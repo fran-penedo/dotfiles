@@ -21,8 +21,10 @@ xset s off
 xset b off
 
 
-trayer --edge top --align right --SetDockType true --SetPartialStrut true \
- --expand true --width 15 --transparent false --tint 0x000000 --height 18 --monitor 1 &
+#trayer --edge top --align right --SetDockType true --SetPartialStrut true \
+# --expand true --width 15 --transparent false --tint 0x000000 --height 18 --monitor 1 &
+
+sptrayer.sh &
 
 #xscreensaver -no-splash &
 
@@ -38,6 +40,8 @@ export GTK_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 export QT_IM_MODULE=fcitx
 fcitx
+
+export PYMACS_PYTHON=python2
 
 exec $1
 # exec gnome-session
