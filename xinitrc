@@ -24,7 +24,7 @@ xset b off
 #trayer --edge top --align right --SetDockType true --SetPartialStrut true \
 # --expand true --width 15 --transparent false --tint 0x000000 --height 18 --monitor 1 &
 
-sptrayer.sh &
+~/.scripts/sptrayer.sh &
 
 #xscreensaver -no-splash &
 
@@ -33,7 +33,7 @@ nitrogen --restore &
 pasystray &
 nm-applet &
 fbxkb &
-dropboxd &
+#dropboxd &
 syndaemon -i 1 -t -k &
 
 export GTK_IM_MODULE=fcitx
