@@ -13,13 +13,13 @@ set $mod Mod1
 set $win Mod4
 
 set $w1 "1: web"
-set $w2 "2: im"
+set $w2 "2: vid"
 set $w3 "3: steam"
 set $w4 "4: main"
 set $w5 "5"
 set $w6 "6"
 set $w7 "7"
-set $w8 "8"
+set $w8 "8: im"
 set $w9 "9: media"
 set $w10 "10: bg"
 
@@ -36,6 +36,7 @@ font xft:Inconsolata
 # font, it doesn’t scale on retina/hidpi displays.
 
 new_window pixel 3
+new_float pixel 3
 hide_edge_borders none
 focus_follows_mouse no
 workspace_auto_back_and_forth yes
@@ -60,9 +61,9 @@ bindsym $mod+F3 exec i3-input
 # Launchers
 bindsym Print exec xfce4-screenshooter
 
-bindsym XFAudioLowerVolume exec amixer -q set Master 2%-
-bindsym XFAudioRaiseVolume exec amixer -q set Master 2%+
-bindsym XFAudioMute exec amixer -q set Master toggle
+bindsym XF86AudioLowerVolume exec amixer -q set Master 2%-
+bindsym XF86AudioRaiseVolume exec amixer -q set Master 2%+
+bindsym XF86AudioMute exec amixer -q set Master toggle
 
 bindsym $win+c exec cmus-remote -u
 bindsym $win+b exec cmus-remote -n
@@ -159,7 +160,7 @@ bindsym $mod+Shift+0 move container to workspace $w10
 #bindsym $mod+Shift+Tab move container to workspace back_and_forth; workspace back_and_forth
 
 # reload the configuration file
-#bindsym $mod+q reload
+bindsym $mod+Shift+F3 reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 #bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
@@ -210,13 +211,22 @@ bar {
 # Workspace management
 
 workspace $w1 output VGA1
-workspace $w4 output LVSD1
+workspace $w4 output LVDS1
+workspace $w3 output LVDS1
+workspace $w2 output LVDS1
 
 assign [class="Google-chrome-stable"] $w1
 assign [class="Spotify"] $w9
-assign [class="Steam"] $w3
-assign [class="Pidgin"] $w2
-assign [class="Skype"] $w2
+#assign [instance="Steam"] $w3
+#assign [class="Steam"] $w3
+#assign [title="Steam"] $w3
+assign [class="Pidgin"] $w8
+assign [class="Skype"] $w8
+
+for_window [class="Skype"] move to workspace $w8
+for_window [class="Steam"] move to workspace $w3
+for_window [class="Steam"] floating enable
+for_window [class="(?i)pavucontrol"] floating enable
 
 
 # Start up

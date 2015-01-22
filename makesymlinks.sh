@@ -12,7 +12,7 @@ files="bashrc Xresources emacs emacs-custom.el gitconfig gmrunrc rtorrent.rc xin
 xmonad="xmonad.hs"
 i3dotdir=~/.i3
 i3dir=i3
-i3config="i3config i3status.py i3status.py"
+i3config="config i3status.py i3status2.py"
 
 ##########
 
