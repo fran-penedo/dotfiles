@@ -10,6 +10,9 @@ dir=~/dotfiles                    # dotfiles directory
 olddir=~/.dotfiles_old             # old dotfiles backup directory
 files="bashrc Xresources emacs emacs-custom.el gitconfig gmrunrc rtorrent.rc xinitrc xmobarrc gitignore"    # list of files/folders to symlink in homedir
 xmonad="xmonad.hs"
+i3dotdir=~/.i3
+i3dir=i3
+i3config="i3config i3status.py i3status.py"
 
 ##########
 
@@ -36,3 +39,11 @@ echo "Moving existing xmonad dotfile from ~ to $olddir"
 mv ~/.xmonad/$xmonad $olddir
 echo "Creating symlink to $xmonad in home/xmonad"
 ln -s $dir/$xmonad ~/.xmonad/$xmonad
+
+# move i3config and pystatus scripts if needed
+for file in $i3config; do
+    echo "Moving existing i3 config dotfile from ~ to $olddir"
+    mv $i3dotdir/$file $olddir
+    echo "Creating symlink to $i3config in home/.i3"
+    ln -s $dir/$i3dir/$file $i3dotdir/$file
+done
