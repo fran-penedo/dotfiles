@@ -39,7 +39,7 @@ new_window pixel 3
 new_float pixel 3
 hide_edge_borders none
 focus_follows_mouse no
-workspace_auto_back_and_forth yes
+workspace_auto_back_and_forth no
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -74,7 +74,7 @@ bindsym $win+v exec cmus-remote -v +5%
 bindsym XFMonBrightnessUp exec xbacklight -inc 10
 bindsym XFMonBrightnessDown exec xbacklight -dec 10
 
-bindsym XFSleep exec systemctl suspend
+bindsym Pause exec systemctl suspend
 
 # change focus
 bindsym $mod+Shift+Tab focus left
@@ -217,17 +217,18 @@ workspace $w2 output LVDS1
 
 assign [class="Google-chrome-stable"] $w1
 assign [class="Spotify"] $w9
-#assign [instance="Steam"] $w3
+assign [instance="Steam"] $w3
 #assign [class="Steam"] $w3
 #assign [title="Steam"] $w3
 assign [class="Pidgin"] $w8
 assign [class="Skype"] $w8
 
 for_window [class="Skype"] move to workspace $w8
-for_window [class="Steam"] move to workspace $w3
+#for_window [class="Steam"] move to workspace $w3
 for_window [class="Steam"] floating enable
 for_window [class="(?i)pavucontrol"] floating enable
 
+assign [class="sun-applet-AppletViewer"] $w7
 
 # Start up
 exec_always --no-startup-id pasystray

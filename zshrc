@@ -61,7 +61,7 @@ export PATH=$HOME/bin:/usr/local/bin:$HOME/.scripts:$PATH
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
 else
-  export EDITOR='emacs'
+  export EDITOR='emacs -nw'
 fi
 
 # Compilation flags
