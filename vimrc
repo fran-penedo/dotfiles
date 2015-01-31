@@ -6,12 +6,12 @@
 "              on this file is still a good idea.
 
 " TODO:
-" 1 ctrlp
+" 1 ctrlp mappings and settings
 " 3 youcompleteme
-" 4 Nerdtree
 " 5 Tagbar (or something for tags)
 " 6 EasyMotion
 " 7 vim-multiple-cursors!
+" Fix smart indents
 
 " Leader to comma
 let mapleader = ','
@@ -33,6 +33,9 @@ Plugin 'bling/vim-airline'
 Plugin 'tpope/vim-fugitive'
 Plugin 'submode'
 Plugin 'kien/ctrlp.vim'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'scrooloose/nerdtree'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -118,6 +121,9 @@ set showmatch
 " change Vim's behaviour in ways which deviate from the true Vi way, but
 " which are considered to add usability. Which, if any, of these options to
 " use is very much a personal preference, but they are harmless.
+
+" Sign column highlight
+hi clear SignColumn
 
 " Use case insensitive search, except when using capital letters
 set ignorecase
@@ -250,6 +256,7 @@ nnoremap <silent> <C-j> <C-w>j
 nnoremap <silent> vv <C-w>v
 nnoremap <silent> ss <C-w>s
 nnoremap <silent> ,q <C-w>q
+nnoremap ,c :bp<bar>sp<bar>bn<bar>bd<CR>
 
 "(v)im (r)eload
 nnoremap <silent> ,vr :so %<CR>
@@ -311,7 +318,8 @@ endfunction
 
 nnoremap <silent> Q :call CloseWindowOrKillBuffer()<CR>
 
-" fugitive bindings
+" fugitive config
+
 " Every time you open a git object using fugitive it creates a new buffer. 
 " This means that your buffer listing can quickly become swamped with 
 " fugitive buffers. This prevents this from becomming an issue:
@@ -327,10 +335,42 @@ nnoremap ,gd :Gdiff<CR>
 "nnoremap ,gr :Gread<CR>
 "nnoremap ,gw :Gwrite<CR><CR>
 nnoremap ,gl :silent! Glog<CR>:bot copen<CR>
-nnoremap ,gp :Ggrep,
-nnoremap ,gm :Gmove,
-nnoremap ,gb :Git branch,
-nnoremap ,go :Git checkout,
+nnoremap ,gp :Ggrep<Space>
+nnoremap ,gm :Gmove<Space>
+nnoremap ,gb :Git branch<Space>
+nnoremap ,go :Git checkout<Space>
 nnoremap ,gps :Dispatch! git push<CR>
 nnoremap ,gpl :Dispatch! git pull<CR>
-"------------------------------------------------------------
+
+" vim-gitgutter config
+highlight GitGutterAdd ctermfg=green
+highlight GitGutterChange ctermfg=yellow 
+highlight GitGutterDelete ctermfg=red 
+highlight GitGutterChangeDelete ctermfg=yellow 
+
+" nerdtree config
+noremap <C-n> :NERDTreeToggle<CR>
+
+" Make nerdtree look nice
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
+let g:NERDTreeWinSize = 30
+
+" ctrlp
+if exists("g:ctrlp_user_command")
+    unlet g:ctrlp_user_command
+endif
+if executable('ag')
+    " Use ag in CtrlP for listing files. Lightning fast and respects
+    " .gitignore
+    let g:ctrlp_user_command =
+                \ 'ag %s --files-with-matches -g "" --ignore "\.git$\|\.hg$\|\.svn$"'
+
+    " ag is fast enough that CtrlP doesn't need to cache
+    let g:ctrlp_use_caching = 0
+else
+    " Fall back to using git ls-files if Ag is not available
+    let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
+    let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others']
+endif
+
