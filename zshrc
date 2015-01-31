@@ -80,3 +80,4 @@ fi
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 alias em="emacs -nw"
+alias vi="vim"
