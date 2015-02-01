@@ -12,6 +12,13 @@
 " 6 EasyMotion
 " 7 vim-multiple-cursors!
 " Fix smart indents
+"
+" Available good maps:
+" R replace mode - check if useful first
+" t/T till / back till - f/F is enough for me (altough it could be useful with
+" other commands
+" H/M/L screen top/mid/bottom - will become obsolete with easymotion I guess
+"
 
 " Leader to comma
 let mapleader = ','
@@ -256,6 +263,7 @@ nnoremap <silent> <C-j> <C-w>j
 nnoremap <silent> vv <C-w>v
 nnoremap <silent> ss <C-w>s
 nnoremap <silent> ,q <C-w>q
+" Close buffer and go to next without closing window
 nnoremap ,c :bp<bar>sp<bar>bn<bar>bd<CR>
 
 "(v)im (r)eload
