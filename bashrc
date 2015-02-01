@@ -8,7 +8,7 @@
 alias ls='ls --color=auto'
 PS1='[\u@\h \W]\$ '
 
-export EDITOR=emacs
+export EDITOR=vim
 export PROMPT_COMMAND='tput bel'
 
 #path
