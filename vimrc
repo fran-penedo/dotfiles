@@ -6,10 +6,11 @@
 "              on this file is still a good idea.
 
 " TODO:
-" 1 ctrlp mappings and settings
+" 1 ctrlp mappings and settings - probably no need for more
 " 3 youcompleteme
 " 5 Tagbar (or something for tags)
-" 6 EasyMotion
+" 6 EasyMotion - substituted with incsearch, probably no need for anything
+" fancier
 " 7 vim-multiple-cursors!
 " Fix smart indents
 "
@@ -18,6 +19,7 @@
 " t/T till / back till - f/F is enough for me (altough it could be useful with
 " other commands
 " H/M/L screen top/mid/bottom - will become obsolete with easymotion I guess
+" Space!!!!! good for leader-like
 "
 
 " Leader to comma
@@ -43,6 +45,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'haya14busa/incsearch.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -112,8 +115,9 @@ set showcmd
 
 " Highlight searches (use <C-L> to temporarily turn off highlighting; see the
 " mapping of <C-L> below)
-" set hlsearch
 set showmatch
+" set incsearch
+" set hlsearch
 
 " Modelines have historically been a source of security vulnerabilities. As
 " such, it may be a good idea to disable them and use the securemodelines
@@ -381,4 +385,17 @@ else
     let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
     let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others']
 endif
+
+" incsearch
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+set hlsearch
+let g:incsearch#auto_nohlsearch = 1
+map n  <Plug>(incsearch-nohl-n)
+map N  <Plug>(incsearch-nohl-N)
+map *  <Plug>(incsearch-nohl-*)
+map #  <Plug>(incsearch-nohl-#)
+map g* <Plug>(incsearch-nohl-g*)
+map g# <Plug>(incsearch-nohl-g#)
 
