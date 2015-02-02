@@ -260,20 +260,20 @@ URxvt*imLocale: en_US.UTF-8
 ! Compile frills: Associate string with keysym sym. The intervening resource
 ! URxvt*keysym.sym: string
 
-URxvt*perl-ext-common: default,tabbedex,matcher
+URxvt*perl-ext-common: default,matcher
 
 URxvt.url-launcher: google-chrome-stable
 URxvt.matcher.button: 1
 
 
-URxvt.tabbed.autohide: true
-URxvt.keysym.Control-t: perl:tabbedex:new_tab
-URxvt.keysym.Control-Tab: perl:tabbedex:next_tab
-URxvt.keysym.Control-Shift-Tab: perl:tabbedex:prev_tab
-URxvt.keysym.Control-Shift-Left: perl:tabbedex:move_tab_left
-URxvt.keysym.Control-Shift-Right: perl:tabbedex:move_tab_right
-URxvt.keysym.Control-Shift-R: perl:tabbedex:rename_tab
-URxvt.tabbed.no-tabbedex-keys: true
+! URxvt.tabbed.autohide: true
+! URxvt.keysym.Control-t: perl:tabbedex:new_tab
+! URxvt.keysym.Control-Tab: perl:tabbedex:next_tab
+! URxvt.keysym.Control-Shift-Tab: perl:tabbedex:prev_tab
+! URxvt.keysym.Control-Shift-Left: perl:tabbedex:move_tab_left
+! URxvt.keysym.Control-Shift-Right: perl:tabbedex:move_tab_right
+! URxvt.keysym.Control-Shift-R: perl:tabbedex:rename_tab
+! URxvt.tabbed.no-tabbedex-keys: true
 
 URxvt.keysym.Control-Up:   \033[1;5A
 URxvt.keysym.Control-Down:   \033[1;5B
