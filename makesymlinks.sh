@@ -8,7 +8,7 @@
 
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/.dotfiles_old             # old dotfiles backup directory
-files="bashrc Xresources emacs emacs-custom.el gitconfig gmrunrc rtorrent.rc xinitrc xmobarrc gitignore gntrc vimrc"    # list of files/folders to symlink in homedir
+files="bashrc Xresources emacs emacs-custom.el gitconfig gmrunrc rtorrent.rc xinitrc xmobarrc gitignore gntrc vimrc Rprofile"    # list of files/folders to symlink in homedir
 xmonad="xmonad.hs"
 i3dotdir=~/.i3
 i3dir=i3
