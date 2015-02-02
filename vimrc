@@ -12,6 +12,7 @@
 " 6 EasyMotion - substituted with incsearch, probably no need for anything
 " fancier
 " 7 vim-multiple-cursors!
+" 8 Customize R-plugin
 " Fix smart indents
 "
 " Available good maps:
@@ -20,6 +21,7 @@
 " other commands
 " H/M/L screen top/mid/bottom - will become obsolete with easymotion I guess
 " Space!!!!! good for leader-like
+" Lots of C- are mapped to useless stuff
 "
 
 " Leader to comma
@@ -46,6 +48,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'haya14busa/incsearch.vim'
+Plugin 'jcfaria/Vim-R-plugin'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -225,7 +228,11 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 " Useful mappings
 " Remap : to ;
 nnoremap ; :
-nnoremap : ;
+" nnoremap : ;
+
+" Map tab to esc only in insert mode
+imap <Tab> <Esc>
+
 
 " Map Y to act like D and C, i.e. to yank until EOL, rather than act as yy,
 " which is the default
@@ -281,6 +288,10 @@ nnoremap <silent> ,vr :so %<CR>
 nnoremap ' `
 nnoremap ` '
 
+" Undo c-w in insert mode
+inoremap <c-u> <c-g>u<c-u>
+inoremap <c-w> <c-g>u<c-w>
+
 " Command-/ to toggle comments
 noremap <A-/> :TComment<CR>
 inoremap <A-/> <Esc>:TComment<CR>i
@@ -298,7 +309,7 @@ noremap <silent> ,9 :tabn 9<cr>
 
 " Resize windows with movement keys
 let g:submode_timeout = 0
-call submode#enter_with('resize', 'n', '', ',r')
+call submode#enter_with('resize', 'n', '', '<Space>r')
 call submode#leave_with('resize', 'n', '', '<Esc>')
 call submode#map('resize', 'n', '', 'j', '<C-w>-')
 call submode#map('resize', 'n', '', 'k', '<C-w>+')
