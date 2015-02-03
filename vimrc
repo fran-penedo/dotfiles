@@ -13,6 +13,9 @@
 " fancier
 " 7 vim-multiple-cursors!
 " 8 Customize R-plugin
+" 9 dragvisuals
+" 10 vis vim
+" 11 syntastic
 " Fix smart indents
 "
 " Available good maps:
@@ -49,6 +52,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'haya14busa/incsearch.vim'
 Plugin 'jcfaria/Vim-R-plugin'
+Plugin 'gioele/vim-autoswap'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -198,6 +202,10 @@ set scrolloff=8         "Start scrolling when we're 8 lines away from margins
 set sidescrolloff=15
 set sidescroll=1
 
+" shady characters
+exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
+set list
+
 "------------------------------------------------------------
 " Indentation options {{{1
 "
@@ -232,6 +240,7 @@ nnoremap ; :
 
 " Map tab to esc only in insert mode
 imap <Tab> <Esc>
+vmap <Tab> <Esc>
 
 
 " Map Y to act like D and C, i.e. to yank until EOL, rather than act as yy,
@@ -240,7 +249,7 @@ map Y y$
 
 " Map <C-L> (redraw screen) to also turn off search highlighting until the
 " next search
-nnoremap <C-L> :nohl<CR><C-L>
+" nnoremap <C-L> :nohl<CR><C-L>
 
 " Make 0 go to the first character rather than the beginning
 " of the line. When we're programming, we're almost always
