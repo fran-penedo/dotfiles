@@ -217,6 +217,7 @@ set list
 " Do not change 'tabstop' from its default value of 8 with this setup.
 set shiftwidth=4
 set softtabstop=4
+set tabstop=4
 set expandtab
 
 " Indentation settings for using hard tabs for indent. Display tabs as
@@ -425,4 +426,5 @@ map g# <Plug>(incsearch-nohl-g#)
 
 " youcompleteme
 let g:ycm_key_list_select_completion = ['<Down>']
-let g:ycm_autoclose_preview_window_after_insertion = 0
+let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
