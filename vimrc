@@ -54,6 +54,7 @@ Plugin 'haya14busa/incsearch.vim'
 Plugin 'jcfaria/Vim-R-plugin'
 Plugin 'gioele/vim-autoswap'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'jiangmiao/auto-pairs'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
