@@ -53,6 +53,7 @@ Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'haya14busa/incsearch.vim'
 Plugin 'jcfaria/Vim-R-plugin'
 Plugin 'gioele/vim-autoswap'
+Plugin 'Valloric/YouCompleteMe'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -406,6 +407,8 @@ else
     let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others']
 endif
 
+let g:ctrlp_cmd = 'CtrlPMixed'
+
 " incsearch
 map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
@@ -419,3 +422,6 @@ map #  <Plug>(incsearch-nohl-#)
 map g* <Plug>(incsearch-nohl-g*)
 map g# <Plug>(incsearch-nohl-g#)
 
+" youcompleteme
+let g:ycm_key_list_select_completion = ['<Down>']
+let g:ycm_autoclose_preview_window_after_insertion = 0
