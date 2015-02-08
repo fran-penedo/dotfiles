@@ -55,6 +55,7 @@ Plugin 'jcfaria/Vim-R-plugin'
 Plugin 'gioele/vim-autoswap'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'jiangmiao/auto-pairs'
+Plugin 'Chiel92/vim-autoformat'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -353,6 +354,9 @@ endfunction
 
 nnoremap <silent> Q :call CloseWindowOrKillBuffer()<CR>
 
+" Programming
+nnoremap <F4> :make!<CR>
+
 " fugitive config
 
 " Every time you open a git object using fugitive it creates a new buffer. 
@@ -428,3 +432,6 @@ map g# <Plug>(incsearch-nohl-g#)
 let g:ycm_key_list_select_completion = ['<Down>']
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+
+" Autoformat
+nnoremap <F3> :AutoFormat<CR><CR>
