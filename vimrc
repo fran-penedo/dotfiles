@@ -7,16 +7,16 @@
 
 " TODO:
 " 1 ctrlp mappings and settings - probably no need for more
-" 3 youcompleteme
-" 5 Tagbar (or something for tags)
+" 5 Tagbar (or something for tags) - probably not needed
 " 6 EasyMotion - substituted with incsearch, probably no need for anything
 " fancier
-" 7 vim-multiple-cursors!
+" 7 vim-multiple-cursors! - not needed for now
 " 8 Customize R-plugin
 " 9 dragvisuals
 " 10 vis vim
 " 11 syntastic
-" Fix smart indents
+" Fix smart indents - some plugin sets it and the vimrc unsets it, not sure
+" what
 "
 " Available good maps:
 " R replace mode - check if useful first
@@ -56,6 +56,7 @@ Plugin 'gioele/vim-autoswap'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'Chiel92/vim-autoformat'
+Plugin 'klen/python-mode'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -434,4 +435,7 @@ let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 
 " Autoformat
-nnoremap <F3> :AutoFormat<CR><CR>
+nnoremap <F3> :Autoformat<CR><CR>
+
+" python-mode
+let g:pymode_rope_completion = 0
