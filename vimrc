@@ -307,6 +307,10 @@ nnoremap ` '
 inoremap <c-u> <c-g>u<c-u>
 inoremap <c-w> <c-g>u<c-w>
 
+" Some emacs maps that I like
+inoremap <c-e> <Esc>A
+inoremap <c-d> <Del>
+
 " Command-/ to toggle comments
 noremap <A-/> :TComment<CR>
 inoremap <A-/> <Esc>:TComment<CR>i
