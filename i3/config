@@ -234,3 +234,4 @@ assign [class="sun-applet-AppletViewer"] $w7
 # Start up
 exec_always --no-startup-id pasystray
 exec_always --no-startup-id nm-applet
+exec_always --no-startup-id compton -CGb

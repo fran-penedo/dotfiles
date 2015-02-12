@@ -13,6 +13,9 @@ xmonad="xmonad.hs"
 i3dotdir=~/.i3
 i3dir=i3
 i3config="config i3status.py i3status2.py"
+comptondotdir=~/.config
+comptondir=config
+comptonconfig="compton.conf"
 
 ##########
 
@@ -46,4 +49,12 @@ for file in $i3config; do
     mv $i3dotdir/$file $olddir
     echo "Creating symlink to $i3config in home/.i3"
     ln -s $dir/$i3dir/$file $i3dotdir/$file
+done
+
+# move compton if needed
+for file in $comtonconfig; do
+    echo "Moving existing comtpon config dotfile from ~ to $olddir"
+    mv $comptondotdir/$file $olddir
+    echo "Creating symlink to $comptonconfig in $comptondotdif"
+    ln -s $dir/$comptondir/$file $comptondotdir/$file
 done
