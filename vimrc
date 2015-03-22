@@ -58,6 +58,9 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'Chiel92/vim-autoformat'
 Plugin 'klen/python-mode'
 Plugin 'tpope/vim-unimpaired'
+Plugin 'lervag/vim-latex'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -135,6 +138,9 @@ set showmatch
 " such, it may be a good idea to disable them and use the securemodelines
 " script, <http://www.vim.org/scripts/script.php?script_id=1876>.
 " set nomodeline
+
+" Disable welcome message
+set shortmess+=I
 
 
 "------------------------------------------------------------
@@ -228,6 +234,36 @@ set expandtab
 "set shiftwidth=2
 "set tabstop=2
 
+noremap <silent> <Leader>w :call ToggleWrap()<CR>
+function ToggleWrap()
+  if &wrap
+    echo "Wrap OFF"
+    setlocal nowrap
+    set virtualedit=all
+    silent! nunmap <buffer> <Up>
+    silent! nunmap <buffer> <Down>
+    silent! nunmap <buffer> <Home>
+    silent! nunmap <buffer> <End>
+    silent! iunmap <buffer> <Up>
+    silent! iunmap <buffer> <Down>
+    silent! iunmap <buffer> <Home>
+    silent! iunmap <buffer> <End>
+  else
+    echo "Wrap ON"
+    setlocal wrap linebreak nolist
+    set virtualedit=
+    setlocal display+=lastline
+    noremap  <buffer> <silent> <Up>   gk
+    noremap  <buffer> <silent> <Down> gj
+    noremap  <buffer> <silent> <Home> g<Home>
+    noremap  <buffer> <silent> <End>  g<End>
+    inoremap <buffer> <silent> <Up>   <C-o>gk
+    inoremap <buffer> <silent> <Down> <C-o>gj
+    inoremap <buffer> <silent> <Home> <C-o>g<Home>
+    inoremap <buffer> <silent> <End>  <C-o>g<End>
+  endif
+endfunction
+
 "------------------------------------------------------------
 " vim-airline options {{{1
 "
@@ -247,6 +283,8 @@ nnoremap ; :
 " Map tab to esc only in insert mode
 imap <Tab> <Esc>
 vmap <Tab> <Esc>
+
+nnoremap <F5> :e
 
 
 " Map Y to act like D and C, i.e. to yank until EOL, rather than act as yy,
@@ -444,3 +482,12 @@ nnoremap <F3> :Autoformat<CR><CR>
 
 " python-mode
 let g:pymode_rope_completion = 0
+
+" latex
+let g:tex_flavor='latex'
+
+" UltiSnips
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+"let g:ycm_key_list_previous_completion=[]
