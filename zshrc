@@ -54,6 +54,12 @@ source $ZSH/oh-my-zsh.sh
 export PATH=$HOME/bin:/usr/local/bin:$HOME/.scripts:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
 
+# GUROBI
+export GUROBI_HOME=$HOME/.gurobi/linux64
+export PATH=$GUROBI_HOME/bin:$PATH
+export LD_LIBRARY_PATH=$GUROBI_HOME/lib
+export GRB_LICENSE_FILE=$HOME/.gurobi/gurobi.lic
+
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
