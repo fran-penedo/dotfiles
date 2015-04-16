@@ -14,7 +14,14 @@ status.register("clock",
 
 status.register("battery",
                 battery_ident="BAT1",
-format="{status} {percentage:0.0f}% {remaining}",)
+                format="{status} {percentage:0.0f}% {remaining}",)
+
+status.register("disk", path="/", round_size=1,
+                format="/:{used}/{total}",)
+
+status.register("disk", path="/home", round_size=1,
+                format="/home:{used}/{total}",)
+
 
 status.register("cpu_usage",
                 format="CPU:{usage:02}%",)
