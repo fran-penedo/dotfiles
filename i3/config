@@ -69,8 +69,8 @@ bindsym XF86AudioMute exec amixer -q set Master toggle
 bindsym $win+c exec cmus-remote -u; exec playerctl play
 bindsym $win+b exec cmus-remote -n; exec playerctl next
 bindsym $win+z exec cmus-remote -r; exec playerctl previous
-bindsym $win+x exec cmus-remote -v -5%
-bindsym $win+v exec cmus-remote -v +5%
+bindsym $win+x exec cmus-remote -v -5%; exec xdotool search --class "spotify" key --window %@ ctrl+Down
+bindsym $win+v exec cmus-remote -v +5%; exec xdotool search --class "spotify" key --window %@ ctrl+Up
 
 bindsym XFMonBrightnessUp exec xbacklight -inc 10
 bindsym XFMonBrightnessDown exec xbacklight -dec 10
