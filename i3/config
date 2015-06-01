@@ -197,6 +197,7 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
         output          LVDS1
+        output          DVI-D-0
         position        top
         status_command  python ~/.i3/i3status.py
 
@@ -204,6 +205,7 @@ bar {
 
 bar {
         output          VGA1
+        output          DVI-I-0
         tray_output     none
         position        top
         status_command python ~/.i3/i3status2.py
@@ -212,9 +214,13 @@ bar {
 # Workspace management
 
 workspace $w1 output VGA1
+workspace $w1 output DVI-I-0
 workspace $w4 output LVDS1
 workspace $w3 output LVDS1
 workspace $w2 output LVDS1
+workspace $w4 output DVI-D-0
+workspace $w3 output DVI-D-0
+workspace $w2 output DVI-D-0
 
 #assign [class="Google-chrome-stable"] $w1
 assign [class="Spotify"] $w9
