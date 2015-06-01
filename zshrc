@@ -60,6 +60,9 @@ export PATH=$GUROBI_HOME/bin:$PATH
 export LD_LIBRARY_PATH=$GUROBI_HOME/lib
 export GRB_LICENSE_FILE=$HOME/.gurobi/gurobi.lic
 
+# Spotify fix
+export LC_NUMERIC=en_US.utf8
+
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 

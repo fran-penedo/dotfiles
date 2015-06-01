@@ -217,6 +217,9 @@ set sidescroll=1
 exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
 set list
 
+" System clipboard (only for X window)
+set clipboard=unnamedplus
+
 "------------------------------------------------------------
 " Indentation options {{{1
 "
