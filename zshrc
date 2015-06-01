@@ -88,3 +88,4 @@ fi
 alias em="emacs -nw"
 alias vim="vim --servername VIM"
 alias vi="vim"
+alias op="xdg-open"
