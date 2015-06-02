@@ -1,0 +1,11 @@
+#!/bin/bash
+
+PID=$(xdotool search --class "catfish" getwindowpid)
+echo $PID
+if [ -n "$PID" ]; then
+    echo "Found window "$1", killing it pid "$PID$
+    kill $PID
+else
+    echo "Not found window "$1", spawning"
+    $1
+fi
