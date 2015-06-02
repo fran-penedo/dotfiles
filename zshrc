@@ -51,7 +51,7 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PATH=$HOME/bin:/usr/local/bin:$HOME/.scripts:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$HOME/dotfiles/.scripts:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # GUROBI
