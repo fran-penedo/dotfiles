@@ -42,6 +42,7 @@ export QT_IM_MODULE=fcitx
 fcitx
 
 export PYMACS_PYTHON=python2
+export MC_XDG_OPEN=$HOME/dotfiles/.scripts/xdg-open-spawn
 
 exec $1
 # exec gnome-session
