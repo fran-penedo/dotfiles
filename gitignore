@@ -76,3 +76,4 @@ Session.vim
 # python
 *.pyc
 .ropeproject/
+.env/
