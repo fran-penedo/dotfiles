@@ -2,11 +2,14 @@
 accounts = personal,bu
 ui = ttyui
 pythonfile = ~/.offlineimap.py
+maxsyncaccounts = 3
 
 [Account personal]
 localrepository = personal-local
 remoterepository = personal-remote
 status_backend = sqlite
+autorefresh = 5
+quick = 10
 
 [Repository personal-local]
 type = Maildir
@@ -41,6 +44,8 @@ folderfilter = lambda folder: folder == '[Gmail]/Todos'
 localrepository = bu-local
 remoterepository = bu-remote
 status_backend = sqlite
+autorefresh = 5
+quick = 10
 
 [Repository bu-local]
 type = Maildir
