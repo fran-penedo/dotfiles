@@ -8,7 +8,7 @@
 
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/.dotfiles_old             # old dotfiles backup directory
-files="bashrc Xresources emacs emacs-custom.el gitconfig gmrunrc rtorrent.rc xinitrc xmobarrc gitignore gntrc vimrc Rprofile yaourtrc zshrc"    # list of files/folders to symlink in homedir
+files="bashrc Xresources emacs emacs-custom.el gitconfig gmrunrc rtorrent.rc xinitrc xmobarrc gitignore gntrc vimrc Rprofile yaourtrc zshrc msmtprc offlineimap.py offlineimaprc"    # list of files/folders to symlink in homedir
 xmonad="xmonad.hs"
 i3dotdir=~/.i3
 i3dir=i3
@@ -16,6 +16,9 @@ i3config="config i3status.py i3status2.py"
 comptondotdir=~/.config
 comptondir=config
 comptonconfig="compton.conf"
+supdotdir=~/.sup
+supdir=sup
+supconfig="sources.yaml config.yaml colors.yaml hooks"
 
 ##########
 
@@ -48,14 +51,23 @@ mkdir $i3dotdir
 for file in $i3config; do
     echo "Moving existing i3 config dotfile from ~ to $olddir"
     mv $i3dotdir/$file $olddir
-    echo "Creating symlink to $i3config in home/.i3"
+    echo "Creating symlink to $file in ~/$i3dotdir"
     ln -s $dir/$i3dir/$file $i3dotdir/$file
+done
+
+# move sup scripts if needed
+mkdir $supdotdir
+for file in $supconfig; do
+    echo "Moving existing sup config dotfile from ~ to $olddir"
+    mv $supdotdir/$file $olddir
+    echo "Creating symlink to $file in ~/$supdotdir"
+    ln -s $dir/$supdir/$file $supdotdir/$file
 done
 
 # move compton if needed
 for file in $comtonconfig; do
     echo "Moving existing comtpon config dotfile from ~ to $olddir"
     mv $comptondotdir/$file $olddir
-    echo "Creating symlink to $comptonconfig in $comptondotdif"
+    echo "Creating symlink to $file in ~/$comptondotdir"
     ln -s $dir/$comptondir/$file $comptondotdir/$file
 done

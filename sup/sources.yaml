@@ -1,0 +1,16 @@
+---
+- !supmua.org,2006-10-01/Redwood/Maildir
+  uri: maildir:/home/fran/mail/personal/archive
+  usual: true
+  archived: false
+  sync_back: true
+  id: 2
+  labels: []
+- !supmua.org,2006-10-01/Redwood/Maildir
+  uri: maildir:/home/fran/mail/bu/archive
+  usual: true
+  archived: false
+  sync_back: true
+  id: 3
+  labels: []
+- !supmua.org,2006-10-01/Redwood/SentLoader {}
