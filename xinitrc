@@ -30,6 +30,9 @@ xset b off
 
 xfce4-power-manager &
 nitrogen --restore &
+eval $(gnome-keyring-daemon --start)
+export SSH_AUTH_SOCK
+export GPG_AGENT_INFO
 #pasystray &
 #nm-applet &
 #fbxkb &
