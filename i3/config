@@ -66,6 +66,7 @@ bindsym $mod+Control+c exec gsimplecal
 bindsym $mod+Control+f exec urxvt -e mc
 bindsym $mod+Control+m exec urxvt -e sup
 bindsym $mod+Control+z exec zotero
+bindsym $mod+Control+p exec offlineimap -o -u quiet
 
 bindsym XF86AudioLowerVolume exec amixer -q set Master 2%-
 bindsym XF86AudioRaiseVolume exec amixer -q set Master 2%+
