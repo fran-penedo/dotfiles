@@ -16,9 +16,9 @@ fi
 for f in $( find ~ -name '.git' | egrep -v "$EXCEPTIONS" | sed 's:\(.*\)\/\.git:\1:' ); do
     if [ -z $1 ]; then
         default=' '
-        ahead=$( git -C $f status | grep ahead | sed 's/.*/A/')
-        modified=$( git -C $f status | grep modified | sed 's/.*/M/')
-        untracked=$( git -C $f status | grep untracked | sed 's/.*/U/')
+        ahead=$( git -C $f status | grep -i ahead | sed 's/.*/A/')
+        modified=$( git -C $f status | grep -i modified | sed 's/.*/M/')
+        untracked=$( git -C $f status | grep -i untracked | sed 's/.*/U/')
         #status=${ahead:-$default}${modified:-$default}${untracked:-$default}
         ahead=${ahead:-$default}
         modified=${modified:-$default}
@@ -34,7 +34,7 @@ for f in $( find ~ -name '.git' | egrep -v "$EXCEPTIONS" | sed 's:\(.*\)\/\.git:
     else
         if [ -n "$( git -C $f status | grep ahead )" ]; then
             echo Pushing $f
-            git -C $f push -n
+            git -C $f push
         fi
     fi
 done
