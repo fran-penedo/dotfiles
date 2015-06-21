@@ -252,4 +252,4 @@ exec_always --no-startup-id compton -CGb
 exec_always --no-startup-id xset -dpms
 exec_always --no-startup-id dropbox
 exec_always --no-startup-id skype
-exec_always --no-startup-id offlineimap -u quiet
+exec_always --no-startup-id offlineimap -l ~/.offlineimap.log
