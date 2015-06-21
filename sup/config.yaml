@@ -26,15 +26,15 @@
 :always_edit_async: false
 :accounts:
   :default:
-    :name: fran
+    :name: Francisco Penedo
     :email: fran.penedo@gmail.com
     :alternates:
     :sendmail: "msmtp -t --read-envelope-from"
     :signature: "/home/fran/.signature"
     :gpgkey: ''
   :bu:
-    :name: fran
-    :email: franp@gmail.com
+    :name: Francisco Penedo
+    :email: franp@bu.edu
     :alternates:
     :sendmail: "msmtp -a bu -t --read-envelope-from"
     :signature: "/home/fran/.signature"
