@@ -1,0 +1,40 @@
+#!/bin/bash
+
+EXCEPTIONS='.vim|Dropbox'
+
+RED="\033[0;31m"
+BLUE="\033[0;34m"
+CYAN="\033[0;36m"
+GREEN="\033[0;32m"
+YELLOW="\033[1;33m"
+
+if [ -n "$1" ] && [ "$1" != "push" ]; then
+    echo "Invalid argument"
+    exit 127
+fi
+
+for f in $( find ~ -name '.git' | egrep -v "$EXCEPTIONS" | sed 's:\(.*\)\/\.git:\1:' ); do
+    if [ -z $1 ]; then
+        default=' '
+        ahead=$( git -C $f status | grep ahead | sed 's/.*/A/')
+        modified=$( git -C $f status | grep modified | sed 's/.*/M/')
+        untracked=$( git -C $f status | grep untracked | sed 's/.*/U/')
+        #status=${ahead:-$default}${modified:-$default}${untracked:-$default}
+        ahead=${ahead:-$default}
+        modified=${modified:-$default}
+        untracked=${untracked:-$default}
+        if [ -z $ahead$modified$untracked ]; then
+            col=$GREEN
+        else
+            col=$YELLOW
+        fi
+
+        printf "$RED%c$BLUE%c$CYAN%c " "$ahead" "$modified" "$untracked"
+        printf "$col%s\n" $f
+    else
+        if [ -n "$( git -C $f status | grep ahead )" ]; then
+            echo Pushing $f
+            git -C $f push -n
+        fi
+    fi
+done
