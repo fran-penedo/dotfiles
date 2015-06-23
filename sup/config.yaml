@@ -1,5 +1,5 @@
 ---
-:editor: vim -f -c 'set ft=mail' '+/^\s*\n/' '+nohl'
+:editor: vim -f -c 'set ft=mail' -c 'set textwidth=0' '+/^\s*\n/' '+nohl'
 :thread_by_subject: false
 :edit_signature: false
 :ask_for_from: false
@@ -14,7 +14,7 @@
 :discard_snippets_from_encrypted_messages: false
 :load_more_threads_when_scrolling: true
 :default_attachment_save_dir: ''
-:sent_source: maildir:/home/fran/mail/personal/archive
+:sent_source: "sup://sent"
 :archive_sent: true
 :poll_interval: 300
 :wrap_width: 0
