@@ -64,7 +64,7 @@ bindsym $mod+Control+w exec chrome
 bindsym $mod+Control+s exec ~/dotfiles/.scripts/wtoggle catfish
 bindsym $mod+Control+c exec gsimplecal
 bindsym $mod+Control+f exec urxvt -e mc
-bindsym $mod+Control+m exec urxvt -e sup
+bindsym $mod+Control+m [title="^Sup "] scratchpad show
 bindsym $mod+Control+z exec zotero
 bindsym $mod+Control+p exec offlineimap -o -u quiet
 
@@ -242,14 +242,16 @@ for_window [class="Skype"] move to workspace $w8
 for_window [class="Steam"] floating enable
 for_window [class="(?i)pavucontrol"] floating enable
 for_window [class="Catfish"] floating enable
+for_window [title="^Sup "] move scratchpad
 
 assign [class="sun-applet-AppletViewer"] $w7
 
 # Start up
-exec_always --no-startup-id pasystray
-exec_always --no-startup-id nm-applet
-exec_always --no-startup-id compton -CGb
-exec_always --no-startup-id xset -dpms
-exec_always --no-startup-id dropbox
-exec_always --no-startup-id skype
-exec_always --no-startup-id offlineimap -l ~/.offlineimap.log
+exec --no-startup-id pasystray
+exec --no-startup-id nm-applet
+exec --no-startup-id compton -CGb
+exec --no-startup-id xset -dpms
+exec --no-startup-id dropbox
+exec --no-startup-id skype
+exec --no-startup-id offlineimap -l ~/.offlineimap.log
+exec --no-startup-id urxvt -e sup
