@@ -63,6 +63,11 @@ export GRB_LICENSE_FILE=$HOME/.gurobi/gurobi.lic
 # Spotify fix
 export LC_NUMERIC=en_US.utf8
 
+# virtualenvwrapper
+export WORKON_HOME=$HOME/Documents/virtualenvs
+export VIRTUALENVWRAPPER_SCRIPT=/usr/bin/virtualenvwrapper.sh
+source /usr/bin/virtualenvwrapper_lazy.sh
+
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
