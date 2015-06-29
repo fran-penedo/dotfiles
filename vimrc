@@ -486,6 +486,7 @@ nnoremap <F3> :Autoformat<CR><CR>
 
 " python-mode
 let g:pymode_rope_completion = 0
+let g:pymode_lint_ignore = "E"
 
 " latex
 let g:tex_flavor='latex'
