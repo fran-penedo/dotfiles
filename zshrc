@@ -95,5 +95,6 @@ fi
 
 alias em="emacs -nw"
 alias vim="vim --servername VIM"
+alias vimrc="vim ~/.vimrc"
 alias vi="vim"
 alias op="xdg-open"

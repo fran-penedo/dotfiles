@@ -60,7 +60,7 @@ Plugin 'klen/python-mode'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'lervag/vim-latex'
 Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
+Plugin 'fran-penedo/vim-snippets'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
