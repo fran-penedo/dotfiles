@@ -66,7 +66,7 @@ bindsym $mod+Control+c exec gsimplecal
 bindsym $mod+Control+f exec urxvt -e mc
 bindsym $mod+Control+m [title="^Sup "] scratchpad show
 bindsym $mod+Control+z exec zotero
-bindsym $mod+Control+p exec offlineimap -o -u quiet
+bindsym $mod+Control+p exec offlineimap -1 -o -u quiet
 
 bindsym XF86AudioLowerVolume exec amixer -q set Master 2%-
 bindsym XF86AudioRaiseVolume exec amixer -q set Master 2%+
@@ -253,5 +253,5 @@ exec --no-startup-id compton -CGb
 exec --no-startup-id xset -dpms
 exec --no-startup-id dropbox
 exec --no-startup-id skype
-exec --no-startup-id offlineimap -l ~/.offlineimap.log
+exec --no-startup-id offlineimap -1 -l ~/.offlineimap.log
 exec --no-startup-id urxvt -e sup
