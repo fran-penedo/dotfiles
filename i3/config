@@ -204,6 +204,7 @@ bindsym $mod+r mode "resize"
 bar {
         output          LVDS1
         output          DVI-D-0
+        output          DVI-I-1
         position        top
         status_command  python ~/.i3/i3status.py
 
@@ -212,6 +213,7 @@ bar {
 bar {
         output          VGA1
         output          DVI-I-0
+        output          HDMI-0
         tray_output     none
         position        top
         status_command python ~/.i3/i3status2.py
