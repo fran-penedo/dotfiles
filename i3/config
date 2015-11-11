@@ -82,6 +82,7 @@ bindsym XFMonBrightnessUp exec xbacklight -inc 10
 bindsym XFMonBrightnessDown exec xbacklight -dec 10
 
 bindsym Pause exec systemctl suspend
+bindsym $mod+Escape exec slimlock
 
 # change focus
 bindsym $mod+Shift+Tab focus left
