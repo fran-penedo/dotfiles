@@ -61,6 +61,8 @@ Plugin 'tpope/vim-unimpaired'
 Plugin 'lervag/vim-latex'
 Plugin 'SirVer/ultisnips'
 Plugin 'fran-penedo/vim-snippets'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-surround'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -490,6 +492,7 @@ let g:pymode_lint_ignore = "E"
 
 " latex
 let g:tex_flavor='latex'
+let g:vimtex_view_method="qpdfview"
 
 " UltiSnips
 let g:UltiSnipsExpandTrigger="<c-j>"
