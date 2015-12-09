@@ -3,6 +3,7 @@ accounts = personal,bu
 ui = ttyui
 pythonfile = ~/.offlineimap.py
 maxsyncaccounts = 3
+socktimeout = 90
 
 [Account personal]
 localrepository = personal-local
