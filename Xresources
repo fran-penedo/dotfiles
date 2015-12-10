@@ -95,11 +95,11 @@ URxvt*foreground: COLOR_FG
 ! URxvt*borderColor: colour
 
 ! Select the fonts to be used. This is a comma separated list of font names
-URxvt*font: xft:Inconsolata:pixelsize=12:antialias=true:hinting=true
+URxvt*font: xft:Inconsolata:pixelsize=14:antialias=true:hinting=true
 
-URxvt*boldFont: xft:Inconsolata:style=bold:pixelsize=12:antialias=true:hinting=true
+URxvt*boldfont: xft:Inconsolata:style=bold:pixelsize=14:antialias=true:hinting=true
 
-URxvt*letterSpace: -1
+URxvt*letterSpace: 0
 
 ! 
 ! URxvt*italicFont: fontlist
@@ -315,4 +315,3 @@ URxvt*iso14755_52: false
 
 
 Emacs.font: Inconsolata-12
-
