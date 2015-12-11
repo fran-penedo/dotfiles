@@ -492,7 +492,11 @@ let g:pymode_lint_ignore = "E"
 
 " latex
 let g:tex_flavor='latex'
-let g:vimtex_view_method="qpdfview"
+let g:vimtex_view_method="general"
+let g:vimtex_view_general_viewer = 'qpdfview'
+let g:vimtex_view_general_options = '--unique @pdf\#src:@tex:@line:@col'
+let g:vimtex_view_general_options_latexmk = '--unique'
+let g:vimtex_imaps_snippet_engine="ultisnips"
 
 " UltiSnips
 let g:UltiSnipsExpandTrigger="<c-j>"
