@@ -355,7 +355,6 @@ progressbar_boldness = no
 #default_tag_editor_pattern = %n - %t
 #
 #header_visibility = yes
-#header_visibility = no
 #
 #statusbar_visibility = yes
 #
@@ -365,6 +364,7 @@ titles_visibility = no
 #header_text_scrolling = yes
 #
 #cyclic_scrolling = no
+cyclic_scrolling = yes
 #
 #lines_scrolled = 2
 #
@@ -430,6 +430,7 @@ startup_screen = media_library
 #jump_to_now_playing_song_at_start = yes
 #
 #ask_before_clearing_playlists = yes
+ask_before_clearing_playlists = no
 #
 #clock_display_seconds = no
 #

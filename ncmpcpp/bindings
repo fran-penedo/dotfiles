@@ -230,7 +230,7 @@ def_key "enter"
 
 def_key "enter"
   require_runnable "play_item"
-  push_characters "y"
+#  push_characters "y"
   clear_main_playlist
   play_item
 
