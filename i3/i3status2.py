@@ -10,4 +10,7 @@ status.register("cmus",)
 
 status.register("spotify",)
 
+status.register("mpd", format="{status} {song_elapsed}/{song_length} {artist} - {title}",
+                on_upscroll="", on_downscroll="")
+
 status.run()
