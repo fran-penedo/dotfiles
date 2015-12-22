@@ -8,8 +8,9 @@
 
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/.dotfiles_old             # old dotfiles backup directory
-files="bashrc Xresources emacs emacs-custom.el gitconfig gmrunrc rtorrent.rc xinitrc xmobarrc gitignore gntrc vimrc Rprofile yaourtrc zshrc msmtprc offlineimap.py offlineimaprc"    # list of files/folders to symlink in homedir
-xmonad="xmonad.hs"
+homedotdir=~
+homedir=.
+homeconfig="bashrc Xresources emacs emacs-custom.el gitconfig gmrunrc rtorrent.rc xinitrc xmobarrc gitignore gntrc vimrc Rprofile yaourtrc zshrc msmtprc offlineimap.py offlineimaprc"
 i3dotdir=~/.i3
 i3dir=i3
 i3config="config i3status.py i3status2.py"
@@ -19,6 +20,15 @@ comptonconfig="compton.conf"
 supdotdir=~/.sup
 supdir=sup
 supconfig="sources.yaml config.yaml colors.yaml hooks"
+ncmpcppdir=ncmpcpp
+ncmpcppdotdir=~/.ncmpcpp
+ncmpcppconfig="config bindings"
+mopidydir=config/mopidy
+mopidydotdir=~/.config/mopidy
+mopidyconfig="mopidy.conf"
+xmonaddotdir=~/.xmonad
+xmonaddir=.
+xmonadconfig="xmonad.hs"
 
 ##########
 
@@ -32,42 +42,34 @@ echo -n "Changing to the $dir directory ..."
 cd $dir
 echo "done"
 
+function move {
+    mkdir $1
+    for file in $2; do
+        f=$4$file
+        echo "Moving existing config dotfile $f from $1 to $olddir"
+        mv $1/$f $olddir
+        echo "Creating symlink to $file in $1"
+        ln -s $dir/$3/$file $1/$f
+    done
+}
+
 # move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks from the homedir to any files in the ~/dotfiles directory specified in $files
-for file in $files; do
-    echo "Moving any existing dotfiles from ~ to $olddir"
-    mv ~/.$file $olddir
-    echo "Creating symlink to $file in home directory."
-    ln -s $dir/$file ~/.$file
-done
+move "$homedotdir" "$homeconfig" "$homedir" .
 
 # move xmonad if needed
-echo "Moving existing xmonad dotfile from ~ to $olddir"
-mv ~/.xmonad/$xmonad $olddir
-echo "Creating symlink to $xmonad in home/xmonad"
-ln -s $dir/$xmonad ~/.xmonad/$xmonad
+move "$xmonaddotdir" "$xmonadconfig" "$xmonaddir"
 
 # move i3config and pystatus scripts if needed
-mkdir $i3dotdir
-for file in $i3config; do
-    echo "Moving existing i3 config dotfile from ~ to $olddir"
-    mv $i3dotdir/$file $olddir
-    echo "Creating symlink to $file in ~/$i3dotdir"
-    ln -s $dir/$i3dir/$file $i3dotdir/$file
-done
+move "$i3dotdir" "$i3config" "$i3dir"
 
 # move sup scripts if needed
-mkdir $supdotdir
-for file in $supconfig; do
-    echo "Moving existing sup config dotfile from ~ to $olddir"
-    mv $supdotdir/$file $olddir
-    echo "Creating symlink to $file in ~/$supdotdir"
-    ln -s $dir/$supdir/$file $supdotdir/$file
-done
+move "$supdotdir" "$supconfig" "$supdir"
 
 # move compton if needed
-for file in $comtonconfig; do
-    echo "Moving existing comtpon config dotfile from ~ to $olddir"
-    mv $comptondotdir/$file $olddir
-    echo "Creating symlink to $file in ~/$comptondotdir"
-    ln -s $dir/$comptondir/$file $comptondotdir/$file
-done
+move "$comptondotdir" "$comptonconfig" "$comptondir"
+
+# move mopidy if needed
+move "$mopidydotdir" "$mopidyconfig" "$mopidydir"
+
+# move ncmpcpp if needed
+move "$ncmpcppdotdir" "$ncmpcppconfig" "$ncmpcppdir"
