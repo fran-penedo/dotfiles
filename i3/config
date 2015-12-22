@@ -67,6 +67,7 @@ bindsym $mod+Control+f exec urxvt -e mc
 bindsym $mod+Control+m [title="^Sup "] scratchpad show
 bindsym $mod+Control+z exec zotero
 bindsym $mod+Control+p exec offlineimap -1 -o -u quiet
+bindsym $mod+Control+n exec urxvt -e ncmpcpp
 
 bindsym XF86AudioLowerVolume exec amixer -q set Master 2%-
 bindsym XF86AudioRaiseVolume exec amixer -q set Master 2%+
