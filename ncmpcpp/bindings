@@ -413,12 +413,20 @@ def_key "4"
 #def_key "ctrl-s"
 #  sort_playlist
 #
-#def_key "ctrl-s"
-#  toggle_browser_sort_mode
-#
-#def_key "ctrl-s"
-#  toggle_media_library_sort_mode
-#
+def_key "ctrl-s"
+  sort_playlist
+
+def_key "ctrl-s"
+  require_screen "sort_playlist_dialog"
+  push_characters "kk"
+  push_character "enter"
+
+def_key "ctrl-s"
+  toggle_browser_sort_mode
+
+def_key "ctrl-s"
+  toggle_media_library_sort_mode
+
 #def_key "ctrl-r"
 #  reverse_playlist
 #
@@ -491,6 +499,12 @@ def_key "4"
 #def_key "a"
 #  add_selected_items
 #
+def_key "ctrl-a"
+  clear_main_playlist
+  add_selected_items
+  push_character "enter"
+  push_character "enter"
+
 #def_key "c"
 #  clear_playlist
 #
