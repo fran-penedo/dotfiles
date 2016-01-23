@@ -62,6 +62,7 @@ Plugin 'fran-penedo/vim-snippets'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Plugin 'tComment'
+Plugin 'EasyGrep'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
