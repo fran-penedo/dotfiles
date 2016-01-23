@@ -48,8 +48,6 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'submode'
 Plugin 'kien/ctrlp.vim'
 Plugin 'airblade/vim-gitgutter'
-Plugin 'scrooloose/nerdtree'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'haya14busa/incsearch.vim'
 Plugin 'jcfaria/Vim-R-plugin'
 Plugin 'gioele/vim-autoswap'
@@ -63,6 +61,7 @@ Plugin 'SirVer/ultisnips'
 Plugin 'fran-penedo/vim-snippets'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
+Plugin 'tComment'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -288,6 +287,7 @@ nnoremap ; :
 " Map tab to esc only in insert mode
 imap <Tab> <Esc>
 vmap <Tab> <Esc>
+nmap <Tab> <Esc>
 
 nnoremap <F5> :e
 
@@ -298,7 +298,7 @@ map Y y$
 
 " Map <C-L> (redraw screen) to also turn off search highlighting until the
 " next search
-" nnoremap <C-L> :nohl<CR><C-L>
+nnoremap l :nohl<CR><C-L>
 
 " Make 0 go to the first character rather than the beginning
 " of the line. When we're programming, we're almost always
@@ -314,8 +314,8 @@ nnoremap ^ 0
 
 "Move back and forth through previous and next buffers
 "with ,z and ,x
-nnoremap <silent> ,z :bp<CR>
-nnoremap <silent> ,x :bn<CR>
+nnoremap <silent> z :bp<CR>
+nnoremap <silent> x :bn<CR>
 
 " ==============================
 " Window/Tab/Split Manipulation
@@ -355,8 +355,8 @@ inoremap <c-e> <Esc>A
 inoremap <c-d> <Del>
 
 " Command-/ to toggle comments
-noremap <A-/> :TComment<CR>
-inoremap <A-/> <Esc>:TComment<CR>i
+noremap / :TComment<CR>
+inoremap / <Esc>:TComment<CR>i
 
 " Use Alt- numbers to pick the tab you want
 noremap <silent> ,1 :tabn 1<cr>
@@ -437,12 +437,12 @@ highlight GitGutterDelete ctermfg=red
 highlight GitGutterChangeDelete ctermfg=yellow 
 
 " nerdtree config
-noremap <C-n> :NERDTreeToggle<CR>
+" noremap <C-n> :NERDTreeToggle<CR>
 
 " Make nerdtree look nice
-let NERDTreeMinimalUI = 1
-let NERDTreeDirArrows = 1
-let g:NERDTreeWinSize = 30
+" let NERDTreeMinimalUI = 1
+" let NERDTreeDirArrows = 1
+" let g:NERDTreeWinSize = 30
 
 " ctrlp
 if exists("g:ctrlp_user_command")
