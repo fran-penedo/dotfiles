@@ -26,6 +26,9 @@ ncmpcppconfig="config bindings"
 mopidydir=config/mopidy
 mopidydotdir=~/.config/mopidy
 mopidyconfig="mopidy.conf"
+catfishdir=config/catfish
+catfishdotdir=~/.config/catfish
+catfishconfig="catfish.rc"
 xmonaddotdir=~/.xmonad
 xmonaddir=.
 xmonadconfig="xmonad.hs"
@@ -70,6 +73,9 @@ move "$comptondotdir" "$comptonconfig" "$comptondir"
 
 # move mopidy if needed
 move "$mopidydotdir" "$mopidyconfig" "$mopidydir"
+
+# move catfish if needed
+move "$catfishdotdir" "$catfishconfig" "$catfishdir"
 
 # move ncmpcpp if needed
 move "$ncmpcppdotdir" "$ncmpcppconfig" "$ncmpcppdir"
