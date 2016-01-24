@@ -63,6 +63,7 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Plugin 'tComment'
 Plugin 'EasyGrep'
+Plugin 'Solarized'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -221,6 +222,12 @@ set list
 
 " System clipboard (only for X window)
 set clipboard=unnamedplus
+
+" Color scheme
+set background=dark
+set t_Co=16
+let g:solarized_termcolors=16
+colorscheme solarized
 
 "------------------------------------------------------------
 " Indentation options {{{1
