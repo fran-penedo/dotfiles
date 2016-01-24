@@ -73,9 +73,9 @@ bindsym XF86AudioLowerVolume exec amixer -q set Master 2%-
 bindsym XF86AudioRaiseVolume exec amixer -q set Master 2%+
 bindsym XF86AudioMute exec amixer -q set Master toggle
 
-bindsym $win+c exec cmus-remote -u; exec playerctl play-pause; exec mpc toggle
-bindsym $win+b exec cmus-remote -n; exec playerctl next; exec mpc next
-bindsym $win+z exec cmus-remote -r; exec playerctl previous; exec mpc prev
+bindsym $win+c exec cmus-remote -u; exec playerctl -p spotify play-pause; exec mpc toggle
+bindsym $win+b exec cmus-remote -n; exec playerctl -p spotify next; exec mpc next
+bindsym $win+z exec cmus-remote -r; exec playerctl -p spotify previous; exec mpc prev
 bindsym $win+x exec cmus-remote -v -5%; exec xdotool search --class "spotify" key --window %@ ctrl+Down; exec mpc volume | grep -Po '[0-9]+' | awk '{print $1 - 5}' | xargs mpc volume
 bindsym $win+v exec cmus-remote -v +5%; exec xdotool search --class "spotify" key --window %@ ctrl+Up; exec mpc volume | grep -Po '[0-9]+' | awk '{print $1 + 5}' | xargs mpc volume
 
