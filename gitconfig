@@ -7,3 +7,5 @@
 	excludesfile = /home/fran/.gitignore
 [credential]
 	helper = /usr/share/git/credential/gnome-keyring/git-credential-gnome-keyring
+[github]
+	user = fran-penedo
