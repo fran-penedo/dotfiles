@@ -61,7 +61,7 @@ bindsym $mod+F3 exec i3-input
 # Launchers
 bindsym Print exec xfce4-screenshooter
 bindsym $mod+Control+w exec chrome
-bindsym $mod+Control+s exec ~/dotfiles/.scripts/wtoggle catfish
+bindsym $mod+Control+s exec ~/dotfiles/scripts/wtoggle catfish
 bindsym $mod+Control+c exec gsimplecal
 bindsym $mod+Control+f exec urxvt -e mc
 bindsym $mod+Control+m [title="^Sup "] scratchpad show

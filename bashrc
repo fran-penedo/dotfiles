@@ -12,7 +12,7 @@ export EDITOR=vim
 export PROMPT_COMMAND='tput bel'
 
 #path
-export PATH=$PATH:~/.scripts
+export PATH=$PATH:~/scripts
 
 #gurobi
 export GUROBI_HOME="/home/fran/.gurobi/linux64"
