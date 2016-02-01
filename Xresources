@@ -75,7 +75,7 @@
 
 urxvt*background:              S_base03
 urxvt*foreground:              S_base0
-urxvt*fading:                  40
+urxvt*fading:                  15
 urxvt*fadeColor:               S_base03
 urxvt*cursorColor:             S_base1
 urxvt*pointerColorBackground:  S_base01
