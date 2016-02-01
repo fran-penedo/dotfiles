@@ -64,6 +64,8 @@ Plugin 'tpope/vim-surround'
 Plugin 'tComment'
 Plugin 'EasyGrep'
 Plugin 'Solarized'
+Plugin 'mattn/webapi-vim'
+Plugin 'mattn/gist-vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
