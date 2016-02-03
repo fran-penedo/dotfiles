@@ -1,0 +1,10 @@
+#!/bin/zsh
+
+SUB=""
+IFS="="
+while read -r name value
+do
+    SUB="${SUB};s/${value}/${name}/g"
+done < ./filters/`hostname`.config
+
+sed -e ${SUB}

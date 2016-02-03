@@ -203,16 +203,14 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        output          LVDS1
-        output          DVI-D-0
+        output          __MAIN_DISPLAY
         position        top
         status_command  python ~/.i3/i3status.py
 
 }
 
 bar {
-        output          VGA1
-        output          DVI-I-0
+        output          __SEC_DISPLAY
         tray_output     none
         position        top
         status_command python ~/.i3/i3status2.py
@@ -220,14 +218,10 @@ bar {
 
 # Workspace management
 
-workspace $w1 output VGA1
-workspace $w1 output DVI-I-0
-workspace $w4 output LVDS1
-workspace $w3 output LVDS1
-workspace $w2 output LVDS1
-workspace $w4 output DVI-D-0
-workspace $w3 output DVI-D-0
-workspace $w2 output DVI-D-0
+workspace $w1 output __SEC_DISPLAY
+workspace $w4 output __MAIN_DISPLAY
+workspace $w3 output __MAIN_DISPLAY
+workspace $w2 output __MAIN_DISPLAY
 
 #assign [class="Google-chrome-stable"] $w1
 assign [class="Spotify"] $w9
