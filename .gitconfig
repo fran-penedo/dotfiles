@@ -1,0 +1,3 @@
+[filter "machine-specific"]
+    clean=./filters/clean
+    smudge=./filters/smudge
