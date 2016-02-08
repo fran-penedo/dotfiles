@@ -1,0 +1,6 @@
+#!/bin/zsh
+
+i3-msg scratchpad show
+xdotool search --name "^Sup" key --window %@ m
+xdotool search --name "^Sup" type --window %@ "$1"
+xdotool search --name "^Sup" key --window %@ Return
