@@ -35,6 +35,7 @@ remotepasseval = keyring.get_password('gmail', 'personal')
 nametrans = lambda folder: {'[Gmail]/Todos': 'archive',
                             }.get(folder, folder)
 folderfilter = lambda folder: folder == '[Gmail]/Todos'
+auth_mechanisms = LOGIN
 # Or, if you have a lot of mail and don't want to wait for a long time before
 # using sup, you can archive all your old mails on Gmail and only sync the
 # inbox with the following line replacing the previous `folderfilter` line:
@@ -65,4 +66,5 @@ remotepasseval = keyring.get_password('gmail', 'bu')
 nametrans = lambda folder: {'[Gmail]/All Mail': 'archive',
                             }.get(folder, folder)
 folderfilter = lambda folder: folder == '[Gmail]/All Mail'
+auth_mechanisms = LOGIN
 
