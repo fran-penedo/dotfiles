@@ -66,6 +66,7 @@ Plugin 'EasyGrep'
 Plugin 'Solarized'
 Plugin 'mattn/webapi-vim'
 Plugin 'mattn/gist-vim'
+Plugin 'easymotion/vim-easymotion'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -310,6 +311,9 @@ map Y y$
 " next search
 nnoremap l :nohl<CR><C-L>
 
+nnoremap i  <C-i>
+nnoremap o  <C-o>
+
 " Make 0 go to the first character rather than the beginning
 " of the line. When we're programming, we're almost always
 " interested in working with text rather than empty space. If
@@ -340,7 +344,7 @@ nnoremap <silent> <C-j> <C-w>j
 " way is Ctrl-w,v and Ctrl-w,s. I remap
 " this to vv and ss
 nnoremap <silent> vv <C-w>v
-nnoremap <silent> ss <C-w>s
+nnoremap <silent> vs <C-w>s
 nnoremap <silent> ,q <C-w>q
 " Close buffer and go to next without closing window
 nnoremap ,c :bp<bar>sp<bar>bn<bar>bd<CR>
@@ -513,3 +517,36 @@ let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 "let g:ycm_key_list_previous_completion=[]
+
+" EasyMotion
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+
+" Use uppercase target labels and type as a lower case
+" let g:EasyMotion_use_upper = 1
+
+" Turn on case insensitive feature
+let g:EasyMotion_smartcase = 1
+
+let g:EasyMotion_startofline = 0 " keep cursor column when JK motion"
+
+map <Leader> <Plug>(easymotion-prefix)
+
+" Jump to anywhere you want with minimal keystrokes, with just one key binding.
+" `s{char}{label}`
+" nmap s <Plug>(easymotion-overwin-f)
+" or
+" `s{char}{char}{label}`
+" Need one more keystroke, but on average, it may be more comfortable.
+nmap f <Plug>(easymotion-overwin-f2)
+
+" Bidirectional & within line 't' motion
+omap t <Plug>(easymotion-bd-tl)
+
+" Move to word
+map  <Leader>w <Plug>(easymotion-bd-wl)
+
+" JK motions: Line motions
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+" Move to line
+map <Leader>L <Plug>(easymotion-bd-jk)
