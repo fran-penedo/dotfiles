@@ -26,4 +26,7 @@ if message.from.email.end_with? '@alerts.santander.us'
     message.add_label :santander
 end
 
-
+if message.from.email.end_with? 'email@extracare.cvs.com'
+    message.add_label :cvs
+    message.remove_label :inbox
+end
