@@ -249,7 +249,7 @@ set expandtab
 "set shiftwidth=2
 "set tabstop=2
 
-noremap <silent> <Leader>w :call ToggleWrap()<CR>
+noremap <silent> <Leader>W :call ToggleWrap()<CR>
 function ToggleWrap()
   if &wrap
     echo "Wrap OFF"
@@ -505,12 +505,15 @@ let g:pymode_rope_completion = 0
 let g:pymode_lint_ignore = "E"
 
 " latex
+au BufEnter *.tex setl tw=80
 let g:tex_flavor='latex'
 let g:vimtex_view_method="general"
 let g:vimtex_view_general_viewer = 'qpdfview'
 let g:vimtex_view_general_options = '--unique @pdf\#src:@tex:@line:@col'
 let g:vimtex_view_general_options_latexmk = '--unique'
 let g:vimtex_imaps_snippet_engine="ultisnips"
+let g:vimtex_fold_enabled = 1
+let g:vimtex_latexmk_options = ' -verbose -pdf -file-line-error -synctex=1 -interaction=nonstopmode --shell-escape'
 
 " UltiSnips
 let g:UltiSnipsExpandTrigger="<c-j>"
