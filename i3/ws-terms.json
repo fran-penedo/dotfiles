@@ -1,0 +1,78 @@
+// vim:ts=4:sw=4:et
+{
+    "border": "pixel",
+    "current_border_width": 3,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 364,
+       "width": 564,
+       "x": 0,
+       "y": 0
+    },
+    "name": "fran@offpc: ~/dotfiles/i3",
+    "percent": 0.732817264836969,
+    "swallows": [
+       {
+       "class": "^URxvt$"
+       // "instance": "^urxvt$",
+       // "title": "^fran\\@offpc\\:\\ \\~\\/dotfiles\\/i3$",
+       // "transient_for": "^$"
+       }
+    ],
+    "type": "con"
+}
+
+{
+    // splitv split container with 2 children
+    "border": "pixel",
+    "floating": "auto_off",
+    "layout": "splitv",
+    "percent": 0.267182735163031,
+    "type": "con",
+    "nodes": [
+        {
+            "border": "pixel",
+            "current_border_width": 3,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 364,
+               "width": 564,
+               "x": 0,
+               "y": 0
+            },
+            "name": "i3-save-tree --workspace 5 > ws-terms.json",
+            "percent": 0.5,
+            "swallows": [
+               {
+               "class": "^URxvt$"
+               // "instance": "^urxvt$",
+               // "title": "^i3\\-save\\-tree\\ \\-\\-workspace\\ 5\\ \\>\\ ws\\-terms\\.json$",
+               // "transient_for": "^$"
+               }
+            ],
+            "type": "con"
+        },
+        {
+            "border": "pixel",
+            "current_border_width": 3,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 364,
+               "width": 564,
+               "x": 0,
+               "y": 0
+            },
+            "name": "fran@offpc: ~/dotfiles/i3",
+            "percent": 0.5,
+            "swallows": [
+               {
+               "class": "^URxvt$"
+               // "instance": "^urxvt$",
+               // "title": "^fran\\@offpc\\:\\ \\~\\/dotfiles\\/i3$",
+               // "transient_for": "^$"
+               }
+            ],
+            "type": "con"
+        }
+    ]
+}
