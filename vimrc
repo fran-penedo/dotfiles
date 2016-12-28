@@ -503,6 +503,7 @@ nnoremap <F3> :Autoformat<CR><CR>
 " python-mode
 let g:pymode_rope_completion = 0
 let g:pymode_lint_ignore = "E"
+let g:pymode_motion = 0
 
 " latex
 au BufEnter *.tex setl tw=80
