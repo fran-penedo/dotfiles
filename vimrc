@@ -46,7 +46,8 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'bling/vim-airline'
 Plugin 'tpope/vim-fugitive'
 Plugin 'submode'
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'd11wtq/ctrlp_bdelete.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'haya14busa/incsearch.vim'
 Plugin 'jcfaria/Vim-R-plugin'
@@ -67,6 +68,8 @@ Plugin 'Solarized'
 Plugin 'mattn/webapi-vim'
 Plugin 'mattn/gist-vim'
 Plugin 'easymotion/vim-easymotion'
+Plugin 'scrooloose/nerdtree'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -451,12 +454,12 @@ highlight GitGutterDelete ctermfg=red
 highlight GitGutterChangeDelete ctermfg=yellow 
 
 " nerdtree config
-" noremap <C-n> :NERDTreeToggle<CR>
+noremap <C-n> :NERDTreeToggle<CR>
 
 " Make nerdtree look nice
-" let NERDTreeMinimalUI = 1
-" let NERDTreeDirArrows = 1
-" let g:NERDTreeWinSize = 30
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
+let g:NERDTreeWinSize = 30
 
 " ctrlp
 if exists("g:ctrlp_user_command")
@@ -477,6 +480,8 @@ else
 endif
 
 let g:ctrlp_cmd = 'CtrlPMixed'
+
+call ctrlp_bdelete#init()
 
 " incsearch
 map /  <Plug>(incsearch-forward)
