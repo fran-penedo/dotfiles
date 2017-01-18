@@ -99,7 +99,8 @@ urxvt*color14:                 S_base1
 urxvt*color15:                 S_base3
 
 urxvt*transparent: true
-urxvt*shading: 30
+urxvt*shading: 20
+! URxvt*tintColor: S_red
 
 ! Compile xft: Attempt to find a visual with the given bit depth; option
 ! URxvt*depth: bitdepth

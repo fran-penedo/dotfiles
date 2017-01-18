@@ -23,6 +23,32 @@ set $w8 "8: im"
 set $w9 "9: media"
 set $w10 "10: bg"
 
+set $baseO3    #002b36
+set $baseO2    #073642
+set $baseO1    #586e75
+set $baseO0    #657b83
+set $base0     #839496
+set $base1     #93a1a1
+set $base2     #eee8d5
+set $base3     #fdf6e3
+set $yellow    #b58900
+set $orange    #cb4b16
+set $red       #dc322f
+set $magenta   #d33682
+set $violet    #6c71c4
+set $blue      #268bd2
+set $cyan      #2aa198
+set $green     #859900
+
+# class                 border  backgr. text    indicator child_border
+# client.focused          #4c7899 $green #ffffff #2e9ef4   $green
+# client.focused_inactive #333333 #5f676a #ffffff #484e50   $baseO2
+# client.unfocused        #333333 $baseO3 #888888 #292d2e   $baseO3
+# client.urgent           #2f343a #900000 #ffffff #900000   $red
+# client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+#
+# client.background       #ffffff
+
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
@@ -222,6 +248,17 @@ bar {
         position        top
         status_command  python ~/.i3/i3status.py
 
+        # colors {
+        #     background $baseO3
+        #     statusline #ffffff
+        #     separator $baseO2
+        #
+        #     focused_workspace  $baseO2 $green $base3
+        #     active_workspace   $baseO2 $yellow $base1
+        #     inactive_workspace $baseO2 $baseO3 $base1
+        #     urgent_workspace   $baseO2 $baseO3 $red
+        #     binding_mode       $baseO2 $green $base3
+        # }
 }
 
 bar {
@@ -229,6 +266,18 @@ bar {
         tray_output     none
         position        top
         status_command python ~/.i3/i3status2.py
+
+        # colors {
+        #     background #000000
+        #     statusline #ffffff
+        #     separator #666666
+        #
+        #     focused_workspace  $baseO3 $green $base3
+        #     active_workspace   $yellow $yellow $base1
+        #     inactive_workspace $baseO3 $baseO3 $base1
+        #     urgent_workspace   $baseO3 $baseO3 $red
+        #     binding_mode       #2f343a #900000 #ffffff
+        # }
 }
 
 # Workspace management
