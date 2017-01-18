@@ -45,7 +45,7 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git archlinux common-aliases last-working-dir virtualenv)
+plugins=(git archlinux common-aliases last-working-dir virtualenv zbell)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -97,7 +97,7 @@ alias em="emacs -nw"
 alias vim="vim --servername VIM"
 alias vimrc="vim ~/.vimrc"
 alias vi="vim"
-alias op="xdg-open"
+alias op="nohup xdg-open"
 
 # OPAM configuration
 . /home/fran/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
