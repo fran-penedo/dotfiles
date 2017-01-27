@@ -333,6 +333,8 @@ nnoremap ^ 0
 "with ,z and ,x
 nnoremap <silent> z :bp<CR>
 nnoremap <silent> x :bn<CR>
+" Make quickfix buffers unlisted so previous commands ignore them
+autocmd Filetype qf setlocal nobuflisted
 
 " ==============================
 " Window/Tab/Split Manipulation
