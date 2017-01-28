@@ -32,6 +32,10 @@ catfishconfig="catfish.rc"
 xmonaddotdir=~/.xmonad
 xmonaddir=.
 xmonadconfig="xmonad.hs"
+rangerdir=config/ranger
+rangerdotdir=~/.config/ranger
+rangerconfig="rc.conf commands.py"
+
 
 ##########
 
@@ -76,6 +80,9 @@ move "$mopidydotdir" "$mopidyconfig" "$mopidydir"
 
 # move catfish if needed
 move "$catfishdotdir" "$catfishconfig" "$catfishdir"
+
+# move ranger if needed
+move "$rangerdotdir" "$rangerconfig" "$rangerdir"
 
 # move ncmpcpp if needed
 move "$ncmpcppdotdir" "$ncmpcppconfig" "$ncmpcppdir"
