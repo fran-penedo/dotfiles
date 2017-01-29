@@ -14,7 +14,7 @@ status.register("clock",
                 format="%a %-d %b %H:%M:%S ",)
 
 status.register("battery",
-                battery_ident="BAT1",
+                battery_ident="ALL",
                 format="{status} {percentage:0.0f}% {remaining}",)
 
 status.register("disk", path="/", round_size=1,
