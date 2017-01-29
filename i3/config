@@ -111,8 +111,10 @@ bindsym $win+z exec cmus-remote -r; exec playerctl -p spotify previous; exec mpc
 bindsym $win+x exec cmus-remote -v -5%; exec xdotool search --class "spotify" key --window %@ ctrl+Down; exec mpc volume | grep -Po '[0-9]+' | awk '{print $1 - 2}' | xargs mpc volume
 bindsym $win+v exec cmus-remote -v +5%; exec xdotool search --class "spotify" key --window %@ ctrl+Up; exec mpc volume | grep -Po '[0-9]+' | awk '{print $1 + 2}' | xargs mpc volume
 
-bindsym XFMonBrightnessUp exec xbacklight -inc 10
-bindsym XFMonBrightnessDown exec xbacklight -dec 10
+bindsym XFMonBrightnessUp exec xbacklight -inc 5
+bindsym XFMonBrightnessDown exec xbacklight -dec 5
+bindsym XF86MonBrightnessUp exec xbacklight -inc 5
+bindsym XF86MonBrightnessDown exec xbacklight -dec 5
 
 bindsym Pause exec systemctl suspend
 
@@ -310,6 +312,7 @@ exec --no-startup-id pasystray
 exec --no-startup-id nm-applet
 exec --no-startup-id compton -CGb
 exec --no-startup-id xset -dpms
+exec --no-startup-id laptop-mode force
 exec --no-startup-id dropbox
 exec --no-startup-id skype
 exec --no-startup-id offlineimap -1 -u quiet
