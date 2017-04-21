@@ -301,6 +301,7 @@ assign [class="Skype"] $w8
 for_window [class="Skype"] move to workspace $w8
 #for_window [class="Steam"] move to workspace $w3
 for_window [class="Steam"] floating enable
+for_window [class="gimp"] floating enable
 for_window [class="(?i)pavucontrol"] floating enable
 for_window [class="Catfish"] floating enable
 for_window [title="^Sup "] move scratchpad
@@ -318,3 +319,4 @@ exec --no-startup-id skype
 exec --no-startup-id offlineimap -1 -u quiet
 exec --no-startup-id urxvt -e sup
 exec --no-startup-id clipit
+exec --no-startup-id devmon
