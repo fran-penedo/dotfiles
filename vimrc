@@ -482,6 +482,7 @@ else
 endif
 
 let g:ctrlp_cmd = 'CtrlPMixed'
+let g:ctrlp_match_window = 'results:20'
 
 call ctrlp_bdelete#init()
 
