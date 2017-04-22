@@ -69,7 +69,7 @@ Plugin 'mattn/webapi-vim'
 Plugin 'mattn/gist-vim'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'scrooloose/nerdtree'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'albfan/nerdtree-git-plugin'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'benmills/vimux'
 Plugin 'pitluga/vimux-nose-test'
@@ -448,7 +448,8 @@ nnoremap ,gd :Gdiff<CR>
 "nnoremap ,gr :Gread<CR>
 "nnoremap ,gw :Gwrite<CR><CR>
 nnoremap ,gl :silent! Glog<CR>:bot copen<CR>
-nnoremap ,gp :Ggrep<Space>
+command -nargs=+ Ggr execute 'silent Ggrep!' <q-args> | cw | redraw!
+nnoremap ,gp :Ggr<Space>
 nnoremap ,gm :Gmove<Space>
 nnoremap ,gb :Git branch<Space>
 nnoremap ,go :Git checkout<Space>
@@ -519,6 +520,7 @@ nnoremap <F3> :Autoformat<CR><CR>
 let g:pymode_rope_completion = 0
 let g:pymode_lint_ignore = "E"
 let g:pymode_motion = 0
+let g:pymode_rope_goto_definition_cmd = 'e'
 
 " latex
 au BufEnter *.tex setl tw=80
