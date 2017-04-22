@@ -73,6 +73,7 @@ Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'benmills/vimux'
 Plugin 'pitluga/vimux-nose-test'
+Plugin 'majutsushi/tagbar'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -237,6 +238,8 @@ set background=dark
 set t_Co=16
 let g:solarized_termcolors=16
 colorscheme solarized
+
+set tags=./tags;$HOME
 
 "------------------------------------------------------------
 " Indentation options {{{1
@@ -570,3 +573,12 @@ map <Leader>L <Plug>(easymotion-bd-jk)
 " Vimux
 map <Leader>vp :VimuxPromptCommand<CR>
 map <Leader>vl :VimuxRunLastCommand<CR>
+
+" Tagbar
+nmap <C-m> :TagbarToggle<CR>
+let g:tagbar_left = 1
+let g:tagbar_autoclose = 1
+let g:tagbar_autofocus = 1
+let g:tagbar_sort = 0
+let g:tagbar_compact = 1
+
