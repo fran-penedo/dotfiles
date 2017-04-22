@@ -45,7 +45,7 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git archlinux common-aliases last-working-dir virtualenv zbell)
+plugins=(git archlinux common-aliases last-working-dir virtualenv zbell vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -104,3 +104,24 @@ alias op="xdg-open"
 
 # z
 . /usr/lib/z.sh
+
+# tmuxp
+export DISABLE_AUTO_TITLE="true"
+
+# vi-mode
+# bindkey -v
+# export KEYTIMEOUT=1
+#
+# bindkey '^P' up-history
+# bindkey '^N' down-history
+#
+# # backspace and ^h working even after
+# # returning from command mode
+# bindkey '^?' backward-delete-char
+# bindkey '^h' backward-delete-char
+#
+# # ctrl-w removed word backwards
+# bindkey '^w' backward-kill-word
+#
+# # ctrl-r starts searching history backward
+# bindkey '^r' history-incremental-search-backward

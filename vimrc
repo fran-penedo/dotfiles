@@ -70,6 +70,9 @@ Plugin 'mattn/gist-vim'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'benmills/vimux'
+Plugin 'pitluga/vimux-nose-test'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -504,6 +507,7 @@ let g:ycm_key_list_select_completion = ['<Down>']
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_global_ycm_extra_conf = '~/dotfiles/vim/ycm_extra_conf.py'
 let g:ycm_auto_trigger = 0
+let g:ycm_python_binary_path = 'python'
 
 " Autoformat
 nnoremap <F3> :Autoformat<CR><CR>
@@ -562,3 +566,7 @@ map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
 " Move to line
 map <Leader>L <Plug>(easymotion-bd-jk)
+
+" Vimux
+map <Leader>vp :VimuxPromptCommand<CR>
+map <Leader>vl :VimuxRunLastCommand<CR>
