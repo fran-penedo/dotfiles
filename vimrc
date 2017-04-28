@@ -576,6 +576,11 @@ map <Leader>L <Plug>(easymotion-bd-jk)
 map <Leader>vp :VimuxPromptCommand<CR>
 map <Leader>vl :VimuxRunLastCommand<CR>
 
+" Vimux nose
+map <Leader>vn :RunNoseTest<CR>
+map <Leader>vb :RunNoseTestBuffer<CR>
+map <Leader>vt :RunNoseTestFocused<CR>
+
 " Tagbar
 nmap <C-m> :TagbarToggle<CR>
 let g:tagbar_left = 1
