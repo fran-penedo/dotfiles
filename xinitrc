@@ -47,6 +47,8 @@ fcitx
 export PYMACS_PYTHON=python2
 export MC_XDG_OPEN=$HOME/dotfiles/.scripts/xdg-open-spawn
 
+stty -ixon
+
 exec $1
 # exec gnome-session
 # exec startkde
