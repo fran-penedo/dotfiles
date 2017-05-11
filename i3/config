@@ -318,3 +318,4 @@ exec --no-startup-id skype
 exec --no-startup-id offlineimap -1 -u quiet
 exec --no-startup-id urxvt -e sup
 exec --no-startup-id clipit
+exec --no-startup-id redshift-gtk
