@@ -8,7 +8,7 @@ socktimeout = 90
 [Account personal]
 localrepository = personal-local
 remoterepository = personal-remote
-status_backend = sqlite
+# status_backend = sqlite
 autorefresh = 5
 quick = 10
 
@@ -45,7 +45,7 @@ auth_mechanisms = LOGIN
 [Account bu]
 localrepository = bu-local
 remoterepository = bu-remote
-status_backend = sqlite
+# status_backend = sqlite
 autorefresh = 5
 quick = 10
 
