@@ -490,6 +490,7 @@ endif
 
 let g:ctrlp_cmd = 'CtrlPMixed'
 let g:ctrlp_match_window = 'results:20'
+noremap <C-o> :CtrlPTag<CR>
 
 call ctrlp_bdelete#init()
 
