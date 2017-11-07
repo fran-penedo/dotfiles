@@ -310,9 +310,9 @@ for_window [title="^Sup "] move scratchpad
 assign [class="sun-applet-AppletViewer"] $w7
 
 # Start up
-exec --no-startup-id pasystray
+exec --no-startup-id pasystray -a
 exec --no-startup-id nm-applet
-exec --no-startup-id compton -CGb
+exec --no-startup-id compton --config ~/.config/compton.conf -CGb
 exec --no-startup-id xset -dpms
 exec --no-startup-id laptop-mode force
 exec --no-startup-id dropbox
