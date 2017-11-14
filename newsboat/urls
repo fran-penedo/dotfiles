@@ -1,0 +1,18 @@
+https://www.reddit.com/.rss?feed=9683e87e4e4debefb35d245bd06dfc1c4cfd1ca6&user=mrkurotsuki "~Reddit" reddit
+https://www.reddit.com/r/anime.rss "~r/anime" reddit
+https://www.reddit.com/r/anime/new.rss "~r/anime/new" reddit
+https://www.reddit.com/r/DotA2.rss "~r/dota2" reddit
+https://news.ycombinator.com/rss "~Hacker News"
+http://estaticos.elmundo.es/elmundo/rss/portada.xml "~El Mundo" news
+http://www.jotdown.es/feed/ "~JotDown"
+http://www.xlsemanal.com/firmas/arturoperezreverte/feed "~Patente de corso" blogs
+http://www.aaronsw.com/2002/feeds/pgessays.rss blogs
+https://www.youtube.com/feeds/videos.xml?channel_id=UCCDOQrpqLqKVcTCKzqarxLg "~ChessNetwork" youtube
+https://www.youtube.com/feeds/videos.xml?channel_id=UC7dF9qfBMXrSlaaFFDvV_Yg "~Gigguk" youtube anime
+https://www.youtube.com/feeds/videos.xml?channel_id=UCjFqcJQXGZ6T6sxyFB-5i6A "~Every Frame a Painting" youtube
+https://xkcd.com/rss.xml "~xkcd" webcomics
+http://www.mspaintadventures.com/rss/rss.xml webcomics
+https://www.qwertee.com/rss "~Qwertee"
+"query:New anime:tags # \"anime\" and ((tags # \"crunchyroll\" and title =~ \"catalog\") or (tags # \"netflix\" and title =~ \"anime\"))"
+http://feeds.feedburner.com/crunchyroll/rss/news?format=xml "~Crunchyroll Site News" anime crunchyroll
+https://media.netflix.com/en/prs.rss "~Netflix press" anime netflix
