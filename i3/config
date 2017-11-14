@@ -96,10 +96,11 @@ bindsym $mod+Control+m [title="^Sup "] scratchpad show
 bindsym $mod+Control+z exec zotero
 bindsym $mod+Control+p exec offlineimap -1 -o -u quiet
 bindsym $mod+Control+n exec urxvt -e ncmpcpp
+bindsym $mod+Control+t exec urxvt -e trackma-curses
 
 bindsym $mod+w exec xclip -selection primary -o | xclip -selection clipboard -i
 
-bindsym $mod+Control+t append_layout ~/dotfiles/i3/ws-terms.json
+# bindsym $mod+Control+t append_layout ~/dotfiles/i3/ws-terms.json
 
 bindsym XF86AudioLowerVolume exec amixer -q set Master 2%-
 bindsym XF86AudioRaiseVolume exec amixer -q set Master 2%+
