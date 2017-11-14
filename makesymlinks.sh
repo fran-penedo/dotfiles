@@ -35,6 +35,9 @@ xmonadconfig="xmonad.hs"
 rangerdir=config/ranger
 rangerdotdir=~/.config/ranger
 rangerconfig="rc.conf commands.py"
+newsboatdir=newsboat/
+newsboatdotdir=~/.newsboat/
+newsboatconfig="config urls"
 
 
 ##########
@@ -86,3 +89,6 @@ move "$rangerdotdir" "$rangerconfig" "$rangerdir"
 
 # move ncmpcpp if needed
 move "$ncmpcppdotdir" "$ncmpcppconfig" "$ncmpcppdir"
+
+# move ncmpcpp if needed
+move "$newsboatdotdir" "$newsboatconfig" "$newsboatdir"
