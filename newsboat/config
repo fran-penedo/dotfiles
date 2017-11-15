@@ -5,6 +5,7 @@
 
 # Settings.
 article-sort-order date-asc
+feed-sort-order firsttag
 download-path ~/Download
 refresh-on-startup yes
 reload-threads 10
@@ -13,6 +14,12 @@ text-width 100
 auto-reload yes
 reload-time 15
 # html-renderer "w3m"
+
+# Nextcloud
+urls-source "ocnews"
+ocnews-url "cloud.franpenedo.com"
+ocnews-login "fran"
+ocnews-passwordeval "python2 -c \"import keyring; print keyring.get_password('cloud.franpenedo.com', 'fran')\""
 
 # External programs.
 browser chrome
