@@ -77,6 +77,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 
 # kill focused window
 bindsym $mod+F4 kill
+bindsym $mod+Control+q kill
 
 # start dmenu (a program launcher)
 bindsym $mod+F2 exec gmrun
@@ -96,10 +97,12 @@ bindsym $mod+Control+m [title="^Sup "] scratchpad show
 bindsym $mod+Control+z exec zotero
 bindsym $mod+Control+p exec offlineimap -1 -o -u quiet
 bindsym $mod+Control+n exec urxvt -e ncmpcpp
+bindsym $mod+Control+t exec urxvt -e trackma-curses
+bindsym $mod+Control+r exec urxvt -e tmux new-session -A -s newsboat newsboat
 
 bindsym $mod+w exec xclip -selection primary -o | xclip -selection clipboard -i
 
-bindsym $mod+Control+t append_layout ~/dotfiles/i3/ws-terms.json
+# bindsym $mod+Control+t append_layout ~/dotfiles/i3/ws-terms.json
 
 bindsym XF86AudioLowerVolume exec amixer -q set Master 2%-
 bindsym XF86AudioRaiseVolume exec amixer -q set Master 2%+
@@ -310,7 +313,7 @@ for_window [title="^Sup "] move scratchpad
 assign [class="sun-applet-AppletViewer"] $w7
 
 # Start up
-exec --no-startup-id pasystray
+exec --no-startup-id pasystray -a
 exec --no-startup-id nm-applet
 exec --no-startup-id compton -CGb
 exec --no-startup-id xset -dpms
@@ -319,6 +322,7 @@ exec --no-startup-id dropbox
 exec --no-startup-id skype
 exec --no-startup-id offlineimap -1 -u quiet
 exec --no-startup-id urxvt -e sup
+exec --no-startup-id urxvt -e tmux new -s newsboat newsboat
 exec --no-startup-id clipit
 exec --no-startup-id redshift-gtk
 exec --no-startup-id devmon

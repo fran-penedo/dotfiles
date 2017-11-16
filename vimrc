@@ -75,6 +75,7 @@ Plugin 'benmills/vimux'
 Plugin 'pitluga/vimux-nose-test'
 Plugin 'majutsushi/tagbar'
 Plugin 'godlygeek/tabular'
+Plugin 'rhysd/devdocs.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -523,7 +524,7 @@ let g:pymode_rope_completion = 0
 " let g:pymode_rope = 0
 let g:pymode_lint_ignore = "E"
 let g:pymode_motion = 0
-let g:pymode_rope_goto_definition_cmd = 'e'
+let g:pymode_rope_goto_definition_cmd = 'new'
 
 " latex
 au BufEnter *.tex setl tw=80
@@ -540,6 +541,8 @@ let g:vimtex_latexmk_options = ' -verbose -pdf -file-line-error -synctex=1 -inte
 let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+let g:ultisnips_python_style = "numpy"
+let g:UltiSnipsUsePythonVersion = 2
 "let g:ycm_key_list_previous_completion=[]
 
 " EasyMotion
@@ -592,3 +595,5 @@ let g:tagbar_autofocus = 1
 let g:tagbar_sort = 0
 let g:tagbar_compact = 1
 
+" DevDocs
+map <Leader>d :DevDocs<Space>

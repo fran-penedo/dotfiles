@@ -10,7 +10,7 @@ dir=~/dotfiles                    # dotfiles directory
 olddir=~/.dotfiles_old             # old dotfiles backup directory
 homedotdir=~
 homedir=.
-homeconfig="bashrc Xresources emacs emacs-custom.el gitconfig gmrunrc rtorrent.rc xinitrc xmobarrc gitignore gntrc vimrc Rprofile yaourtrc zshrc msmtprc offlineimap.py offlineimaprc"
+homeconfig="bashrc Xresources emacs emacs-custom.el gitconfig gmrunrc rtorrent.rc xinitrc xmobarrc gitignore gntrc vimrc Rprofile yaourtrc zshrc msmtprc offlineimap.py offlineimaprc tmux.conf tmux.conf.local ctags"
 i3dotdir=~/.i3
 i3dir=i3
 i3config="config i3status.py i3status2.py"
@@ -35,6 +35,9 @@ xmonadconfig="xmonad.hs"
 rangerdir=config/ranger
 rangerdotdir=~/.config/ranger
 rangerconfig="rc.conf commands.py"
+newsboatdir=newsboat/
+newsboatdotdir=~/.newsboat/
+newsboatconfig="config urls"
 
 
 ##########
@@ -86,3 +89,6 @@ move "$rangerdotdir" "$rangerconfig" "$rangerdir"
 
 # move ncmpcpp if needed
 move "$ncmpcppdotdir" "$ncmpcppconfig" "$ncmpcppdir"
+
+# move ncmpcpp if needed
+move "$newsboatdotdir" "$newsboatconfig" "$newsboatdir"

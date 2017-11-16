@@ -1,0 +1,50 @@
+#------------------------------------------------------------------------------
+# File:   $HOME/.newsboat/config
+# Author: Petr Zemek <s3rvac@gmail.com>
+#------------------------------------------------------------------------------
+
+# Settings.
+article-sort-order date-asc
+feed-sort-order firsttag
+download-path ~/Download
+refresh-on-startup yes
+reload-threads 10
+show-keymap-hint no
+text-width 100
+auto-reload yes
+reload-time 15
+# html-renderer "w3m"
+
+# Nextcloud
+urls-source "ocnews"
+ocnews-url "cloud.franpenedo.com"
+ocnews-login "fran"
+ocnews-passwordeval "python2 -c \"import keyring; print keyring.get_password('cloud.franpenedo.com', 'fran')\""
+
+# External programs.
+browser chrome
+player mpv
+
+# Vim-like keybindings.
+bind-key k up
+bind-key j down
+bind-key ^B pageup
+bind-key ^F pagedown
+bind-key d delete-article
+bind-key m toggle-article-read
+
+# Colors.
+color listnormal        white default
+color listnormal_unread white default bold
+color listfocus         white black
+color listfocus_unread  white black bold
+color info              color39 default
+color article           white default
+
+# Formats
+articlelist-format "%4i %f %D %6L %?T?;%-17T; ?%t %>.%a"
+
+# Killfile
+# ignore-mode "display"
+# ignore-article "https://media.netflix.com/en/prs.rss" "title !~ \"anime\""
+# ignore-article http://feeds.feedburner.com/crunchyroll/rss/news?format=xml "title !~ \"catalog\""

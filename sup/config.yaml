@@ -39,4 +39,11 @@
     :sendmail: "msmtp -a bu -t --read-envelope-from"
     :signature: "/home/fran/.signature"
     :gpgkey: ''
+  :domain:
+    :name: Francisco Penedo
+    :email: fran@franpenedo.com
+    :alternates:
+    :sendmail: "msmtp -a domain -t --read-envelope-from"
+    :signature: "/home/fran/.signature"
+    :gpgkey: ''
 :time_mode: 24h
