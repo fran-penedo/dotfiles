@@ -244,3 +244,5 @@ set -g status off
 
 # move status line to top
 #set -g status-position top
+
+run-shell ~/.tmux/tmux-yank/yank.tmux
