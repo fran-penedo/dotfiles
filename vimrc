@@ -74,6 +74,7 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'benmills/vimux'
 Plugin 'pitluga/vimux-nose-test'
 Plugin 'majutsushi/tagbar'
+Plugin 'godlygeek/tabular'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -519,6 +520,7 @@ nnoremap <F3> :Autoformat<CR><CR>
 
 " python-mode
 let g:pymode_rope_completion = 0
+" let g:pymode_rope = 0
 let g:pymode_lint_ignore = "E"
 let g:pymode_motion = 0
 let g:pymode_rope_goto_definition_cmd = 'e'
