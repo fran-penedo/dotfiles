@@ -20,9 +20,10 @@ urls-source "ocnews"
 ocnews-url "cloud.franpenedo.com"
 ocnews-login "fran"
 ocnews-passwordeval "python2 -c \"import keyring; print keyring.get_password('cloud.franpenedo.com', 'fran')\""
+ocnews-flag-star "s"
 
 # External programs.
-browser chrome
+browser firefox
 player mpv
 
 # Vim-like keybindings.
@@ -32,6 +33,7 @@ bind-key ^B pageup
 bind-key ^F pagedown
 bind-key d delete-article
 bind-key m toggle-article-read
+bind-key o open-in-browser-and-mark-read
 
 # Colors.
 color listnormal        white default
