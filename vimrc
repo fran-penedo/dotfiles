@@ -75,6 +75,7 @@ Plugin 'benmills/vimux'
 Plugin 'pitluga/vimux-nose-test'
 Plugin 'majutsushi/tagbar'
 Plugin 'rhysd/devdocs.vim'
+Plugin 'adborden/vim-notmuch-address'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required

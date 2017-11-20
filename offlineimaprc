@@ -11,6 +11,8 @@ remoterepository = personal-remote
 # status_backend = sqlite
 autorefresh = 5
 quick = 10
+presynchook = /home/fran/dotfiles/scripts/maildir-notmuch-sync pre /home/fran/mail/personal
+postsynchook = /home/fran/dotfiles/scripts/maildir-notmuch-sync post /home/fran/mail/personal
 
 [Repository personal-local]
 type = Maildir
@@ -21,7 +23,18 @@ localfolders = ~/mail/personal
 # If your GMail language setting is not English, you can execute 
 # `offlineimap --info` to find out the name of folder which is 
 # translated and encoded after your account is configured.
-nametrans = lambda folder: {'archive': '[Gmail]/Todos',
+# nametrans = lambda folder: {'archive': '[Gmail]/Todos',
+#                             }.get(folder, folder)
+
+nametrans = lambda folder: {
+    'archive': '[Gmail]/Todos',
+    'drafts': '[Gmail]/Borradores',
+    'sent': '[Gmail]/Enviados',
+    'important': '[Gmail]/Importantes',
+    'flagged': '[Gmail]/Destacados',
+    'spam': '[Gmail]/Spam',
+    'trash': '[Gmail]/Papelera',
+    'inbox': 'INBOX'
                             }.get(folder, folder)
 
 [Repository personal-remote]
@@ -34,7 +47,18 @@ remoteuser = franpenedo@gmail.com
 remotepasseval = keyring.get_password('gmail', 'personal')
 nametrans = lambda folder: {'[Gmail]/Todos': 'archive',
                             }.get(folder, folder)
-folderfilter = lambda folder: folder == '[Gmail]/Todos'
+nametrans = lambda folder: {
+    '[Gmail]/Todos':     'archive',
+    '[Gmail]/Borradores':     'drafts',
+    '[Gmail]/Enviados':     'sent',
+    '[Gmail]/Importantes':     'important',
+    '[Gmail]/Destacados':     'flagged',
+    '[Gmail]/Spam':     'spam',
+    '[Gmail]/Papelera':     'trash',
+    'INBOX': 'inbox'
+                            }.get(folder, folder)
+
+folderfilter = lambda folder: folder not in ['[Gmail]/Importantes']
 auth_mechanisms = LOGIN
 # Or, if you have a lot of mail and don't want to wait for a long time before
 # using sup, you can archive all your old mails on Gmail and only sync the

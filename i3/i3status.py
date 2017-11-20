@@ -3,7 +3,7 @@
 import subprocess
 
 from i3pystatus import Status
-from i3pystatus.mail import maildir
+from i3pystatus.mail import notmuchmail
 
 status = Status(standalone=True)
 
@@ -31,8 +31,7 @@ status.register("mem",
                 format="MEM:{used_mem}M",)
 
 status.register("mail", hide_if_null=False,
-                backends=[maildir.MaildirMail(directory="/home/fran/mail/personal/archive", account="personal"),
-                          maildir.MaildirMail(directory="/home/fran/mail/bu/archive", account="bu")])
+                backends=[notmuchmail.Notmuch(query='tag:unread and -tag:spam')])
 
 status.register("network",
                 format_up="{interface} u:{bytes_sent}KB/s d:{bytes_recv}KB/s",
