@@ -44,7 +44,7 @@
         "charset": "utf-8",
         "save_draft_on_force_quit": "true",
         "attachment_words": "attach",
-        "attachment_directory": "~"
+        "attachment_directory": "/home/fran/Downloads"
     },
     "mail": {
         "reply": {
@@ -53,7 +53,7 @@
         },
         "forward": {
             "quote_line": "Forwarding %1's message of %2:",
-            "disposition": "inline"
+            "disposition": "attachment"
         },
         "sent_tags": "sent",
         "message_id_fqdn": "",
@@ -62,7 +62,7 @@
         "send_delay": "2"
     },
     "poll": {
-        "interval": "60"
+        "interval": "300"
     },
     "attachment": {
         "external_open_cmd": "xdg-open"
@@ -100,8 +100,8 @@
         "fran": {
             "name": "Francisco Penedo",
             "email": "fran@franpenedo.com",
-            "gpgkey": "",
-            "always_gpg_sign": "false",
+            "gpgkey": "fran@franpenedo.com",
+            "always_gpg_sign": "true",
             "sendmail": "msmtp -a domain -i -t",
             "default": "true",
             "save_sent": "false",
@@ -152,7 +152,8 @@
     "startup": {
         "queries": {
             "unread": "tag:unread",
-            "flagged": "tag:flagged"
+            "flagged": "tag:flagged",
+            "all": "tag:archive"
         }
     }
 }

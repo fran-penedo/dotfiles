@@ -9,7 +9,7 @@ socktimeout = 90
 localrepository = personal-local
 remoterepository = personal-remote
 # status_backend = sqlite
-autorefresh = 5
+# autorefresh = 5
 quick = 10
 presynchook = /home/fran/dotfiles/scripts/maildir-notmuch-sync pre /home/fran/mail/personal
 postsynchook = /home/fran/dotfiles/scripts/maildir-notmuch-sync post /home/fran/mail/personal
@@ -70,7 +70,7 @@ auth_mechanisms = LOGIN
 localrepository = bu-local
 remoterepository = bu-remote
 # status_backend = sqlite
-autorefresh = 5
+# autorefresh = 5
 quick = 10
 
 [Repository bu-local]

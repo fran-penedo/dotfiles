@@ -1,0 +1,30 @@
+/* ui-version: 4 (do not change when modifying theme for yourself) */
+/* Variables */
+  $background-color: #808080 !global;
+
+/* Background colors associated with received emails: */
+  $recv-normal: #ffffff !global;
+  $recv-quoted: #e8e8e8 !global;
+  $recv-collapsed: #f5f5f5 !global;
+
+/* Background colors associated with sent emails: */
+  $sent-normal: #ffffff !global;
+  $sent-quoted: #e8e8e8 !global;
+  $sent-collapsed: #f5f5f5 !global;
+
+/* Fonts */
+  $font-base-size: 16px !global;
+  $font-mono: monospace !global;
+  $font-sans: sans-serif !global;
+  $font-family-default: $font-sans !global;
+
+/* Colours */
+  $email-solid: #d8d8d8 !global;
+  $focused-solid: #4a90d9 !global;
+  $attachment-color:  rgba(0,0,0,0.18) !global;
+  $sibling-color: lighten( $focused-solid, 20%) !global;
+  $mime-color: lighten( #FFFF00, 15%) !global;
+  $encrypted: #99cc66 !global;
+  $signed: #cccc66 !global;
+
+@import '/usr/share/astroid/ui/thread-view.scss'
