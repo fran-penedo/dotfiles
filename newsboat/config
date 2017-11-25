@@ -34,6 +34,7 @@ bind-key ^F pagedown
 bind-key d delete-article
 bind-key m toggle-article-read
 bind-key o open-in-browser-and-mark-read
+bind-key x quit
 
 # Colors.
 color listnormal        white default
