@@ -1,0 +1,9 @@
+# thread view
+thread_view.forward_inline=f
+thread_view.forward_attached=M-f
+
+# thread index
+thread_index.forward_inline=f
+thread_index.forward_attached=M-f
+
+main_window.close_page=x # Close mode (or window if other windows are open), default: C-w
