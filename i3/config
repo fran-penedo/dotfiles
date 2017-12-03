@@ -323,7 +323,7 @@ exec --no-startup-id xset -dpms
 exec --no-startup-id laptop-mode force
 exec --no-startup-id dropbox
 exec --no-startup-id skype
-exec --no-startup-id offlineimap -1 -u quiet
+# exec --no-startup-id offlineimap -1 -u quiet
 # exec --no-startup-id urxvt -e sup
 exec --no-startup-id astroid
 exec --no-startup-id urxvt -e tmux new -s newsboat newsboat
