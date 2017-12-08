@@ -12,7 +12,7 @@ reload-threads 10
 show-keymap-hint no
 text-width 100
 auto-reload yes
-reload-time 15
+reload-time 60
 # html-renderer "w3m"
 
 # Nextcloud
