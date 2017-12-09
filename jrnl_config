@@ -1,0 +1,20 @@
+{
+  "journals": {
+    "default": {
+      "journal": "/home/fran/net/work_journal.txt",
+      "encrypt": true
+    },
+    "personal": {
+      "journal": "/home/fran/net/personal_journal.txt",
+      "encrypt": true
+    }
+  },
+  "editor": "vim",
+  "encrypt": true,
+  "default_hour": 9,
+  "default_minute": 0,
+  "timeformat": "%Y-%m-%d %H:%M",
+  "tagsymbols": "@",
+  "highlight": true,
+  "linewrap": 79
+}
