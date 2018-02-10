@@ -204,7 +204,7 @@ playlist_disable_highlight_delay = 1
 #song_list_format = {%a - }{%t}|{$8%f$9}$R{$3(%l)$9}
 #
 #song_status_format = {{%a{ "%b"{ (%y)}} - }{%t}}|{%f}
-song_status_format = "$0{$8%t$9} on {$5%b$9} by {$3%a}"
+song_status_format = "$0{$8%t$9} by {$3%c}|{$3%a}$9 on {$5%b$9}"
 #
 #song_library_format = {%n - }{%t}|{%f}
 #
@@ -280,7 +280,7 @@ now_playing_prefix = $b
 ##
 #
 #song_columns_list_format = (20)[]{a} (6f)[green]{NE} (50)[white]{t|f:Title} (20)[cyan]{b} (7f)[magenta]{l}
-song_columns_list_format = (20)[green]{a} (6f)[green]{NE} (50)[white]{t|f:Title} (20)[blue]{b} (7f)[green]{l}
+song_columns_list_format = (20)[green]{c|a} (6f)[green]{NE} (40)[white]{t|f:Title} (20)[blue]{b} (7f)[green]{l}
 #
 ##### various settings #####
 #
@@ -346,7 +346,7 @@ progressbar_boldness = no
 #
 ## Available values: artist, album_artist, date, genre, composer, performer.
 ##
-#media_library_primary_tag = artist
+# media_library_primary_tag = artist
 #
 ## Available values: wrapped, normal.
 ##
