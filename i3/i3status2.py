@@ -10,7 +10,12 @@ status.register("cmus",)
 
 status.register("spotify",)
 
-status.register("mpd", format="{status} {song_elapsed}/{song_length} {artist} - {title}",
-                on_upscroll="", on_downscroll="")
+status.register(
+    "mpd",
+    format="{title} - {composer} {artist} | Vol. {volume} | {song_elapsed}/{song_length} {status}",
+    max_len=130,
+    max_field_len=70,
+    on_upscroll=["mpd_command", "volume +2"],
+    on_downscroll=["mpd_command", "volume -2"])
 
 status.run()
