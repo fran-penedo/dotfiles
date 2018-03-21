@@ -12,7 +12,7 @@ status.register("spotify",)
 
 status.register(
     "mpd",
-    format="{title} - {composer} {artist} | Vol. {volume} | {song_elapsed}/{song_length} {status}",
+    format="{title} - {artist} | Vol. {volume} | {song_elapsed}/{song_length} {status}",
     max_len=130,
     max_field_len=70,
     on_upscroll=["mpd_command", "volume +2"],
