@@ -77,6 +77,7 @@ Plugin 'majutsushi/tagbar'
 Plugin 'godlygeek/tabular'
 Plugin 'rhysd/devdocs.vim'
 Plugin 'adborden/vim-notmuch-address'
+Plugin 'Shougo/echodoc.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -598,3 +599,6 @@ let g:tagbar_compact = 1
 
 " DevDocs
 map <Leader>d :DevDocs<Space>
+
+" Echodoc
+let g:echodoc#enable_at_startup = 1
