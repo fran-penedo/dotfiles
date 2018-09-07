@@ -1,1 +1,1 @@
-"query:New anime:((feedtitle =~ \"crunchyroll site news\" and title =~ \"catalog\") or (feedtitle =~ \"netflix press\" and title =~ \"anime\"))"
+"query:New anime:((feedtitle =~ \"crunchyroll site news\" and title =~ \"catalog\") or (feedtitle =~ \"netflix press\" and title =~ \"anime\") or (feedtitle =~ \"anime news network\" and (title =~ \"crunchyroll\" or title =~ \"netflix\")))"
