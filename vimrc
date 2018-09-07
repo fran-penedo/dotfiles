@@ -77,6 +77,7 @@ Plugin 'majutsushi/tagbar'
 Plugin 'godlygeek/tabular'
 Plugin 'rhysd/devdocs.vim'
 Plugin 'adborden/vim-notmuch-address'
+Plugin 'jeetsukumaran/vim-markology'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -598,3 +599,8 @@ let g:tagbar_compact = 1
 
 " DevDocs
 map <Leader>d :DevDocs<Space>
+
+" Markology
+let g:markology_include="abcdefzxAB"
+let g:markology_hlline_lower=1
+let g:markology_hlline_upper=1
