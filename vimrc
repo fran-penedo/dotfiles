@@ -78,6 +78,7 @@ Plugin 'godlygeek/tabular'
 Plugin 'rhysd/devdocs.vim'
 Plugin 'adborden/vim-notmuch-address'
 Plugin 'jeetsukumaran/vim-markology'
+Plugin 'Shougo/echodoc.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -604,3 +605,6 @@ map <Leader>d :DevDocs<Space>
 let g:markology_include="abcdefzxAB"
 let g:markology_hlline_lower=1
 let g:markology_hlline_upper=1
+
+" Echodoc
+let g:echodoc#enable_at_startup = 1
