@@ -12,16 +12,16 @@
 set $mod Mod1
 set $win Mod4
 
-set $w1 "1: web"
-set $w2 "2: vid"
-set $w3 "3: steam"
-set $w4 "4: main"
+set $w1 "1"
+set $w2 "2"
+set $w3 "3"
+set $w4 "4"
 set $w5 "5"
 set $w6 "6"
 set $w7 "7"
-set $w8 "8: im"
-set $w9 "9: media"
-set $w10 "10: bg"
+set $w8 "8"
+set $w9 "9"
+set $w10 "10"
 
 set $baseO3    #002b36
 set $baseO2    #073642
@@ -296,7 +296,7 @@ workspace $w2 output __MAIN_DISPLAY
 
 #assign [class="Google-chrome-stable"] $w1
 assign [class="Spotify"] $w9
-assign [instance="Steam"] $w3
+# assign [instance="Steam"] $w3
 #assign [class="Steam"] $w3
 #assign [title="Steam"] $w3
 assign [class="Pidgin"] $w8

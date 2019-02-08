@@ -37,4 +37,8 @@ status.register("network",
                 format_up="{interface} u:{bytes_sent}KB/s d:{bytes_recv}KB/s",
                 interface="wlp5s0")
 
+status.register("openvpn", vpn_name="client", use_new_service_name=True)
+
+status.register("shell", command="dig +short myip.opendns.com @resolver1.opendns.com")
+
 status.run()
