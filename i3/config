@@ -101,6 +101,7 @@ bindsym $mod+Control+p exec offlineimap -1 -o -u quiet
 bindsym $mod+Control+n exec urxvt -e ncmpcpp
 bindsym $mod+Control+t exec urxvt -e trackma-curses
 bindsym $mod+Control+r exec urxvt -e tmux new-session -A -s newsboat newsboat
+bindsym $mod+Control+e exec ebook-viewer --continue
 
 bindsym $mod+w exec xclip -selection primary -o | xclip -selection clipboard -i
 
