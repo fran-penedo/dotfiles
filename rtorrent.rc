@@ -27,7 +27,7 @@ session = ~/Downloads/torrent/.session
 
 # Watch a directory for new torrents, and stop those that have been
 # deleted.
-schedule = watch_directory,5,5,load_start=./Downloads/torrent/watch/*.torrent
+schedule = watch_directory,5,5,load.start=./Downloads/torrent/watch/*.torrent
 #schedule = untied_directory,5,5,stop_untied=
 
 # Close torrents when diskspace is low.
@@ -81,4 +81,4 @@ dht_port = 63425
 
 # Enable peer exchange (for torrents not marked private)
 #
-peer_exchange = yes
+protocol.pex.set = yes
