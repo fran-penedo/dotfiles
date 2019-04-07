@@ -125,3 +125,12 @@ export DISABLE_AUTO_TITLE="true"
 #
 # # ctrl-r starts searching history backward
 # bindkey '^r' history-incremental-search-backward
+
+# GPG
+export GPG_TTY=$(tty)
+export LC_TYPE=UTF-8
+echo "UPDATESTARTUPTTY" | gpg-connect-agent > /dev/null
+# unset SSH_AGENT_PID
+# if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
+#   export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
+# fi
