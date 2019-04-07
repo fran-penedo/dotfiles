@@ -42,6 +42,7 @@ nametrans = lambda folder: {
 type = Gmail
 # The path of ca-certfile might be different on your system.
 sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+ssl_version = tls1_2
 # Remember that GMail requires full mail address as username
 remoteuser = franpenedo@gmail.com
 remotepasseval = keyring.get_password('gmail', 'personal')
@@ -84,6 +85,7 @@ nametrans = lambda folder: {'archive': '[Gmail]/All Mail',
 type = Gmail
 # The path of ca-certfile might be different on your system.
 sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+ssl_version = tls1_2
 # Remember that GMail requires full mail address as username
 remoteuser = franp@bu.edu
 remotepasseval = keyring.get_password('gmail', 'bu')
