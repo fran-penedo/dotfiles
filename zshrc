@@ -103,7 +103,7 @@ alias op="xdg-open"
 . /home/fran/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
 # z
-. /usr/lib/z.sh
+. /usr/share/z/z.sh
 
 # tmuxp
 export DISABLE_AUTO_TITLE="true"
