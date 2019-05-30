@@ -79,6 +79,7 @@ Plugin 'rhysd/devdocs.vim'
 Plugin 'adborden/vim-notmuch-address'
 Plugin 'jeetsukumaran/vim-markology'
 Plugin 'Shougo/echodoc.vim'
+Plugin 'powerman/vim-plugin-AnsiEsc'
 Plugin 'Konfekt/FastFold'
 
 " All of your Plugins must be added before the following line
