@@ -79,6 +79,7 @@ Plugin 'rhysd/devdocs.vim'
 Plugin 'adborden/vim-notmuch-address'
 Plugin 'jeetsukumaran/vim-markology'
 Plugin 'Shougo/echodoc.vim'
+Plugin 'Konfekt/FastFold'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -524,10 +525,11 @@ nnoremap <F3> :Autoformat<CR><CR>
 
 " python-mode
 let g:pymode_rope_completion = 0
-" let g:pymode_rope = 0
+let g:pymode_rope = 1
 let g:pymode_lint_ignore = "E"
 let g:pymode_motion = 0
 let g:pymode_rope_goto_definition_cmd = 'new'
+let g:pymode_folding = 1
 
 " latex
 au BufEnter *.tex setl tw=80
