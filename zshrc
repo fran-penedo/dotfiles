@@ -98,6 +98,7 @@ alias vim="vim --servername VIM"
 alias vimrc="vim ~/.vimrc"
 alias vi="vim"
 alias op="xdg-open"
+alias tml="tmuxp load ."
 
 # OPAM configuration
 . /home/fran/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
