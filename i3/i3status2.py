@@ -6,9 +6,14 @@ from i3pystatus import Status
 
 status = Status(standalone=True)
 
-status.register("cmus",)
+# status.register("cmus",)
 
-status.register("spotify",)
+status.register("spotify",
+    format="{title} - {artist} {status}",
+    # max_len=130,
+    # max_field_len=70,
+    on_upscroll=["player_command", "volume +2"],
+    on_downscroll=["player_command", "volume -2"])
 
 status.register(
     "mpd",
