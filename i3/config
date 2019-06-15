@@ -335,4 +335,3 @@ exec --no-startup-id urxvt -e calcurse
 exec --no-startup-id clipit
 exec --no-startup-id redshift-gtk
 exec --no-startup-id devmon
-exec --no-startup-id nextcloud
