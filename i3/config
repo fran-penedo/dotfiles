@@ -95,7 +95,7 @@ bindsym $mod+Control+s exec ~/dotfiles/scripts/wtoggle catfish
 bindsym $mod+Control+c [title="calcurse"] scratchpad show
 bindsym $mod+Control+f exec urxvt -e ranger
 # bindsym $mod+Control+m [title="^Sup "] scratchpad show
-bindsym $mod+Control+m [class="Astroid"] scratchpad show
+bindsym $mod+Control+m [class="Astroid"] scratchpad show; [class="URxvt" title="astroid@"] scratchpad show
 bindsym $mod+Control+z exec zotero
 bindsym $mod+Control+p exec offlineimap -1 -o -u quiet
 bindsym $mod+Control+n exec urxvt -e ncmpcpp
@@ -315,6 +315,7 @@ for_window [class="(?i)pavucontrol"] floating enable
 for_window [class="Catfish"] floating enable
 # for_window [title="^Sup "] move scratchpad
 for_window [class="Astroid" window_type="normal"] move scratchpad
+for_window [class="URxvt" title="astroid@"] floating enable, move scratchpad, scratchpad show, resize set 800 640
 for_window [title="^calcurse$"] move scratchpad
 
 assign [class="sun-applet-AppletViewer"] $w7
