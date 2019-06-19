@@ -1,0 +1,3 @@
+#!/bin/zsh
+
+CALCURSE_CALDAV_PASSWORD=$(python2 -c "import keyring; print keyring.get_password('cloud.franpenedo.com', 'fran')") calcurse-caldav

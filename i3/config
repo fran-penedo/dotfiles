@@ -61,9 +61,9 @@ font xft:Inconsolata
 # X core fonts rendering does not support right-to-left and this being a bitmap
 # font, it doesn’t scale on retina/hidpi displays.
 
-new_window pixel 3
-new_float pixel 3
-hide_edge_borders none
+default_border pixel 3
+default_floating_border pixel 3
+hide_edge_borders both
 focus_follows_mouse no
 workspace_auto_back_and_forth no
 mouse_warping none
@@ -92,7 +92,7 @@ bindsym Control+q exec true
 bindsym Print exec xfce4-screenshooter
 bindsym $mod+Control+w exec firefox
 bindsym $mod+Control+s exec ~/dotfiles/scripts/wtoggle catfish
-bindsym $mod+Control+c exec gsimplecal
+bindsym $mod+Control+c [title="calcurse"] scratchpad show
 bindsym $mod+Control+f exec urxvt -e ranger
 # bindsym $mod+Control+m [title="^Sup "] scratchpad show
 bindsym $mod+Control+m [class="Astroid"] scratchpad show
@@ -110,6 +110,8 @@ bindsym $mod+w exec xclip -selection primary -o | xclip -selection clipboard -i
 bindsym XF86AudioLowerVolume exec amixer -q set Master 2%-
 bindsym XF86AudioRaiseVolume exec amixer -q set Master 2%+
 bindsym XF86AudioMute exec amixer -q set Master toggle
+# bindsym XF86AudioPause exec playerctl -p spotify pause; exec mpc pause
+# bindsym XF86AudioPlay exec playerctl -p spotify play; exec mpc play
 
 bindsym $win+c exec cmus-remote -u; exec playerctl -p spotify play-pause; exec mpc toggle
 bindsym $win+b exec cmus-remote -n; exec playerctl -p spotify next; exec mpc next
@@ -313,6 +315,7 @@ for_window [class="(?i)pavucontrol"] floating enable
 for_window [class="Catfish"] floating enable
 # for_window [title="^Sup "] move scratchpad
 for_window [class="Astroid" window_type="normal"] move scratchpad
+for_window [title="^calcurse$"] move scratchpad
 
 assign [class="sun-applet-AppletViewer"] $w7
 
@@ -327,8 +330,8 @@ exec --no-startup-id dropbox
 # exec --no-startup-id offlineimap -1 -u quiet
 # exec --no-startup-id urxvt -e sup
 exec --no-startup-id astroid
+exec --no-startup-id urxvt -e calcurse
 # exec --no-startup-id urxvt -e tmux new -s newsboat newsboat
 exec --no-startup-id clipit
 exec --no-startup-id redshift-gtk
 exec --no-startup-id devmon
-exec --no-startup-id nextcloud
