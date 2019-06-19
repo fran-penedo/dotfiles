@@ -526,11 +526,11 @@ nnoremap <F3> :Autoformat<CR><CR>
 
 " python-mode
 let g:pymode_rope_completion = 0
-let g:pymode_rope = 1
+" let g:pymode_rope = 1
 let g:pymode_lint_ignore = "E"
 let g:pymode_motion = 0
 let g:pymode_rope_goto_definition_cmd = 'new'
-let g:pymode_folding = 1
+" let g:pymode_folding = 1
 
 " latex
 au BufEnter *.tex setl tw=80
@@ -542,6 +542,7 @@ let g:vimtex_view_general_options_latexmk = '--unique'
 let g:vimtex_imaps_snippet_engine="ultisnips"
 let g:vimtex_fold_enabled = 1
 let g:vimtex_latexmk_options = ' -verbose -pdf -file-line-error -synctex=1 -interaction=nonstopmode --shell-escape'
+let g:vimtex_quickfix_method = 'pplatex'
 
 " UltiSnips
 let g:UltiSnipsExpandTrigger="<c-j>"
