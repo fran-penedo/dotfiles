@@ -1,0 +1,3 @@
+#!/bin/zsh
+
+[ "$(i3-msg $1 scratchpad show, floating disable)" = "[{\"success\":true},{\"success\":true}]" ] || i3-msg $1 move scratchpad
