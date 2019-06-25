@@ -1,0 +1,5 @@
+[Unit]
+Description=calcurse-caldav job
+
+[Service]
+ExecStart=/home/fran/dotfiles/scripts/calcurse-caldav-fran

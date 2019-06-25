@@ -1,0 +1,10 @@
+[Unit]
+Description=Nextcloud client service
+
+[Service]
+ExecStart=/usr/bin/nextcloud
+Restart=always
+RestartPreventExitStatus=SIGKILL
+
+[Install]
+WantedBy=default.target
