@@ -81,6 +81,7 @@ Plugin 'jeetsukumaran/vim-markology'
 Plugin 'Shougo/echodoc.vim'
 Plugin 'powerman/vim-plugin-AnsiEsc'
 Plugin 'Konfekt/FastFold'
+Plugin 'python/black'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -526,11 +527,31 @@ nnoremap <F3> :Autoformat<CR><CR>
 
 " python-mode
 let g:pymode_rope_completion = 0
-" let g:pymode_rope = 1
-let g:pymode_lint_ignore = "E"
+let g:pymode_rope = 1
+" let g:pymode_lint_ignore = "E"
+let g:pymode_lint = 0
 let g:pymode_motion = 0
 let g:pymode_rope_goto_definition_cmd = 'new'
-" let g:pymode_folding = 1
+let g:pymode_folding = 1
+" C-c binds don't work
+let g:pymode_run_bind = '<leader>e'
+let g:pymode_rope_autoimport_bind = '<leader>rra'
+let g:pymode_rope_goto_definition_bind = '<leader>rg'
+let g:pymode_rope_show_doc_bind = '<leader>rd'
+let g:pymode_rope_find_it_bind = '<leader>rf'
+let g:pymode_rope_organize_imports_bind = '<leader>rro'
+let g:pymode_rope_rename_bind = '<leader>rrr'
+let g:pymode_rope_rename_module_bind = '<leader>rr1r'
+let g:pymode_rope_module_to_package_bind = '<leader>rr1p'
+let g:pymode_rope_extract_method_bind = '<leader>rrm'
+let g:pymode_rope_extract_variable_bind = '<leader>rrl'
+let g:pymode_rope_inline_bind = '<leader>rri'
+let g:pymode_rope__move_bind = '<leader>rrv'
+let g:pymode_rope_generate_function_bind = '<leader>rrnf'
+let g:pymode_rope_generate_class_bind = '<leader>rrnc'
+let g:pymode_rope_generate_package_bind = '<leader>rrnp'
+let g:pymode_rope_change_signature_bind = '<leader>rrs'
+let g:pymode_rope_use_function_bind = '<leader>rru'
 
 " latex
 au BufEnter *.tex setl tw=80
@@ -612,3 +633,6 @@ let g:markology_hlline_upper=1
 
 " Echodoc
 let g:echodoc#enable_at_startup = 1
+
+" BLack
+autocmd BufWritePre *.py execute ':Black'
