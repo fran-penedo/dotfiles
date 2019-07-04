@@ -55,7 +55,7 @@ Plugin 'gioele/vim-autoswap'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'Chiel92/vim-autoformat'
-Plugin 'klen/python-mode'
+Plugin 'fran-penedo/python-mode'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'lervag/vim-latex'
 Plugin 'SirVer/ultisnips'
@@ -526,10 +526,14 @@ let g:ycm_python_binary_path = 'python'
 nnoremap <F3> :Autoformat<CR><CR>
 
 " python-mode
+" let g:pymode_debug = 1
+let g:pymode_python = 'python3'
+let g:pymode_options_max_line_length = 88
 let g:pymode_rope_completion = 0
 let g:pymode_rope = 1
-" let g:pymode_lint_ignore = "E"
-let g:pymode_lint = 0
+let g:pymode_lint_ignore = ["E501"]
+let g:pymode_lint = 1
+let g:pymode_lint_checkers = ['pyflakes', 'mccabe', 'mypy']
 let g:pymode_motion = 0
 let g:pymode_rope_goto_definition_cmd = 'new'
 let g:pymode_folding = 1

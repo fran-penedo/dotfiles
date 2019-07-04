@@ -56,8 +56,8 @@ export PATH=$HOME/bin:/usr/local/bin:$HOME/dotfiles/scripts:$PATH
 
 # GUROBI
 export GUROBI_HOME=$HOME/.gurobi/linux64
-export PATH=$GUROBI_HOME/bin:$PATH
-export LD_LIBRARY_PATH=$GUROBI_HOME/lib
+export PATH="${PATH}:${GUROBI_HOME}/bin"
+export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${GUROBI_HOME}/lib"
 export GRB_LICENSE_FILE=$HOME/.gurobi/gurobi.lic
 
 # Spotify fix
