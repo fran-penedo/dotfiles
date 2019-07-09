@@ -574,7 +574,8 @@ let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 let g:ultisnips_python_style = "numpy"
-let g:UltiSnipsUsePythonVersion = 2
+let g:UltiSnipsUsePythonVersion = 3
+autocmd FileType py UltiSnipsAddFiletypes python
 "let g:ycm_key_list_previous_completion=[]
 
 " EasyMotion
