@@ -82,6 +82,8 @@ Plugin 'Shougo/echodoc.vim'
 Plugin 'powerman/vim-plugin-AnsiEsc'
 Plugin 'Konfekt/FastFold'
 Plugin 'python/black'
+Plugin 'mbbill/undotree'
+Plugin 'machakann/vim-swap'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -144,6 +146,7 @@ set hidden
 " set autowriteall
 
 " Better command-line completion
+set wildmode=longest,list,full
 set wildmenu
 
 " Show partial commands in the last line of the screen
@@ -239,7 +242,7 @@ exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
 set list
 
 " System clipboard (only for X window)
-set clipboard=unnamedplus
+" set clipboard=unnamedplus
 
 " Color scheme
 set background=dark
@@ -248,6 +251,10 @@ let g:solarized_termcolors=16
 colorscheme solarized
 
 set tags=./tags;$HOME
+
+set lazyredraw
+
+set foldcolumn=1
 
 "------------------------------------------------------------
 " Indentation options {{{1
@@ -324,9 +331,9 @@ nnoremap <F5> :e
 " which is the default
 map Y y$
 
-" Map <C-L> (redraw screen) to also turn off search highlighting until the
+" Map L (redraw screen) to also turn off search highlighting until the
 " next search
-nnoremap l :nohl<CR><C-L>
+nnoremap Z :nohl<CR><C-L>
 
 nnoremap i  <C-i>
 nnoremap o  <C-o>
@@ -377,7 +384,6 @@ nnoremap <silent> ,vr :so %<CR>
 " off in the corner of the keyboard. The best way to handle this is just to
 " swap them: http://items.sjbach.com/319/configuring-vim-right
 nnoremap ' `
-nnoremap ` '
 
 " Undo c-w in insert mode
 inoremap <c-u> <c-g>u<c-u>
@@ -388,6 +394,7 @@ inoremap <c-e> <Esc>A
 inoremap <c-d> <Del>
 
 " Command-/ to toggle comments
+let g:tcomment_maps = 0
 noremap / :TComment<CR>
 inoremap / <Esc>:TComment<CR>i
 
@@ -404,7 +411,7 @@ noremap <silent> ,9 :tabn 9<cr>
 
 " Resize windows with movement keys
 let g:submode_timeout = 0
-call submode#enter_with('resize', 'n', '', '<Space>r')
+call submode#enter_with('resize', 'n', '', '<Leader>r')
 call submode#leave_with('resize', 'n', '', '<Esc>')
 call submode#map('resize', 'n', '', 'j', '<C-w>-')
 call submode#map('resize', 'n', '', 'k', '<C-w>+')
@@ -438,6 +445,24 @@ nnoremap <silent> Q :call CloseWindowOrKillBuffer()<CR>
 
 " Programming
 nnoremap <F4> :make!<CR>
+
+" Other mappings
+
+" Available: T K X <space>
+
+nnoremap R @@
+nnoremap s "_d
+vnoremap s "_d
+nnoremap ss "_dd
+nnoremap S "_D
+nnoremap r :%s//g<Left><Left>
+nnoremap ` gqip
+nnoremap q; q:
+nnoremap B :let @"=@+<CR>
+nnoremap H :let @+=@"<CR>
+nnoremap W :w<CR>
+
+" Plugin config
 
 " fugitive config
 
@@ -499,6 +524,7 @@ endif
 let g:ctrlp_cmd = 'CtrlPMixed'
 let g:ctrlp_match_window = 'results:20'
 noremap <C-o> :CtrlPTag<CR>
+noremap M :CtrlPBuffer<CR>
 
 call ctrlp_bdelete#init()
 
@@ -600,7 +626,7 @@ map <Leader> <Plug>(easymotion-prefix)
 nmap f <Plug>(easymotion-overwin-f2)
 
 " Bidirectional & within line 't' motion
-omap t <Plug>(easymotion-bd-tl)
+nmap t <Plug>(easymotion-bd-tl)
 
 " Move to word
 map  <Leader>w <Plug>(easymotion-bd-wl)
@@ -613,7 +639,7 @@ map <Leader>L <Plug>(easymotion-bd-jk)
 
 " Vimux
 map <Leader>vp :VimuxPromptCommand<CR>
-map <Leader>vl :VimuxRunLastCommand<CR>
+nmap L :VimuxRunLastCommand<CR>
 
 " Vimux nose
 map <Leader>vn :RunNoseTest<CR>
@@ -640,4 +666,8 @@ let g:markology_hlline_upper=1
 let g:echodoc#enable_at_startup = 1
 
 " BLack
-autocmd BufWritePre *.py execute ':Black'
+autocmd BufWrite *.py execute ':Black'
+
+" UndoTree
+nnoremap U :UndotreeToggle<cr>
+let g:undotree_SetFocusWhenToggle = 1
