@@ -521,8 +521,9 @@ else
     let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others']
 endif
 
-let g:ctrlp_cmd = 'CtrlPMixed'
+let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_match_window = 'results:20'
+let g:ctrlp_by_filename = 1
 noremap <C-o> :CtrlPTag<CR>
 noremap M :CtrlPBuffer<CR>
 
