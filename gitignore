@@ -1,3 +1,7 @@
+.coverage
+cover/
+*.egg-info
+
 *.pydevproject
 __pycache__/
 .metadata
