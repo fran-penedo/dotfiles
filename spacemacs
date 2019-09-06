@@ -210,8 +210,8 @@ It should only modify the values of Spacemacs settings."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press `SPC T n' to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(spacemacs-light
-                         spacemacs-dark)
+   dotspacemacs-themes '(spacemacs-dark
+                         spacemacs-light)
 
    ;; Set the theme for the Spaceline. Supported themes are `spacemacs',
    ;; `all-the-icons', `custom', `doom', `vim-powerline' and `vanilla'. The
@@ -473,6 +473,10 @@ This function is called immediately after `dotspacemacs/init', before layer
 configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
+  (setq
+   ranger-override-dired t
+   ranger-key nil
+   )
   )
 
 (defun dotspacemacs/user-load ()
@@ -543,6 +547,12 @@ before packages are loaded."
 
   (with-eval-after-load "python"
     (define-key python-mode-map (kbd "C-o") 'helm-gtags-select))
+
+  ;; (with-eval-after-load "ranger"
+  (define-key ranger-mode-map (kbd "C-p") nil)
+  (define-key dired-mode-map (kbd "C-p") nil)
+  (define-key ranger-mode-map (kbd "C-p") 'helm-projectile)
+  (define-key dired-mode-map (kbd "C-p") 'helm-projectile)
 
   ;; Latex config
   (add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer)
