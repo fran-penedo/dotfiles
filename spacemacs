@@ -534,7 +534,8 @@ before packages are loaded."
   (define-key evil-normal-state-map "M" 'helm-projectile-switch-to-buffer)
   (define-key evil-normal-state-map (kbd "C-p") 'helm-projectile)
   (define-key evil-normal-state-map "f" 'evil-avy-goto-char-2)
-  (define-key evil-normal-state-map (kbd "r") (lambda () (interactive) (evil-ex "%s/")))
+  ;; (define-key evil-normal-state-map (kbd "r") (lambda () (interactive) (evil-ex "%s/")))
+  (define-key evil-normal-state-map (kbd "r") 'save-buffer)
   (define-key evil-motion-state-map (kbd "C-o") nil) ; Disable C-o so it can be bound in major modes
 
   ;; Leader keybinds
