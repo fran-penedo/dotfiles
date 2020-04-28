@@ -34,6 +34,8 @@ This function should only modify configuration layer settings."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     (debug :variables
+            debug-additional-debuggers '("pdb"))
      imenu-list
      ibuffer
      ranger
@@ -557,6 +559,9 @@ before packages are loaded."
 
   ;; Latex config
   (add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer)
+  (with-eval-after-load "tex-buf"
+    (spacemacs/set-leader-keys-for-major-mode 'latex-mode "e" 'TeX-error-overview)
+    (define-key TeX-error-overview-mode-map (kbd "<return>") 'TeX-error-overview-jump-to-source))
 
   ;; Python config
   (with-eval-after-load "flycheck"
