@@ -159,6 +159,7 @@
     },
     "startup": {
         "queries": {
+            "inbox": "tag:inbox",
             "unread": "tag:unread",
             "flagged": "tag:flagged",
             "all": "tag:archive",
