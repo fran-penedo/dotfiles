@@ -99,6 +99,7 @@ alias vimrc="vim ~/.vimrc"
 alias vi="vim"
 alias op="xdg-open"
 alias tml="tmuxp load ."
+alias ytdlm="youtube-dl -f 'bestaudio' --extract-audio --audio-format mp3 --audio-quality 0"
 
 # OPAM configuration
 . /home/fran/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
