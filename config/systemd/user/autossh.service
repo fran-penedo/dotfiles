@@ -1,0 +1,13 @@
+[Unit]
+Description=AutoSSH service for reverse tunnel
+After=network.target
+
+[Service]
+Environment="AUTOSSH_GATETIME=0"
+ExecStartPre=/bin/sleep 30
+ExecStart=/usr/bin/autossh -M 0 -T -N fserver-tunnel
+Restart=always
+RuntimeMaxSec=3600
+
+[Install]
+WantedBy=default.target
