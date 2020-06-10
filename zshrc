@@ -136,3 +136,8 @@ echo "UPDATESTARTUPTTY" | gpg-connect-agent > /dev/null
 # if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
 #   export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
 # fi
+
+# Bell on command exit
+export PROMPT_COMMAND="echo -n '\a'"
+promptcmd() { eval "$PROMPT_COMMAND" }
+add-zsh-hook precmd promptcmd
