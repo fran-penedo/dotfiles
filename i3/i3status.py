@@ -26,6 +26,9 @@ status.register(
     "disk", path="/home", round_size=1, format="/home:{used}/{total}",
 )
 
+status.register(
+    "disk", path="/media/sda3", round_size=1, format="/media/sda3:{used}/{total}",
+)
 
 status.register(
     "cpu_usage", format="CPU:{usage:02}%",
