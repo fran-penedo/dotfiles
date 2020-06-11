@@ -33,6 +33,7 @@ nitrogen --restore &
 eval $(gnome-keyring-daemon --start)
 export SSH_AUTH_SOCK
 export GPG_AGENT_INFO
+systemctl --user set-environment SSH_AUTH_SOCK=${SSH_AUTH_SOCK}
 #pasystray &
 #nm-applet &
 #fbxkb &
