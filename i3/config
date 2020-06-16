@@ -104,7 +104,7 @@ bindsym $mod+Control+m exec strawberry
 bindsym $mod+Control+t exec urxvt -e trackma-curses
 # bindsym $mod+Control+r exec urxvt -e tmux new-session -A -s newsboat newsboat
 bindsym $mod+Control+e exec ebook-viewer --continue
-bindsym $mod+Control+j exec emacs
+bindsym $mod+Control+j exec emacsclient -c
 
 bindsym $mod+w exec xclip -selection primary -o | xclip -selection clipboard -i
 
