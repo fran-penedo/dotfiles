@@ -93,7 +93,7 @@ fi
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-alias em="emacs -nw"
+alias em="emacsclient -s daemon -c"
 alias vim="vim --servername VIM"
 alias vimrc="vim ~/.vimrc"
 alias vi="vim"
