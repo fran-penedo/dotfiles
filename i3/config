@@ -41,7 +41,7 @@ set $cyan      #2aa198
 set $green     #859900
 
 # class                 border  backgr. text    indicator child_border
-# client.focused          #4c7899 $green #ffffff #2e9ef4   $green
+client.focused          $green $green #ffffff #2e9ef4   $green
 # client.focused_inactive #333333 #5f676a #ffffff #484e50   $baseO2
 # client.unfocused        #333333 $baseO3 #888888 #292d2e   $baseO3
 # client.urgent           #2f343a #900000 #ffffff #900000   $red
@@ -260,66 +260,57 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        output          HDMI-0
+        output          DVI-I-1
         position        top
         status_command  python ~/.i3/i3status.py
 
-        # colors {
+        colors {
         #     background $baseO3
         #     statusline #ffffff
         #     separator $baseO2
         #
-        #     focused_workspace  $baseO2 $green $base3
+            focused_workspace  $baseO2 $green $base3
         #     active_workspace   $baseO2 $yellow $base1
         #     inactive_workspace $baseO2 $baseO3 $base1
         #     urgent_workspace   $baseO2 $baseO3 $red
         #     binding_mode       $baseO2 $green $base3
-        # }
+        }
 }
 
 bar {
-        output          __SEC_DISPLAY
+        output          primary
+        output          eDP1
         tray_output     none
         position        top
-        status_command python ~/.i3/i3status2.py
+        status_command  python ~/.i3/i3status2.py
 
-        # colors {
+        colors {
         #     background #000000
         #     statusline #ffffff
         #     separator #666666
         #
-        #     focused_workspace  $baseO3 $green $base3
+            focused_workspace  $baseO2 $green $base3
         #     active_workspace   $yellow $yellow $base1
         #     inactive_workspace $baseO3 $baseO3 $base1
         #     urgent_workspace   $baseO3 $baseO3 $red
         #     binding_mode       #2f343a #900000 #ffffff
-        # }
+        }
 }
 
 # Workspace management
 
-workspace $w1 output __SEC_DISPLAY
-workspace $w4 output __MAIN_DISPLAY
-workspace $w3 output __MAIN_DISPLAY
-workspace $w2 output __MAIN_DISPLAY
+workspace $w3 output DVI-I-1
 
-#assign [class="Google-chrome-stable"] $w1
 assign [class="Spotify"] $w9
-# assign [instance="Steam"] $w3
-#assign [class="Steam"] $w3
-#assign [title="Steam"] $w3
-assign [class="Pidgin"] $w8
-assign [class="Finch"] $w8
-assign [class="Skype"] $w8
 assign [title="i3_7"] $w7
 
+for_window [title="^Messenger - Mozilla Firefox"] move to workspace $w3
+for_window [title="^WhatsApp - Mozilla Firefox"] move to workspace $w3
 for_window [class="Skype"] move to workspace $w8
-#for_window [class="Steam"] move to workspace $w3
 for_window [class="Steam"] floating enable
 for_window [class="gimp"] floating enable
 for_window [class="(?i)pavucontrol"] floating enable
 for_window [class="Catfish"] floating enable
-# for_window [title="^Sup "] move scratchpad
 for_window [class="Astroid" window_type="normal"] move scratchpad
 for_window [title="^calcurse$"] move scratchpad
 
