@@ -261,6 +261,7 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
         output          DVI-I-1
+        output          eDP1
         position        top
         status_command  python ~/.i3/i3status.py
 
@@ -278,8 +279,7 @@ bar {
 }
 
 bar {
-        output          primary
-        output          eDP1
+        output          HDMI1
         tray_output     none
         position        top
         status_command  python ~/.i3/i3status2.py
