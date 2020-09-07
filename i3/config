@@ -311,6 +311,7 @@ for_window [class="Steam"] floating enable
 for_window [class="gimp"] floating enable
 for_window [class="(?i)pavucontrol"] floating enable
 for_window [class="Catfish"] floating enable
+for_window [class="ssh-askpass"] floating enable
 for_window [class="Astroid" window_type="normal"] move scratchpad
 for_window [title="^calcurse$"] move scratchpad
 
