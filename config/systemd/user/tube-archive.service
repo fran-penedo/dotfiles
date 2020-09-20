@@ -1,0 +1,8 @@
+[Unit]
+Description=Tube archive job
+Wants=wait-for-network.service
+After=wait-for-network.service
+
+[Service]
+WorkingDirectory=/home/fran/archive/tube/
+ExecStart=/home/fran/archive/tube/download_all.sh
