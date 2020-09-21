@@ -1,0 +1,9 @@
+[Unit]
+Description=Run download script for the music-to-dl playlist
+
+[Timer]
+OnCalendar=daily
+Persistent=true
+
+[Install]
+WantedBy=timers.target

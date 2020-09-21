@@ -1,0 +1,8 @@
+[Unit]
+Description=Music from music-to-dl playlist download job
+Wants=wait-for-network.service
+After=wait-for-network.service
+
+[Service]
+WorkingDirectory=/home/fran/Music/yt-dl
+ExecStart=/home/fran/Music/yt-dl/download.sh
