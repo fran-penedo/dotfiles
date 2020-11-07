@@ -105,6 +105,7 @@ bindsym $mod+Control+t exec urxvt -e trackma-curses
 # bindsym $mod+Control+r exec urxvt -e tmux new-session -A -s newsboat newsboat
 bindsym $mod+Control+e exec ebook-viewer --continue
 bindsym $mod+Control+j exec emacsclient -s daemon -c
+bindsym $mod+Control+p exec ~/dotfiles/scripts/open-pictures.sh
 
 bindsym $mod+w exec xclip -selection primary -o | xclip -selection clipboard -i
 
