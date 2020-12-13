@@ -41,6 +41,7 @@ URL_file = nautilus %s
 URL_readme = ${TermExec} 'less /usr/doc/%s/README'
 URL_info = ${TermExec} 'info %s'
 URL_sh = sh -c '%s'
+URL_e = emacsclient -s %s -c -a ""
 
 # extension handlers
 EXT:doc,rtf = AbiWord %s
