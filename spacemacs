@@ -50,7 +50,7 @@ This function should only modify configuration layer settings."
              python-shell-interpreter-args "-i"
              python-sort-imports-on-save t
              python-backend 'lsp
-             python-lsp-server 'pyls)
+             python-lsp-server 'mspyls)
      lsp
      (haskell :variables
               haskell-completion-backend 'intero
@@ -520,6 +520,8 @@ before packages are loaded."
 
    ;; Python settings
    flycheck-python-mypy-args "--follow-imports=silent"
+   lsp-diagnostic-package :none
+   ;; yas-inhibit-overlay-modification-protection nil
 
    ;; Org settings
    org-projectile-capture-template "* TODO %?\n%U\n%a\n"
@@ -574,6 +576,10 @@ before packages are loaded."
   (with-eval-after-load "flycheck"
     (require 'flycheck-mypy)
     (flycheck-add-next-checker 'python-flake8 'python-mypy t))
+  (add-hook 'pyvenv-post-activate-hooks
+            #'(lambda ()
+                (call-interactively #'lsp-workspace-restart)))
+  (add-hook 'python-mode-hook #'(lambda () (push '(company-capf company-yasnippet) company-backends)))
 
   ;; Terminal config
   (with-eval-after-load 'term
