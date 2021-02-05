@@ -1,6 +1,7 @@
 [user]
 	email = fran@franpenedo.com
 	name = Francisco Penedo
+  signingkey = A3198FD716A360D0! 
 [push]
 	default = simple
 [core]
