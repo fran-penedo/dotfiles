@@ -5,4 +5,4 @@ After=wait-for-network.service
 
 [Service]
 WorkingDirectory=/home/fran/dev/scrap_alerts
-ExecStart=/home/fran/Documents/virtualenvs/scrap_alerts/bin/python /home/fran/dev/scrap_alerts/scrap_alerts.py
+ExecStart=/home/fran/.virtualenvs/scrap_alerts/bin/python /home/fran/dev/scrap_alerts/scrap_alerts.py
