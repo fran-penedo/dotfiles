@@ -31,7 +31,7 @@ path=/home/fran/mail
 [user]
 name=Francisco Penedo
 primary_email=fran@franpenedo.com
-other_email=fran.penedo@gmail.com;franp@bu.edu;
+other_email=fran.penedo@gmail.com;franp@bu.edu;fran_test@fastmail.com;franpenedo@gmail.com;
 
 # Configuration for "notmuch new"
 #

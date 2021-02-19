@@ -2,7 +2,7 @@
 accounts = personal,bu
 ui = ttyui
 pythonfile = ~/.offlineimap.py
-maxsyncaccounts = 3
+maxsyncaccounts = 1
 socktimeout = 90
 
 [Account personal]
@@ -27,44 +27,116 @@ localfolders = ~/mail/personal
 #                             }.get(folder, folder)
 
 nametrans = lambda folder: {
-    'archive': '[Gmail]/Todos',
-    'drafts': '[Gmail]/Borradores',
-    'sent': '[Gmail]/Enviados',
-    'important': '[Gmail]/Importantes',
-    'flagged': '[Gmail]/Destacados',
-    'spam': '[Gmail]/Spam',
-    'trash': '[Gmail]/Papelera',
+    'archive':     'Archive',
+    'drafts':     'Drafts',
+    'sent':     'Sent',
+    'spam':     'Spam',
+    'trash':     'Trash',
     'inbox': 'INBOX'
                             }.get(folder, folder)
+# nametrans = lambda folder: {
+#     'archive': '[Gmail]/Todos',
+#     'drafts': '[Gmail]/Borradores',
+#     'sent': '[Gmail]/Enviados',
+#     'important': '[Gmail]/Importantes',
+#     'flagged': '[Gmail]/Destacados',
+#     'spam': '[Gmail]/Spam',
+#     'trash': '[Gmail]/Papelera',
+#     'inbox': 'INBOX'
+#                             }.get(folder, folder)
 
 [Repository personal-remote]
 # IMAP with hardcoded GMail config
-type = Gmail
+type = IMAP
 # The path of ca-certfile might be different on your system.
 sslcacertfile = /etc/ssl/certs/ca-certificates.crt
 ssl_version = tls1_2
+starttls = no
 # Remember that GMail requires full mail address as username
-remoteuser = franpenedo@gmail.com
-remotepasseval = keyring.get_password('gmail', 'personal')
-nametrans = lambda folder: {'[Gmail]/Todos': 'archive',
-                            }.get(folder, folder)
+remotehost = imap.fastmail.com
+remoteport = 993
+remoteuser = fran@franpenedo.com
+remotepasseval = keyring.get_password('fastmail', 'test')
+# nametrans = lambda folder: {'[Gmail]/Todos': 'archive',
+#                             }.get(folder, folder)
 nametrans = lambda folder: {
-    '[Gmail]/Todos':     'archive',
-    '[Gmail]/Borradores':     'drafts',
-    '[Gmail]/Enviados':     'sent',
-    '[Gmail]/Importantes':     'important',
-    '[Gmail]/Destacados':     'flagged',
-    '[Gmail]/Spam':     'spam',
-    '[Gmail]/Papelera':     'trash',
+    'Archive':     'archive',
+    'Drafts':     'drafts',
+    'Sent':     'sent',
+    'Spam':     'spam',
+    'Trash':     'trash',
     'INBOX': 'inbox'
                             }.get(folder, folder)
 
-folderfilter = lambda folder: folder not in ['[Gmail]/Importantes']
+# folderfilter = lambda folder: folder not in ['[Gmail]/Importantes']
 auth_mechanisms = LOGIN
 # Or, if you have a lot of mail and don't want to wait for a long time before
 # using sup, you can archive all your old mails on Gmail and only sync the
 # inbox with the following line replacing the previous `folderfilter` line:
 # folderfilter = lambda folder: folder == 'INBOX'
+
+
+
+# [Account personal]
+# localrepository = personal-local
+# remoterepository = personal-remote
+# # status_backend = sqlite
+# # autorefresh = 5
+# quick = 10
+# presynchook = /home/fran/dotfiles/scripts/maildir-notmuch-sync pre /home/fran/mail/personal
+# postsynchook = /home/fran/dotfiles/scripts/maildir-notmuch-sync post /home/fran/mail/personal
+
+# [Repository personal-local]
+# type = Maildir
+# localfolders = ~/mail/personal
+# # Spaces in pathname are bad. Lets use `archive` which is a simple word
+# # Besides, we only need `All Mail` folder. 
+# # Sup would manage mails on its own.
+# # If your GMail language setting is not English, you can execute 
+# # `offlineimap --info` to find out the name of folder which is 
+# # translated and encoded after your account is configured.
+# # nametrans = lambda folder: {'archive': '[Gmail]/Todos',
+# #                             }.get(folder, folder)
+
+# nametrans = lambda folder: {
+#     'archive': '[Gmail]/Todos',
+#     'drafts': '[Gmail]/Borradores',
+#     'sent': '[Gmail]/Enviados',
+#     'important': '[Gmail]/Importantes',
+#     'flagged': '[Gmail]/Destacados',
+#     'spam': '[Gmail]/Spam',
+#     'trash': '[Gmail]/Papelera',
+#     'inbox': 'INBOX'
+#                             }.get(folder, folder)
+
+# [Repository personal-remote]
+# # IMAP with hardcoded GMail config
+# type = Gmail
+# # The path of ca-certfile might be different on your system.
+# sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+# ssl_version = tls1_2
+# # Remember that GMail requires full mail address as username
+# remoteuser = franpenedo@gmail.com
+# remotepasseval = keyring.get_password('gmail', 'personal')
+# nametrans = lambda folder: {'[Gmail]/Todos': 'archive',
+#                             }.get(folder, folder)
+# nametrans = lambda folder: {
+#     '[Gmail]/Todos':     'archive',
+#     '[Gmail]/Borradores':     'drafts',
+#     '[Gmail]/Enviados':     'sent',
+#     '[Gmail]/Importantes':     'important',
+#     '[Gmail]/Destacados':     'flagged',
+#     '[Gmail]/Spam':     'spam',
+#     '[Gmail]/Papelera':     'trash',
+#     'INBOX': 'inbox'
+#                             }.get(folder, folder)
+
+# folderfilter = lambda folder: folder not in ['[Gmail]/Importantes']
+# auth_mechanisms = LOGIN
+# # Or, if you have a lot of mail and don't want to wait for a long time before
+# # using sup, you can archive all your old mails on Gmail and only sync the
+# # inbox with the following line replacing the previous `folderfilter` line:
+# # folderfilter = lambda folder: folder == 'INBOX'
 
 
 [Account bu]
