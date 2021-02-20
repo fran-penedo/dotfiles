@@ -515,7 +515,7 @@ Notmuch_State_To_Maildir__Move_To_Maildir ()
 
         if $FOUND; then
 
-            if $RUNCMD "cp \"$THIS_MESSAGE_SOURCE_PATH\" \"$THIS_MAILDIR_FULL_PATH/cur\""; then
+            if $RUNCMD "cp -p \"$THIS_MESSAGE_SOURCE_PATH\" \"$THIS_MAILDIR_FULL_PATH/cur\""; then
                 echo -n "Copied message with new tag to"
                 echo " $(Maildir_Account_Folder_From_Full_Path "$THIS_MAILDIR_FULL_PATH")"
             else

@@ -48,7 +48,7 @@ other_email=fran.penedo@gmail.com;franp@bu.edu;fran_test@fastmail.com;franpenedo
 #		in the mail store.
 #
 [new]
-tags=new;unread;
+tags=new;unread;archive;
 ignore=
 
 # Search configuration

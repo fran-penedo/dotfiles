@@ -162,7 +162,7 @@
             "inbox": "tag:inbox",
             "unread": "tag:unread",
             "flagged": "tag:flagged",
-            "all": "tag:archive",
+            "all": "*",
             "interact": "tag:replied or from:fran@franpenedo.com or from:fran.penedo@gmail.com or from:franpenedo@gmail.com or from:franp@bu.edu"
         }
     }
