@@ -1,5 +1,5 @@
 [general]
-accounts = personal,bu
+accounts = personal
 ui = ttyui
 pythonfile = ~/.offlineimap.py
 maxsyncaccounts = 1
@@ -68,7 +68,7 @@ nametrans = lambda folder: {
     'INBOX': 'inbox'
                             }.get(folder, folder)
 
-# folderfilter = lambda folder: folder not in ['[Gmail]/Importantes']
+folderfilter = lambda folder: folder not in ['all']
 auth_mechanisms = LOGIN
 # Or, if you have a lot of mail and don't want to wait for a long time before
 # using sup, you can archive all your old mails on Gmail and only sync the
@@ -139,30 +139,30 @@ auth_mechanisms = LOGIN
 # # folderfilter = lambda folder: folder == 'INBOX'
 
 
-[Account bu]
-localrepository = bu-local
-remoterepository = bu-remote
-# status_backend = sqlite
-# autorefresh = 5
-quick = 10
+# [Account bu]
+# localrepository = bu-local
+# remoterepository = bu-remote
+# # status_backend = sqlite
+# # autorefresh = 5
+# quick = 10
 
-[Repository bu-local]
-type = Maildir
-localfolders = ~/mail/bu
-nametrans = lambda folder: {'archive': '[Gmail]/All Mail',
-                            }.get(folder, folder)
+# [Repository bu-local]
+# type = Maildir
+# localfolders = ~/mail/bu
+# nametrans = lambda folder: {'archive': '[Gmail]/All Mail',
+#                             }.get(folder, folder)
 
-[Repository bu-remote]
-# IMAP with hardcoded GMail config
-type = Gmail
-# The path of ca-certfile might be different on your system.
-sslcacertfile = /etc/ssl/certs/ca-certificates.crt
-ssl_version = tls1_2
-# Remember that GMail requires full mail address as username
-remoteuser = franp@bu.edu
-remotepasseval = keyring.get_password('gmail', 'bu')
-nametrans = lambda folder: {'[Gmail]/All Mail': 'archive',
-                            }.get(folder, folder)
-folderfilter = lambda folder: folder == '[Gmail]/All Mail'
-auth_mechanisms = LOGIN
+# [Repository bu-remote]
+# # IMAP with hardcoded GMail config
+# type = Gmail
+# # The path of ca-certfile might be different on your system.
+# sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+# ssl_version = tls1_2
+# # Remember that GMail requires full mail address as username
+# remoteuser = franp@bu.edu
+# remotepasseval = keyring.get_password('gmail', 'bu')
+# nametrans = lambda folder: {'[Gmail]/All Mail': 'archive',
+#                             }.get(folder, folder)
+# folderfilter = lambda folder: folder == '[Gmail]/All Mail'
+# auth_mechanisms = LOGIN
 
