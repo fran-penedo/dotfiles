@@ -691,6 +691,29 @@ Notmuch_Cleanup ()
 
 }
 
+Notmuch_Fake_Read()
+{
+    local THIS_MAILDIR_FULL_PATH="$1"
+    local THIS_NOTMUCH_FOLDER="$(Notmuch_Folder_From_Full_Path $THIS_MAILDIR_FULL_PATH)"
+    local THIS_NOTMUCH_QUERY="folder:\"/$THIS_NOTMUCH_FOLDER/\"\
+                              tag:\"$NEW_TAG\"\
+                              NOT tag:\"$UNREAD_TAG\""
+    local THIS_COUNT=0
+
+    local THREADS=$(notmuch search --output=threads $THIS_NOTMUCH_QUERY)
+    for THREAD in $THREADS; do
+        local IDS=$(notmuch search --output=messages $THREAD $THIS_NOTMUCH_QUERY)
+        for ID in $IDS; do
+            if notmuch search --output=files $ID | grep -q ":[^S]*$"; then
+                $DRYRUN || notmuch tag +"$UNREAD_TAG" -- $ID
+                ((THIS_COUNT = THIS_COUNT + 1))
+            fi
+        done
+    done
+
+    [[ $THIS_COUNT > 0 ]] && echo "Tagged $THIS_COUNT messages as unread" || true
+}
+
 
 # ----------------------------------------------------------------------
 # ----------------------------------------------------------------------
@@ -718,6 +741,8 @@ fi
 if [ "$SUBCMD" == "post" ]; then
     Notmuch_Update
 
+    # local FAKE_READ=$(Notmuch_Fake_Read $MAILDIR_ACCOUNT_ROOT)
+    Notmuch_Fake_Read $MAILDIR_ACCOUNT_ROOT
     for MAILBOX_FULL_PATH in $MAILBOXES_FULL_PATHS; do
         Maildir_State_To_Notmuch__Add_Tags_To_Notmuch $MAILBOX_FULL_PATH
         Maildir_State_To_Notmuch__Remove_Tags_From_Notmuch $MAILBOX_FULL_PATH

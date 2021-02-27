@@ -68,7 +68,7 @@ nametrans = lambda folder: {
     'INBOX': 'inbox'
                             }.get(folder, folder)
 
-folderfilter = lambda folder: folder not in ['all']
+# folderfilter = lambda folder: folder not in ['all']
 auth_mechanisms = LOGIN
 # Or, if you have a lot of mail and don't want to wait for a long time before
 # using sup, you can archive all your old mails on Gmail and only sync the
