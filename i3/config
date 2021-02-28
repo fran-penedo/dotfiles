@@ -294,8 +294,9 @@ workspace $w3 output DVI-I-1
 assign [class="Spotify"] $w9
 assign [title="i3_7"] $w7
 
-for_window [title="^Messenger - Mozilla Firefox"] move to workspace $w3
-for_window [title="^WhatsApp - Mozilla Firefox"] move to workspace $w3
+for_window [title="^Messenger — Mozilla Firefox"] move to workspace $w3
+for_window [title="^WhatsApp — Mozilla Firefox"] move to workspace $w3
+for_window [title="Gitter — Mozilla Firefox"] move to workspace $w3
 for_window [class="Skype"] move to workspace $w8
 # for_window [class="Steam"] floating enable
 for_window [class="gimp"] floating enable
