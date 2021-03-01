@@ -34,6 +34,7 @@ This function should only modify configuration layer settings."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     notmuch
      systemd
      (debug :variables
             debug-additional-debuggers '("pdb"))
@@ -601,6 +602,10 @@ before packages are loaded."
   ;; org-mode config
   (with-eval-after-load 'org
     (org-defkey org-mode-map [(shift return)] 'org-meta-return))
+  ;; notmuch config
+  (require 'notmuch) ;; not much I can do about this I think (hehe)
+  (add-to-list 'auto-mode-alist '("astroid@fpc.none" . notmuch-message-mode))
+
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
