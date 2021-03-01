@@ -81,8 +81,9 @@ This function should only modify configuration layer settings."
      multiple-cursors
      org
      (shell :variables
-            shell-default-height 30
-            shell-default-position 'bottom)
+            shell-default-shell 'vterm
+            shell-default-width 24
+            shell-default-position 'right)
      (spell-checking :variables
                      spell-checking-enable-by-default nil)
      syntax-checking
@@ -528,6 +529,9 @@ before packages are loaded."
 
    ;; Org settings
    org-projectile-capture-template "* TODO %?\n%U\n%a\n"
+
+   ;; vterm settings
+   vterm-min-window-width 1
    )
 
   ;; General keybinds
@@ -587,8 +591,8 @@ before packages are loaded."
     )
 
   ;; Terminal config
-  (with-eval-after-load 'term
-    (evil-set-initial-state 'term-mode 'emacs))
+  ;; (with-eval-after-load 'term
+  ;;   (evil-set-initial-state 'term-mode 'emacs))
   (defun scroll-hook nil
     (make-local-variable 'scroll-margin)
     (setq scroll-margin 0))
