@@ -35,6 +35,7 @@ This function should only modify configuration layer settings."
    dotspacemacs-configuration-layers
    '(
      notmuch
+     html
      systemd
      (debug :variables
             debug-additional-debuggers '("pdb"))
@@ -526,6 +527,7 @@ before packages are loaded."
    flycheck-python-mypy-args "--follow-imports=silent"
    lsp-diagnostic-package :none
    ;; yas-inhibit-overlay-modification-protection nil
+   importmagic-python-interpreter "python"
 
    ;; Org settings
    org-projectile-capture-template "* TODO %?\n%U\n%a\n"
@@ -606,6 +608,10 @@ before packages are loaded."
   ;; org-mode config
   (with-eval-after-load 'org
     (org-defkey org-mode-map [(shift return)] 'org-meta-return))
+
+  (with-eval-after-load 'markdown
+    (add-hook 'markdown-mode-hook #'turn-on-auto-fill))
+
   ;; notmuch config
   (require 'notmuch) ;; not much I can do about this I think (hehe)
   (add-to-list 'auto-mode-alist '("astroid@fpc.none" . notmuch-message-mode))
