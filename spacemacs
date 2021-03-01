@@ -561,6 +561,9 @@ before packages are loaded."
   ;; Leader keybinds
   (spacemacs/set-leader-keys (kbd "wz") 'fit-window-to-buffer)
   (spacemacs/set-leader-keys (kbd "bc") 'clone-indirect-buffer-other-window)
+  (spacemacs/set-leader-keys (kbd "rw") 'window-configuration-to-register)
+  (spacemacs/set-leader-keys (kbd "rj") 'jump-to-register)
+
 
   ;; Mode keybinds
   (with-eval-after-load "company"
