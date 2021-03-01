@@ -80,7 +80,8 @@ This function should only modify configuration layer settings."
      helm
      markdown
      multiple-cursors
-     org
+     (org :variables
+          org-want-todo-bindings t)
      (shell :variables
             shell-default-shell 'vterm
             shell-default-width 24
@@ -529,9 +530,6 @@ before packages are loaded."
    ;; yas-inhibit-overlay-modification-protection nil
    importmagic-python-interpreter "python"
 
-   ;; Org settings
-   org-projectile-capture-template "* TODO %?\n%U\n%a\n"
-
    ;; vterm settings
    vterm-min-window-width 1
    )
@@ -610,7 +608,47 @@ before packages are loaded."
 
   ;; org-mode config
   (with-eval-after-load 'org
-    (org-defkey org-mode-map [(shift return)] 'org-meta-return))
+    (org-defkey org-mode-map [(shift return)] 'org-meta-return)
+
+    (setq-default
+     org-projectile-capture-template "* TODO %?\n%U\n%a\n"
+
+     org-agenda-files '("~/net/gtd/inbox.org"
+                        "~/net/gtd/gtd.org")
+     org-capture-templates '(("c" "Inbox" entry
+                              (file+headline "~/net/gtd/inbox.org" "Items")
+                              "* TODO %i%?")
+                             ("l" "Inbox w/ link" entry
+                              (file+headline "~/net/gtd/inbox.org" "Items")
+                              "* TODO %?\n%a"))
+     org-refile-targets '(("~/net/gtd/gtd.org" :maxlevel . 2)
+                          ("~/net/gtd/maybe.org" :level . 1))
+     org-todo-keywords '((sequence "TODO(t)" "WAITING(w)" "|" "DONE(d)" "CANCELED(c)"))
+     org-agenda-prefix-format '((todo . "%-40b") (agenda . " %i %-12:c%?-12t% s") (tags . " %i %-12:c") (search . " %i %-12:c"))
+     org-agenda-custom-commands '(("o" "Todo" todo "TODO|WAITING"
+                                   ((org-agenda-files '("~/net/gtd/gtd.org"))
+                                    (org-agenda-overriding-header "GTD TODO")
+                                    (org-agenda-skip-function #'my-org-agenda-skip-all-siblings-but-first))))
+     )
+
+    (defun my-org-agenda-skip-all-siblings-but-first ()
+      "Skip all but the first non-done entry."
+      (let (should-skip-entry)
+        (unless (org-current-is-todo)
+          (setq should-skip-entry t))
+        (save-excursion
+          (while (and (not should-skip-entry) (org-goto-sibling t))
+            (when (org-current-is-todo)
+              (setq should-skip-entry t))))
+        (when should-skip-entry
+          (or (outline-next-heading)
+              (goto-char (point-max))))))
+
+    (defun org-current-is-todo ()
+      (string= "TODO" (org-get-todo-state)))
+
+    )
+
 
   (with-eval-after-load 'markdown
     (add-hook 'markdown-mode-hook #'turn-on-auto-fill))
