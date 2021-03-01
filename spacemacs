@@ -622,14 +622,27 @@ before packages are loaded."
                               (file+headline "~/net/gtd/inbox.org" "Items")
                               "* TODO %?\n%a"))
      org-refile-targets '(("~/net/gtd/gtd.org" :maxlevel . 2)
-                          ("~/net/gtd/maybe.org" :level . 1))
+                          ("~/net/gtd/maybe.org" :maxlevel . 2))
      org-todo-keywords '((sequence "TODO(t)" "WAITING(w)" "|" "DONE(d)" "CANCELED(c)"))
-     org-agenda-prefix-format '((todo . "%-40b") (agenda . " %i %-12:c%?-12t% s") (tags . " %i %-12:c") (search . " %i %-12:c"))
-     org-agenda-custom-commands '(("o" "Todo" todo "TODO|WAITING"
-                                   ((org-agenda-files '("~/net/gtd/gtd.org"))
-                                    (org-agenda-overriding-header "GTD TODO")
-                                    (org-agenda-skip-function #'my-org-agenda-skip-all-siblings-but-first))))
+     org-agenda-prefix-format '((todo . "%-40b") (agenda . " %i %-12:c%?-12t% s") (tags . "%b") (search . " %i %-12:c"))
+     org-agenda-custom-commands '(("w" "Waiting"
+                                   todo "WAITING"
+                                         ((org-agenda-files '("~/net/gtd/gtd.org"))
+                                          (org-agenda-overriding-header "Waiting")))
+                                  ("o" "To do"
+                                   ((tags-todo "+CATEGORY=\"Tasks\""
+                                               ((org-agenda-files '("~/net/gtd/gtd.org"))
+                                                (org-agenda-overriding-header "Tasks")
+                                                (org-agenda-sorting-strategy '(time-up todo-state-up))
+                                                ))
+                                    (tags-todo "+CATEGORY=\"Projects\""
+                                               ((org-agenda-files '("~/net/gtd/gtd.org"))
+                                                (org-agenda-overriding-header "Projects")
+                                                (org-agenda-sorting-strategy '(time-up todo-state-up))
+                                                (org-agenda-skip-function #'my-org-agenda-skip-all-siblings-but-first))))))
      )
+
+    (add-hook 'auto-save-hook 'org-save-all-org-buffers)
 
     (defun my-org-agenda-skip-all-siblings-but-first ()
       "Skip all but the first non-done entry."
@@ -645,7 +658,7 @@ before packages are loaded."
               (goto-char (point-max))))))
 
     (defun org-current-is-todo ()
-      (string= "TODO" (org-get-todo-state)))
+      (or (string= "TODO" (org-get-todo-state)) (string= "WAITING" (org-get-todo-state))))
 
     )
 
