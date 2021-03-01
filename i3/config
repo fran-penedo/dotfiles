@@ -93,7 +93,7 @@ bindsym Control+q exec true
 bindsym Print exec xfce4-screenshooter
 bindsym $mod+Control+w exec firefox
 # bindsym $mod+Control+s exec ~/dotfiles/scripts/wtoggle catfish
-bindsym $mod+Control+c [title="calcurse"] scratchpad show
+# bindsym $mod+Control+c [title="calcurse"] scratchpad show
 bindsym $mod+Control+f exec urxvt -e ranger
 # bindsym $mod+Control+m exec "[ \\"$(i3-msg '[class=\\"Astroid\\"] scratchpad show', floating disable)\\" = \\"[{\\\\"success\\\\":true},{\\\\"success\\\\":true}]\\" ] || i3-msg '[class=\\"Astroid\\"] move scratchpad'"
 # bindsym $mod+Control+m [class="Astroid"] scratchpad show; [class="URxvt" title="astroid@"] scratchpad show
@@ -305,7 +305,7 @@ for_window [class="(?i)pavucontrol"] floating enable
 for_window [class="Catfish"] floating enable
 for_window [class="ssh-askpass"] floating enable
 for_window [class="Astroid" window_type="normal"] move scratchpad
-for_window [title="^calcurse$"] move scratchpad
+# for_window [title="^calcurse$"] move scratchpad
 
 assign [class="sun-applet-AppletViewer"] $w7
 
@@ -320,7 +320,7 @@ exec --no-startup-id laptop-mode force
 # exec --no-startup-id offlineimap -1 -u quiet
 # exec --no-startup-id urxvt -e sup
 exec --no-startup-id astroid
-exec --no-startup-id urxvt -e calcurse
+# exec --no-startup-id urxvt -e calcurse
 # exec --no-startup-id urxvt -e tmux new -s newsboat newsboat
 exec --no-startup-id clipit
 exec --no-startup-id redshift-gtk
