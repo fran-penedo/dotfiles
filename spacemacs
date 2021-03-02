@@ -610,6 +610,10 @@ before packages are loaded."
   (with-eval-after-load 'org
     (org-defkey org-mode-map [(shift return)] 'org-meta-return)
 
+    (setq my-org-filter-tags '("@alcampo" "@galicia" "@sancristobal"))
+    (defun my-org-add-filter (match)
+      (concat match "-" (s-join "-" my-org-filter-tags)))
+
     (setq-default
      org-projectile-capture-template "* TODO %?\n%U\n%a\n"
 
@@ -625,21 +629,31 @@ before packages are loaded."
                           ("~/net/gtd/maybe.org" :maxlevel . 2))
      org-todo-keywords '((sequence "TODO(t)" "WAITING(w)" "|" "DONE(d)" "CANCELED(c)"))
      org-agenda-prefix-format '((todo . "%-40b") (agenda . " %i %-12:c%?-12t% s") (tags . "%b") (search . " %i %-12:c"))
+     org-agenda-exporter-settings '((org-agenda-prefix-format "- [ ] ")
+                                    (org-agenda-remove-tags t)
+                                    (org-agenda-compact-blocks t)
+                                    (org-agenda-overriding-header ""))
      org-agenda-custom-commands '(("w" "Waiting"
                                    todo "WAITING"
                                          ((org-agenda-files '("~/net/gtd/gtd.org"))
                                           (org-agenda-overriding-header "Waiting")))
                                   ("o" "To do"
-                                   ((tags-todo "+CATEGORY=\"Tasks\""
+                                   ((tags-todo (my-org-add-filter "+CATEGORY=\"Tasks\"")
                                                ((org-agenda-files '("~/net/gtd/gtd.org"))
                                                 (org-agenda-overriding-header "Tasks")
                                                 (org-agenda-sorting-strategy '(time-up todo-state-up))
                                                 ))
-                                    (tags-todo "+CATEGORY=\"Projects\""
+                                    (tags-todo (my-org-add-filter "+CATEGORY=\"Projects\"")
                                                ((org-agenda-files '("~/net/gtd/gtd.org"))
                                                 (org-agenda-overriding-header "Projects")
                                                 (org-agenda-sorting-strategy '(time-up todo-state-up))
-                                                (org-agenda-skip-function #'my-org-agenda-skip-all-siblings-but-first))))))
+                                                (org-agenda-skip-function #'my-org-agenda-skip-all-siblings-but-first)))))
+                                  ("c" . "Context")
+                                  ("ca" "@alcampo" tags-todo "+@alcampo" nil ("~/cloud/Notes/alcampo.md"))
+                                  ("cg" "@galicia" tags-todo "+@galicia")
+                                  ("cs" "@sancristobal" tags-todo "+@sancristobal")
+                                  ("ct" "@togo" tags-todo "+@togo" nil ("~/cloud/Notes/todo.md")))
+     org-stuck-projects '("+LEVEL=2+CATEGORY=\"Projects\"/-DONE" ("TODO" "WAITING") nil "")
      )
 
     (add-hook 'auto-save-hook 'org-save-all-org-buffers)
