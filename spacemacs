@@ -586,6 +586,10 @@ before packages are loaded."
     (spacemacs/set-leader-keys-for-major-mode 'latex-mode "e" 'TeX-error-overview)
     (define-key TeX-error-overview-mode-map (kbd "<return>") 'TeX-error-overview-jump-to-source))
 
+  ;; pdf config
+  (with-eval-after-load "pdf-view"
+    (define-key pdf-view-mode-map (kbd "C-<return>") 'pdf-isearch-sync-backward))
+
   ;; Python config
   (with-eval-after-load "flycheck"
     (require 'flycheck-mypy)
