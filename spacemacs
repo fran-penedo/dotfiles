@@ -550,7 +550,10 @@ before packages are loaded."
   (define-key evil-normal-state-map (kbd "C-n") 'neotree-toggle)
   (define-key evil-normal-state-map "zl" 'hs-hide-level)
   (define-key evil-normal-state-map "M" 'helm-projectile-switch-to-buffer)
-  (define-key evil-normal-state-map (kbd "C-p") 'helm-projectile)
+  (defun helm-projectile-or-find ()
+    (interactive)
+    (if (projectile-project-root) (helm-projectile) (helm-find nil)))
+  (define-key evil-normal-state-map (kbd "C-p") 'helm-projectile-or-find)
   (define-key evil-normal-state-map "f" 'evil-avy-goto-char-2)
   ;; (define-key evil-normal-state-map (kbd "r") (lambda () (interactive) (evil-ex "%s/")))
   (define-key evil-normal-state-map (kbd "r") 'save-buffer)
@@ -573,8 +576,8 @@ before packages are loaded."
   ;; (with-eval-after-load "ranger"
   (define-key ranger-mode-map (kbd "C-p") nil)
   (define-key dired-mode-map (kbd "C-p") nil)
-  (define-key ranger-mode-map (kbd "C-p") 'helm-projectile)
-  (define-key dired-mode-map (kbd "C-p") 'helm-projectile)
+  (define-key ranger-mode-map (kbd "C-p") 'helm-projectile-or-find)
+  (define-key dired-mode-map (kbd "C-p") 'helm-projectile-or-find)
 
   ;; Latex config
   (add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer)
@@ -608,6 +611,8 @@ before packages are loaded."
 
   ;; org-mode config
   (with-eval-after-load 'org
+    (add-hook 'org-mode-hook #'turn-on-auto-fill)
+
     (org-defkey org-mode-map [(shift return)] 'org-meta-return)
 
     (setq my-org-filter-tags '("@alcampo" "@galicia" "@sancristobal"))
