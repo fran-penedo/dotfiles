@@ -615,7 +615,7 @@ before packages are loaded."
 
     (org-defkey org-mode-map [(shift return)] 'org-meta-return)
 
-    (setq my-org-filter-tags '("@alcampo" "@galicia" "@sancristobal"))
+    (setq my-org-filter-tags '("@alcampo" "@galicia" "@sancristobal" "@workout"))
     (defun my-org-add-filter (match)
       (concat match "-" (s-join "-" my-org-filter-tags)))
 
@@ -657,6 +657,7 @@ before packages are loaded."
                                   ("ca" "@alcampo" tags-todo "+@alcampo" nil ("~/cloud/Notes/alcampo.md"))
                                   ("cg" "@galicia" tags-todo "+@galicia")
                                   ("cs" "@sancristobal" tags-todo "+@sancristobal")
+                                  ("cw" "@workout" tags-todo "+@workout")
                                   ("ct" "@togo" tags-todo "+@togo" nil ("~/cloud/Notes/todo.md"))
                                   ("d" . "Done")
                                   ("dt" "Done today" tags "+CLOSED>=\"<today>\"")
@@ -666,6 +667,7 @@ before packages are loaded."
      org-stuck-projects '("+LEVEL=2+CATEGORY=\"Projects\"/-DONE" ("TODO" "WAITING") nil "")
      )
 
+    (add-hook 'auto-save-hook 'org-store-agenda-views)
     (add-hook 'auto-save-hook 'org-save-all-org-buffers)
 
     (defun this-weeks-monday ()
