@@ -657,11 +657,21 @@ before packages are loaded."
                                   ("ca" "@alcampo" tags-todo "+@alcampo" nil ("~/cloud/Notes/alcampo.md"))
                                   ("cg" "@galicia" tags-todo "+@galicia")
                                   ("cs" "@sancristobal" tags-todo "+@sancristobal")
-                                  ("ct" "@togo" tags-todo "+@togo" nil ("~/cloud/Notes/todo.md")))
+                                  ("ct" "@togo" tags-todo "+@togo" nil ("~/cloud/Notes/todo.md"))
+                                  ("d" . "Done")
+                                  ("dt" "Done today" tags "+CLOSED>=\"<today>\"")
+                                  ("dw" "Done this week" tags (concat "+CLOSED>=\"<"
+                                                                           (this-weeks-monday)
+                                                                           ">\"")))
      org-stuck-projects '("+LEVEL=2+CATEGORY=\"Projects\"/-DONE" ("TODO" "WAITING") nil "")
      )
 
     (add-hook 'auto-save-hook 'org-save-all-org-buffers)
+
+    (defun this-weeks-monday ()
+      (let ((days-from-monday (1- (nth 6 (decode-time (current-time))))))
+        (format-time-string "%Y-%m-%d"
+                            (time-subtract (current-time) (days-to-time days-from-monday)))))
 
     (defun my-org-agenda-skip-all-siblings-but-first ()
       "Skip all but the first non-done entry."
