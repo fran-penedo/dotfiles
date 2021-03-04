@@ -100,7 +100,7 @@ This function should only modify configuration layer settings."
    ;; To use a local version of a package, use the `:location' property:
    ;; '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
-   dotspacemacs-additional-packages '(flycheck-mypy)
+   dotspacemacs-additional-packages '(flycheck-mypy org-caldav)
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -532,6 +532,14 @@ before packages are loaded."
 
    ;; vterm settings
    vterm-min-window-width 1
+
+   ;; org caldav settings
+   org-caldav-url "https://cloud.franpenedo.com/remote.php/dav/calendars/fran"
+   org-caldav-calendar-id "personal"
+   org-caldav-inbox "~/net/gtd/calendar.org"
+   org-caldav-files (list org-caldav-inbox)
+   org-icalendar-timezone "Europe/Madrid"
+   org-caldav-save-directory "~/net/gtd/"
    )
 
   ;; General keybinds
@@ -628,12 +636,13 @@ before packages are loaded."
      org-projectile-capture-template "* TODO %?\n%U\n%a\n"
 
      org-agenda-files '("~/net/gtd/inbox.org"
-                        "~/net/gtd/gtd.org")
+                        "~/net/gtd/gtd.org"
+                        "~/net/gtd/calendar.org")
      org-capture-templates '(("c" "Inbox" entry
-                              (file+headline "~/net/gtd/inbox.org" "Items")
+                              (file "~/net/gtd/inbox.org")
                               "* TODO %i%?")
                              ("l" "Inbox w/ link" entry
-                              (file+headline "~/net/gtd/inbox.org" "Items")
+                              (file "~/net/gtd/inbox.org")
                               "* TODO %?\n%a"))
      org-refile-targets '(("~/net/gtd/gtd.org" :maxlevel . 2)
                           ("~/net/gtd/maybe.org" :maxlevel . 2))
@@ -651,26 +660,28 @@ before packages are loaded."
                                    ((tags-todo (my-org-add-filter  "+CATEGORY=\"Tasks\"+SCHEDULED<=\"<now>\"|+CATEGORY=\"Tasks\"+SCHEDULED=\"\"")
                                                ((org-agenda-files '("~/net/gtd/gtd.org"))
                                                 (org-agenda-overriding-header "Tasks")
-                                                (org-agenda-sorting-strategy '(time-up todo-state-up))
+                                                (org-agenda-sorting-strategy '(time-up todo-state-up priority-down))
                                                 ))
                                     (tags-todo (my-org-add-filter "+CATEGORY=\"Projects\"+SCHEDULED<=\"<now>\"|+CATEGORY=\"Projects\"+SCHEDULED=\"\"")
                                                ((org-agenda-files '("~/net/gtd/gtd.org"))
                                                 (org-agenda-overriding-header "Projects")
-                                                (org-agenda-sorting-strategy '(time-up todo-state-up))
+                                                (org-agenda-sorting-strategy '(time-up todo-state-up priority-down))
                                                 (org-agenda-skip-function #'my-org-agenda-skip-all-siblings-but-first)))))
                                   ("c" . "Context")
-                                  ("ca" "@alcampo" tags-todo "+@alcampo" nil ("~/cloud/Notes/alcampo.md"))
+                                  ("ca" "@alcampo" tags-todo "+@alcampo")
                                   ("cg" "@galicia" tags-todo "+@galicia")
                                   ("cs" "@sancristobal" tags-todo "+@sancristobal")
                                   ("cw" "@workout" tags-todo "+@workout")
-                                  ("ct" "@togo" tags-todo "+@togo" nil ("~/cloud/Notes/todo.md"))
+                                  ("ct" "@togo" tags-todo "+@togo")
                                   ("d" . "Done")
                                   ("dt" "Done today" tags "+CLOSED>=\"<today>\"")
                                   ("dw" "Done this week" tags (concat "+CLOSED>=\"<"
                                                                            (this-weeks-monday)
                                                                            ">\"")))
      org-stuck-projects '("+LEVEL=2+CATEGORY=\"Projects\"/-DONE" ("TODO" "WAITING") nil "")
+     org-priority-get-priority-function #'my/org-inherited-priority
      )
+
 
     (add-hook 'auto-save-hook 'org-store-agenda-views)
     (add-hook 'auto-save-hook 'org-save-all-org-buffers)
@@ -679,6 +690,22 @@ before packages are loaded."
       (let ((days-from-monday (1- (nth 6 (decode-time (current-time))))))
         (format-time-string "%Y-%m-%d"
                             (time-subtract (current-time) (days-to-time days-from-monday)))))
+
+    (defun my/org-inherited-priority (s)
+      (cond
+
+       ;; Priority cookie in this heading
+       ((string-match org-priority-regexp s)
+        (* 1000 (- org-priority-lowest
+                   (org-priority-to-value (match-string 2 s)))))
+
+       ;; No priority cookie, but already at highest level
+       ((not (org-up-heading-safe))
+        (* 1000 (- org-priority-lowest org-priority-default)))
+
+       ;; Look for the parent's priority
+       (t
+        (my/org-inherited-priority (org-get-heading)))))
 
     (defun my-org-agenda-skip-all-siblings-but-first ()
       "Skip all but the first non-done entry."
