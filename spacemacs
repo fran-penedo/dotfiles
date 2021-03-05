@@ -652,12 +652,18 @@ before packages are loaded."
                                     (org-agenda-remove-tags t)
                                     (org-agenda-compact-blocks t)
                                     (org-agenda-overriding-header ""))
-     org-agenda-custom-commands '(("w" "Waiting"
+     org-agenda-custom-commands '(("a" "Weekly Agenda"
+                                   agenda "" ((org-agenda-span 8)
+                                              (org-agenda-start-day "today")))
+                                  ("w" "Waiting"
                                    todo "WAITING"
                                          ((org-agenda-files '("~/net/gtd/gtd.org"))
                                           (org-agenda-overriding-header "Waiting")))
                                   ("o" "To do"
-                                   ((tags-todo (my-org-add-filter  "+CATEGORY=\"Tasks\"+SCHEDULED<=\"<now>\"|+CATEGORY=\"Tasks\"+SCHEDULED=\"\"")
+                                   ((agenda "" ((org-agenda-files '("~/net/gtd/calendar.org"))
+                                                (org-agenda-overriding-header "Today's appointments")
+                                                (org-agenda-span 1)))
+                                    (tags-todo (my-org-add-filter  "+CATEGORY=\"Tasks\"+SCHEDULED<=\"<now>\"|+CATEGORY=\"Tasks\"+SCHEDULED=\"\"")
                                                ((org-agenda-files '("~/net/gtd/gtd.org"))
                                                 (org-agenda-overriding-header "Tasks")
                                                 (org-agenda-sorting-strategy '(time-up todo-state-up priority-down))
