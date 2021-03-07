@@ -142,3 +142,10 @@ echo "UPDATESTARTUPTTY" | gpg-connect-agent > /dev/null
 export PROMPT_COMMAND="echo -n '\a'"
 promptcmd() { eval "$PROMPT_COMMAND" }
 add-zsh-hook precmd promptcmd
+
+# duckduckgo search
+ddg ()
+{
+    /usr/bin/w3m "https://duckduckgo.com/lite?q=$*&kd=-1"
+}
+
