@@ -591,6 +591,10 @@ before packages are loaded."
   (define-key ranger-mode-map (kbd "C-p") 'helm-projectile-or-find)
   (define-key dired-mode-map (kbd "C-p") 'helm-projectile-or-find)
 
+  ;; recentf config
+  (with-eval-after-load "recentf"
+    (add-to-list 'recentf-exclude "/tmp/"))
+
   ;; Latex config
   (add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer)
   (with-eval-after-load "tex-buf"
@@ -737,6 +741,7 @@ before packages are loaded."
     )
 
 
+  ;; markdown config
   (with-eval-after-load 'markdown
     (add-hook 'markdown-mode-hook #'turn-on-auto-fill))
 
