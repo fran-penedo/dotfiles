@@ -52,7 +52,7 @@ This function should only modify configuration layer settings."
              python-shell-interpreter-args "-i"
              python-sort-imports-on-save t
              python-backend 'lsp
-             python-lsp-server 'mspyls)
+             python-lsp-server 'pyright)
      (lsp :variables
           lsp-enable-symbol-highlighting nil
           lsp-headerline-breadcrumb-enable t)
