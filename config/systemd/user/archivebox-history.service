@@ -1,0 +1,8 @@
+[Unit]
+Description=Archivebox periodic history archiving
+Wants=wait-for-network.service
+After=wait-for-network.service
+
+[Service]
+WorkingDirectory=/home/fran/archivebox
+ExecStart=/home/fran/dotfiles/scripts/archivebox-periodic.sh

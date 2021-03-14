@@ -1,2 +1,3 @@
 config/systemd/user/timers.target.wants/tube-archive.timer
 config/systemd/user/timers.target.wants/ytmusic.timer
+config/systemd/user/timers.target.wants/archivebox-history.timer
