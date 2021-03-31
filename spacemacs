@@ -646,6 +646,18 @@ before packages are loaded."
   (add-hook 'term-mode-hook #'scroll-hook)
   (add-hook 'inferior-python-mode-hook #'scroll-hook)
 
+  (defun start-pipe-script (name)
+    (interactive "sScript name: ")
+    (let ((fn (concat "~/dev/scripting/" name)))
+      (vterm-send-string (concat "watch -n1 " fn))
+      (vterm-send-return)
+      (other-window 1)
+      (find-file fn)
+      (write-file fn)
+      (set-file-modes fn #o755)))
+  (with-eval-after-load 'vterm 
+    (spacemacs/set-leader-keys-for-major-mode 'vterm-mode "p" 'start-pipe-script))
+
   ;; Haskell config
   (with-eval-after-load 'intero
     (flycheck-add-next-checker 'intero '(warning . haskell-hlint)))
