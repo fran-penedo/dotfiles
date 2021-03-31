@@ -616,6 +616,27 @@ before packages are loaded."
     ;; (add-hook 'python-mode-hook #'(lambda () (push '(company-capf company-yasnippet) company-backends))) ; breaks lsp?
     )
 
+  (with-eval-after-load 'lsp
+    (dap-register-debug-template
+     "Python :: Run file (buffer)"
+     (list :type "python"
+           :args ""
+           :cwd "${workspaceFolder}"
+           :module nil
+           :program nil
+           :request "launch"
+           :name "Python :: Run file (buffer)"))
+
+    (dap-register-debug-template
+     "Python :: Run project"
+     (list :type "python"
+           :args ""
+           :cwd "${workspaceFolder}"
+           :module nil
+           :program nil
+           :request "launch"
+           :name "Python :: Run project")))
+
   ;; Terminal config
   ;; (with-eval-after-load 'term
   ;;   (evil-set-initial-state 'term-mode 'emacs))
