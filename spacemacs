@@ -719,7 +719,8 @@ before packages are loaded."
 
     ;; (add-hook 'auto-save-hook 'org-store-agenda-views)
     (add-hook 'auto-save-hook 'org-save-all-org-buffers)
-    (if (string-match "^fpc" (system-name))
+
+    (if (and (string-match "^fpc" (system-name)) (string-match "daemon" server-name))
         (setq caldav-timer (run-at-time t 3600 'org-caldav-sync)))
 
     (defun this-weeks-monday ()
