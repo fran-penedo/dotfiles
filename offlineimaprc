@@ -12,7 +12,7 @@ remoterepository = personal-remote
 # autorefresh = 5
 quick = 10
 presynchook = /home/fran/dotfiles/scripts/maildir-notmuch-sync pre /home/fran/mail/personal
-postsynchook = /home/fran/dotfiles/scripts/maildir-notmuch-sync post /home/fran/mail/personal
+postsynchook = /home/fran/dotfiles/scripts/maildir-notmuch-sync post /home/fran/mail/personal && /home/fran/dotfiles/scripts/mail-rssify.py
 
 [Repository personal-local]
 type = Maildir
