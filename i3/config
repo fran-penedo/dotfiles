@@ -327,3 +327,4 @@ exec --no-startup-id redshift-gtk
 exec --no-startup-id devmon
 exec --no-startup-id blueberry-tray
 exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd
+exec --no-startup-id zsh -c "sshfs fserver-vpn ~/fserver"
