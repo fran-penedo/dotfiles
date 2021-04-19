@@ -776,12 +776,13 @@ before packages are loaded."
 
 
   ;; markdown config
-  (with-eval-after-load 'markdown
+  (with-eval-after-load 'markdown-mode
     (add-hook 'markdown-mode-hook #'turn-on-auto-fill))
 
   ;; notmuch config
   (require 'notmuch) ;; not much I can do about this I think (hehe)
   (add-to-list 'auto-mode-alist '("astroid@fpc.none" . notmuch-message-mode))
+  (add-hook 'notmuch-message-mode-hook #'turn-on-auto-fill)
 
   )
 
