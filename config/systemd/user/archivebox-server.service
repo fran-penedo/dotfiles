@@ -1,0 +1,11 @@
+[Unit]
+Description=Archivebox server
+
+[Service]
+Type=simple
+WorkingDirectory=/home/fran/archivebox
+ExecStart=/usr/bin/archivebox server
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
