@@ -857,6 +857,21 @@ before packages are loaded."
   (add-to-list 'auto-mode-alist '("astroid@fpc.none" . notmuch-message-mode))
   (add-hook 'notmuch-message-mode-hook #'turn-on-auto-fill)
 
+  ;; fixes to git-gutter+ when using tramp
+  (with-eval-after-load 'git-gutter+
+    ;; https://github.com/syl20bnr/spacemacs/issues/12860#issuecomment-602084919
+    (defun git-gutter+-remote-default-directory (dir file)
+      (let* ((vec (tramp-dissect-file-name file))
+             (method (tramp-file-name-method vec))
+             (user (tramp-file-name-user vec))
+             (domain (tramp-file-name-domain vec))
+             (host (tramp-file-name-host vec))
+             (port (tramp-file-name-port vec)))
+        (tramp-make-tramp-file-name method user domain host port dir)))
+
+    (defun git-gutter+-remote-file-path (dir file)
+      (let ((file (tramp-file-name-localname (tramp-dissect-file-name file))))
+        (replace-regexp-in-string (concat "\\`" dir) "" file))))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
