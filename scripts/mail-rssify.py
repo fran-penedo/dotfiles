@@ -6,6 +6,7 @@ import re
 import traceback
 from email.parser import BytesParser
 from email.policy import default
+from urllib.parse import quote
 
 import requests
 import keyring
@@ -24,6 +25,21 @@ NEXTCLOUD_PASS = keyring.get_password("cloud.franpenedo.com", "fran")
 SUBJECT_REGEX = re.compile(r"^Subject: (.*)", re.MULTILINE)
 SUBJECT_EXTRACTORS = [r"^Chapter: (.*) Ch[0-9]+ .*"]
 SUBJECT_EXTRACTORS = [re.compile(e) for e in SUBJECT_EXTRACTORS]
+
+
+def escape_fn(fn):
+    escapes = r" '?"
+    for c in escapes:
+        fn = fn.replace(c, f"\\{c}")
+
+    return fn
+
+
+def remove_tricky_characters(title):
+    chars = r"?"
+    for c in chars:
+        title = title.replace(c, "")
+    return title
 
 
 mail_map = {}
@@ -47,19 +63,24 @@ for title, mails in mail_map.items():
         if not os.path.exists(out_path):
             rssify_add = True
         with open(out_path, "w") as f:
-            f.write(f"<name>{title}</name>\n")
+            f.write(f"<name>{remove_tricky_characters(title)}</name>\n")
             for mail in mails:
                 f.write(
                     f"<mail>\n<date>{mail['date']}</date>\n{mail.get_body().get_content()}</mail>\n"
                 )
-        escaped_target_fn = os.path.join(OUT_SERVER_DIR, out_fn).replace(" ", "\\ ")
+        escaped_target_fn = escape_fn(os.path.join(OUT_SERVER_DIR, out_fn))
         os.system(f'scp "{out_path}" {OUT_SERVER}:"{escaped_target_fn}" > /dev/null')
         if RSSIFY_ALL or rssify_add:
             r = requests.post(
                 RSSIFY_URL,
                 json={"url": f"file://{os.path.join(OUT_SERVER_DIR, out_fn)}"},
             )
-            if not r.json()["added"] and not RSSIFY_ALL:
+            if r.status_code != 200:
+                print(
+                    f"Failed to rssify {title}: Server error.\nCause: {r}",
+                    file=sys.stderr,
+                )
+            elif not r.json()["added"] and not RSSIFY_ALL:
                 print(
                     f"Failed to rssify {title}: {r.json()['reason']}", file=sys.stderr
                 )
