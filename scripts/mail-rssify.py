@@ -28,7 +28,7 @@ SUBJECT_EXTRACTORS = [re.compile(e) for e in SUBJECT_EXTRACTORS]
 
 
 def escape_fn(fn):
-    escapes = r" '?"
+    escapes = r" '?()"
     for c in escapes:
         fn = fn.replace(c, f"\\{c}")
 
