@@ -1,3 +1,20 @@
+if [[ "$TERM" == "tramp" ]]
+then
+  unsetopt zle
+  unsetopt prompt_cr
+  unsetopt prompt_subst
+  if whence -w precmd >/dev/null; then
+      unfunction precmd
+  fi
+  if whence -w preexec >/dev/null; then
+      unfunction preexec
+  fi
+  unset RPROMPT
+  unset RPS1
+  PS1='$ '
+  return
+fi
+
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 

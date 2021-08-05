@@ -587,6 +587,7 @@ before packages are loaded."
    fill-column 88
    scroll-margin 8
    flycheck-check-syntax-automatically '(save new-line mode-enabled)
+   tramp-terminal-type "tramp"
 
    ;; Latex settings
    TeX-PDF-from-DVI "Dvips"
