@@ -856,7 +856,7 @@ before packages are loaded."
 
   ;; notmuch config
   (require 'notmuch) ;; not much I can do about this I think (hehe)
-  (add-to-list 'auto-mode-alist '("astroid@fpc.none" . notmuch-message-mode))
+  (add-to-list 'auto-mode-alist '("astroid@[[:alnum:]]+\\.none" . notmuch-message-mode))
   (add-hook 'notmuch-message-mode-hook #'turn-on-auto-fill)
 
   ;; fixes to git-gutter+ when using tramp
