@@ -49,7 +49,12 @@ status.register(
 
 status.register(
     "mem",
-    format="MEM:{used_mem}M",
+    format="MEM:{avail_mem}M",
+)
+
+status.register(
+    "swap",
+    format="SWP:{free}M",
 )
 
 status.register(
