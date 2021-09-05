@@ -642,6 +642,7 @@ before packages are loaded."
     (if (projectile-project-root) (helm-projectile) (helm-find nil)))
   (define-key evil-normal-state-map (kbd "C-p") 'helm-projectile-or-find)
   (define-key evil-normal-state-map "f" 'evil-avy-goto-char-2)
+  (define-key evil-normal-state-map "F" 'evil-avy-goto-char-in-line)
   ;; (define-key evil-normal-state-map (kbd "r") (lambda () (interactive) (evil-ex "%s/")))
   (define-key evil-normal-state-map (kbd "r") 'save-buffer)
   (define-key evil-motion-state-map (kbd "C-o") nil) ; Disable C-o so it can be bound in major modes
@@ -651,6 +652,7 @@ before packages are loaded."
   (spacemacs/set-leader-keys (kbd "bc") 'clone-indirect-buffer-other-window)
   (spacemacs/set-leader-keys (kbd "rw") 'window-configuration-to-register)
   (spacemacs/set-leader-keys (kbd "rj") 'jump-to-register)
+  (spacemacs/set-leader-keys (kbd "aa") 'vterm)
 
 
   ;; Mode keybinds
@@ -665,6 +667,12 @@ before packages are loaded."
   (define-key dired-mode-map (kbd "C-p") nil)
   (define-key ranger-mode-map (kbd "C-p") 'helm-projectile-or-find)
   (define-key dired-mode-map (kbd "C-p") 'helm-projectile-or-find)
+
+  ;; lsp config
+  (with-eval-after-load 'lsp
+    (setq lsp-ui-doc-show-with-cursor nil)
+    (setq lsp-ui-doc-show-with-mouse nil)
+    (advice-add 'lsp :before (lambda (&rest _args) (eval '(setf (lsp-session-server-id->folders (lsp-session)) (ht))))))
 
   ;; recentf config
   (with-eval-after-load "recentf"
@@ -691,7 +699,7 @@ before packages are loaded."
     ;; (add-hook 'python-mode-hook #'(lambda () (push '(company-capf company-yasnippet) company-backends))) ; breaks lsp?
     )
 
-  (with-eval-after-load 'lsp
+  (with-eval-after-load 'dap-mode
     (dap-register-debug-template
      "Python :: Run file (buffer)"
      (list :type "python"
