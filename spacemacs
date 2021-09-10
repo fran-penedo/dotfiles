@@ -669,7 +669,7 @@ before packages are loaded."
   (define-key dired-mode-map (kbd "C-p") 'helm-projectile-or-find)
 
   ;; lsp config
-  (with-eval-after-load 'lsp
+  (with-eval-after-load 'lsp-mode
     (setq lsp-ui-doc-show-with-cursor nil)
     (setq lsp-ui-doc-show-with-mouse nil)
     (advice-add 'lsp :before (lambda (&rest _args) (eval '(setf (lsp-session-server-id->folders (lsp-session)) (ht))))))
