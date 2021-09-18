@@ -115,8 +115,10 @@ bindsym $mod+w exec xclip -selection primary -o | xclip -selection clipboard -i
 bindsym XF86AudioLowerVolume exec amixer -q set Master 2%-
 bindsym XF86AudioRaiseVolume exec amixer -q set Master 2%+
 bindsym XF86AudioMute exec amixer -q set Master toggle
-# bindsym XF86AudioPause exec playerctl -p spotify pause; exec mpc pause
-# bindsym XF86AudioPlay exec playerctl -p spotify play; exec mpc play
+bindsym XF86AudioPause exec cmus-remote -u; exec playerctl -p 'strawberry' play-pause; exec mpc toggle
+bindsym XF86AudioPlay exec cmus-remote -u; exec playerctl -p 'strawberry' play-pause; exec mpc toggle
+bindsym XF86AudioNext exec cmus-remote -n; exec playerctl -p 'strawberry' next; exec mpc next
+bindsym XF86AudioPrev exec cmus-remote -r; exec playerctl -p 'strawberry' previous; exec mpc prev
 
 bindsym $win+c exec cmus-remote -u; exec playerctl -p 'strawberry' play-pause; exec mpc toggle
 bindsym $win+b exec cmus-remote -n; exec playerctl -p 'strawberry' next; exec mpc next
