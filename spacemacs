@@ -778,6 +778,7 @@ before packages are loaded."
                                     (org-agenda-overriding-header ""))
      org-agenda-custom-commands '(("a" "Weekly Agenda"
                                    agenda "" ((org-agenda-span 8)
+                                              (org-agenda-files '("~/net/gtd/calendar.org"))
                                               (org-agenda-start-day "today")))
                                   ("w" "Waiting"
                                    todo "WAITING"
@@ -786,7 +787,7 @@ before packages are loaded."
                                   ("o" "To do"
                                    ((agenda "" ((org-agenda-files '("~/net/gtd/calendar.org"))
                                                 (org-agenda-overriding-header "Today's appointments")
-                                                (org-agenda-span 1)))
+                                                (org-agenda-span 2)))
                                     (tags-todo (my-org-add-filter  "+CATEGORY=\"Tasks\"+SCHEDULED<=\"<now>\"|+CATEGORY=\"Tasks\"+SCHEDULED=\"\"")
                                                ((org-agenda-files '("~/net/gtd/gtd.org"))
                                                 (org-agenda-overriding-header "Tasks")
