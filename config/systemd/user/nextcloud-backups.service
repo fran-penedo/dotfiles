@@ -1,0 +1,7 @@
+[Unit]
+Description=Nextcloud periodic backups
+Wants=wait-for-network.service
+After=wait-for-network.service
+
+[Service]
+ExecStart=/home/fran/dev/scripting/nextcloud_backup
