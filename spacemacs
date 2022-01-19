@@ -819,7 +819,15 @@ before packages are loaded."
     (add-hook 'auto-save-hook 'org-save-all-org-buffers)
 
     (if (and (string-match "^fpc" (system-name)) (string-match "daemon" server-name))
-        (setq caldav-timer (run-at-time t 3600 'org-caldav-sync)))
+        (setq caldav-timer (run-at-time t 3600 'my/org-caldav-sync)))
+
+    (defun my/org-caldav-sync ()
+      (setq ip-yes (shell-command-to-string
+                    (concat
+                     "ping "
+                     (url-host (url-generic-parse-url org-caldav-url))
+                     " -c 1 -w 1 > /dev/null && echo \"\" || echo \"noip\"")))
+      (when (string= "" ip-yes) (org-caldav-sync)))
 
     (defun this-weeks-monday ()
       (let ((days-from-monday (mod (1- (nth 6 (decode-time (current-time)))) 7)))
