@@ -69,8 +69,10 @@ for title, mails in mail_map.items():
                     f"<mail>\n<date>{mail['date']}</date>\n{mail.get_body().get_content()}</mail>\n"
                 )
         escaped_target_fn = escape_fn(os.path.join(OUT_SERVER_DIR, out_fn))
-        os.system(f'scp "{out_path}" {OUT_SERVER}:"{escaped_target_fn}" > /dev/null')
         if RSSIFY_ALL or rssify_add:
+            os.system(
+                f'scp -o ConnectTimeout=5 "{out_path}" {OUT_SERVER}:"{escaped_target_fn}" > /dev/null'
+            )
             r = requests.post(
                 RSSIFY_URL,
                 json={"url": f"file://{os.path.join(OUT_SERVER_DIR, out_fn)}"},
@@ -102,3 +104,5 @@ for title, mails in mail_map.items():
                         print(nextcloud_r.text, file=sys.stderr)
     except Exception as e:
         traceback.print_exc()
+
+os.system(f'rsync --timeout=5 -PAa "{OUT_DIR}" {OUT_SERVER}:"{OUT_SERVER_DIR}"')
