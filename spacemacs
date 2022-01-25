@@ -589,7 +589,7 @@ before packages are loaded."
    scroll-margin 8
    flycheck-check-syntax-automatically '(save new-line mode-enabled)
    tramp-terminal-type "tramp"
-   winum-scope 'frame-local
+   ;; winum-scope 'visible
 
    ;; Latex settings
    TeX-PDF-from-DVI "Dvips"
