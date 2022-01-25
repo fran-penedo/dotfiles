@@ -4,7 +4,7 @@ Description=Archivebox server
 [Service]
 Type=simple
 WorkingDirectory=/home/fran/archivebox
-ExecStart=/usr/bin/archivebox server
+ExecStart=/usr/bin/docker-compose up
 Restart=on-failure
 
 [Install]
