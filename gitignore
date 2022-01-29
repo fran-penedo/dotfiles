@@ -1,7 +1,12 @@
+# Emacs aux files
+.pdf-view-restore
+
+# Tags
 GPATH
 GTAGS
 GRTAGS
 
+# Common Python build, test and auxiliary files
 .coverage
 cover/
 *.egg-info
@@ -14,6 +19,7 @@ bin/
 tmp/
 *.tmp
 *.bak
+*.bkp
 *.swp
 *~.nib
 local.properties
