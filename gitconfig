@@ -6,6 +6,7 @@
 	default = simple
 [core]
 	excludesfile = /home/fran/.gitignore
+  editor = emacsclient -s daemon
 [credential]
 	helper = /usr/share/git/credential/gnome-keyring/git-credential-gnome-keyring
 [github]
