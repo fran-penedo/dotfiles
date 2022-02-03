@@ -1,0 +1,2 @@
+#!/bin/bash
+~/.virtualenvs/books/bin/qtbooks qtgui
