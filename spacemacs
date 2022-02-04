@@ -590,6 +590,7 @@ before packages are loaded."
    flycheck-check-syntax-automatically '(save new-line mode-enabled)
    tramp-terminal-type "tramp"
    ;; winum-scope 'visible
+   browse-url-browser-function #'eww
 
    ;; Latex settings
    TeX-PDF-from-DVI "Dvips"
