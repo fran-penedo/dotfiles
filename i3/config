@@ -333,4 +333,4 @@ exec --no-startup-id devmon
 exec --no-startup-id blueberry-tray
 exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd
 exec --no-startup-id zsh -c "sshfs fserver-vpn ~/fserver"
-exec --no-startup-id i3-msg "workspace 9; append_layout /home/fran/dotfiles/i3/monitor.json; exec urxvt -T htop -e htop; exec urxvt -T atop1 -e sh -c 'sleep 1 && atop -lp'; exec urxvt -T atop2 -e sh -c 'sleep 2 && atop -lpM'; exec urxvt -T lnav -e sh -c 'journalctl -f | lnav'"
+exec --no-startup-id i3-msg "workspace 9; append_layout /home/fran/dotfiles/i3/monitor.json; exec urxvt -T htop -e htop; exec urxvt -T atop1 -e sh -c 'sleep 1 && atop -lp'; exec urxvt -T atop2 -e sh -c 'sleep 2 && atop -lpM'; exec urxvt -T lnav -e sh -c 'journalctl -f | lnav -I ~/dotfiles/lnav/'"
