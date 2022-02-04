@@ -758,6 +758,7 @@ before packages are loaded."
   ;; org-mode config
   (with-eval-after-load 'org
     (add-hook 'org-mode-hook #'turn-on-auto-fill)
+    (add-hook 'org-mode-hook #'spacemacs/toggle-spelling-checking-on)
 
     (org-defkey org-mode-map [(shift return)] 'org-meta-return)
 
