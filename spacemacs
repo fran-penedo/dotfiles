@@ -657,6 +657,7 @@ before packages are loaded."
   (define-key evil-insert-state-map (kbd "s-j") 'evil-window-down)
   (define-key evil-insert-state-map (kbd "s-k") 'evil-window-up)
   (define-key evil-insert-state-map (kbd "s-l") 'evil-window-right)
+  (evil-define-key 'normal eww-mode-map (kbd "s") 'ace-link-eww)
 
   ;; Leader keybinds
   (spacemacs/set-leader-keys (kbd "wz") 'fit-window-to-buffer)
