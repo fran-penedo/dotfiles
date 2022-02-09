@@ -81,22 +81,22 @@ urxvt*cursorColor:             S_base1
 urxvt*pointerColorBackground:  S_base01
 urxvt*pointerColorForeground:  S_base1
 
-urxvt*color0:                  S_base02
-urxvt*color1:                  S_red
-urxvt*color2:                  S_green
-urxvt*color3:                  S_yellow
+! urxvt*color0:                  S_base02
+! urxvt*color1:                  S_red
+! urxvt*color2:                  S_green
+! urxvt*color3:                  S_yellow
 urxvt*color4:                  S_blue
-urxvt*color5:                  S_magenta
-urxvt*color6:                  S_cyan
-urxvt*color7:                  S_base2
-urxvt*color9:                  S_orange
-urxvt*color8:                  S_base03
-urxvt*color10:                 S_base01
-urxvt*color11:                 S_base00
-urxvt*color12:                 S_base0
-urxvt*color13:                 S_violet
-urxvt*color14:                 S_base1
-urxvt*color15:                 S_base3
+! urxvt*color5:                  S_magenta
+! urxvt*color6:                  S_cyan
+! urxvt*color7:                  S_base2
+! urxvt*color9:                  S_orange
+! urxvt*color8:                  S_base03
+! urxvt*color10:                 S_base01
+! urxvt*color11:                 S_base00
+! urxvt*color12:                 S_base0
+! urxvt*color13:                 S_violet
+! urxvt*color14:                 S_base1
+! urxvt*color15:                 S_base3
 
 urxvt*transparent: true
 urxvt*shading: 20
