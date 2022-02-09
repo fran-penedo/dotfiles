@@ -51,25 +51,56 @@
             "type": "con"
         },
         {
+            // splith split container with 2 children
             "border": "pixel",
-            "current_border_width": 3,
             "floating": "auto_off",
-            "geometry": {
-               "height": 388,
-               "width": 564,
-               "x": 0,
-               "y": 0
-            },
+            "layout": "splith",
             "marks": [],
-            "name": "urxvt",
             "percent": 0.38,
-            "swallows": [
-               {
-               "class": "^URxvt$",
-               "title": "^atop2$"
-               }
-            ],
-            "type": "con"
+            "type": "con",
+            "nodes": [
+            {
+                "border": "pixel",
+                "current_border_width": 3,
+                "floating": "auto_off",
+                "geometry": {
+                  "height": 388,
+                  "width": 564,
+                  "x": 0,
+                  "y": 0
+                },
+                "marks": [],
+                "name": "urxvt",
+                "percent": 0.5,
+                "swallows": [
+                  {
+                  "class": "^URxvt$",
+                  "title": "^atop2$"
+                  }
+                ],
+                "type": "con"
+            },
+            {
+                "border": "pixel",
+                "current_border_width": 3,
+                "floating": "auto_off",
+                "geometry": {
+                  "height": 388,
+                  "width": 564,
+                  "x": 0,
+                  "y": 0
+                },
+                "marks": [],
+                "name": "urxvt",
+                "percent": 0.5,
+                "swallows": [
+                  {
+                  "class": "^URxvt$",
+                  "title": "^sysmonitor$"
+                  }
+                ],
+                "type": "con"
+            }]
         }
     ]
 }
