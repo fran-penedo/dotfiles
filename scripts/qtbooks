@@ -1,2 +1,2 @@
 #!/bin/bash
-~/.virtualenvs/books/bin/qtbooks qtgui
+~/.virtualenvs/books/bin/qtbooks --config ~/.qtbooks.cfg qtgui
