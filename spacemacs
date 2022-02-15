@@ -665,6 +665,7 @@ before packages are loaded."
   (spacemacs/set-leader-keys (kbd "rw") 'window-configuration-to-register)
   (spacemacs/set-leader-keys (kbd "rj") 'jump-to-register)
   (spacemacs/set-leader-keys (kbd "aa") 'vterm)
+  (spacemacs/set-leader-keys (kbd "as") 'eww)
 
 
   ;; Mode keybinds
