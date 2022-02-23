@@ -1,6 +1,6 @@
 #!/bin/bash
 
-EXCEPTIONS='.vim|Dropbox'
+EXCEPTIONS='.vim|Dropbox|Documents|.cache|ldev|.cargo|Park_Holmes'
 
 RED="\033[0;31m"
 BLUE="\033[0;34m"
