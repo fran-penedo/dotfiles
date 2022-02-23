@@ -88,6 +88,9 @@ This function should only modify configuration layer settings."
             shell-default-shell 'vterm
             shell-default-width 24
             shell-default-position 'right)
+     (shell-scripts :variables
+                    shell-scripts-format-on-save t
+                    shell-scripts-backend nil)
      (spell-checking :variables
                      spell-checking-enable-by-default nil)
      syntax-checking
