@@ -594,6 +594,8 @@ before packages are loaded."
    tramp-terminal-type "tramp"
    ;; winum-scope 'visible
    browse-url-browser-function #'eww
+   evil-vsplit-window-right t
+   evil-split-window-below t
 
    ;; Latex settings
    TeX-PDF-from-DVI "Dvips"
@@ -625,6 +627,15 @@ before packages are loaded."
    org-caldav-delete-org-entries 'always
    org-caldav-show-sync-results nil
    )
+
+  ;; Window management
+  (defadvice evil-window-split
+      (after prompt-for-buffer-split activate)
+    (lazy-helm/helm-mini))
+
+  (defadvice evil-window-vsplit
+      (after prompt-for-buffer-vsplit activate)
+    (lazy-helm/helm-mini))
 
   ;; General keybinds
   (define-key evil-normal-state-map (kbd "M-o") 'evil-jump-backward)
