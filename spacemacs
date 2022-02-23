@@ -697,8 +697,10 @@ before packages are loaded."
 
   ;; lsp config
   (with-eval-after-load 'lsp-mode
-    (setq lsp-ui-doc-show-with-cursor nil)
-    (setq lsp-ui-doc-show-with-mouse nil)
+    (setq lsp-ui-doc-show-with-cursor nil
+          lsp-ui-doc-show-with-mouse nil
+          lsp-ui-peek-always-show t)
+
     (advice-add 'lsp :before (lambda (&rest _args) (eval '(setf (lsp-session-server-id->folders (lsp-session)) (ht))))))
 
   ;; recentf config
