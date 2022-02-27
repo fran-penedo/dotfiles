@@ -130,6 +130,8 @@ export FZF_DEFAULT_OPTS="--bind 'shift-tab:up,tab:down' --cycle ${DEFAULT_OPTS}"
 . /usr/share/fzf-tab-completion/zsh/fzf-zsh-completion.sh
 bindkey '^I' fzf_completion
 
+eval $(thefuck --alias)
+
 # tmuxp
 export DISABLE_AUTO_TITLE="true"
 
