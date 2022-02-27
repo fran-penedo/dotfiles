@@ -602,6 +602,7 @@ before packages are loaded."
    browse-url-browser-function #'eww
    evil-vsplit-window-right t
    evil-split-window-below t
+   vc-follow-symlinks t
 
    ;; Latex settings
    TeX-PDF-from-DVI "Dvips"
