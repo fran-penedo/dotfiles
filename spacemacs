@@ -787,6 +787,7 @@ before packages are loaded."
 
   ;; org-mode config
   (with-eval-after-load 'org
+    (require 'helm-org-rifle)
     (use-package org-super-links
       :bind (("C-c s s" . org-super-links-link)
              ("C-c s l" . org-super-links-store-link)
@@ -795,9 +796,7 @@ before packages are loaded."
              ("C-c s i" . org-super-links-quick-insert-inline-link)
              ("C-c s C-d" . org-super-links-delete-link))
       :config (setq org-super-links-backlink-prefix nil
-                    ;; org-super-links-search-function #'helm-org-rifle-buffers-and-project
-                    org-super-links-search-function #'my-org-super-links-org-rifle-link-search-interface
-                    ))
+                    org-super-links-search-function #'my-org-super-links-org-rifle-link-search-interface))
 
     (defun my-org-super-links-org-rifle-link-search-interface ()
       "Search interface for helm-rifle."
