@@ -974,6 +974,9 @@ before packages are loaded."
   (require 'notmuch) ;; not much I can do about this I think (hehe)
   (add-to-list 'auto-mode-alist '("astroid@[[:alnum:]]+\\.none" . notmuch-message-mode))
   (add-hook 'notmuch-message-mode-hook #'turn-on-auto-fill)
+  (spacemacs|add-company-backends
+    :backends notmuch-company
+    :modes notmuch-message-mode)
 
   ;; fixes to git-gutter+ when using tramp
   (with-eval-after-load 'git-gutter+
