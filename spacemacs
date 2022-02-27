@@ -105,7 +105,13 @@ This function should only modify configuration layer settings."
    ;; To use a local version of a package, use the `:location' property:
    ;; '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
-   dotspacemacs-additional-packages '(flycheck-mypy org-caldav)
+   dotspacemacs-additional-packages
+   '(
+     flycheck-mypy
+     org-caldav
+     (org-super-links :location (recipe
+                                 :fetcher github
+                                 :repo "toshism/org-super-links")))
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -776,6 +782,64 @@ before packages are loaded."
 
   ;; org-mode config
   (with-eval-after-load 'org
+    (use-package org-super-links
+      :bind (("C-c s s" . org-super-links-link)
+             ("C-c s l" . org-super-links-store-link)
+             ("C-c s C-l" . org-super-links-insert-link)
+             ("C-c s d" . org-super-links-quick-insert-drawer-link)
+             ("C-c s i" . org-super-links-quick-insert-inline-link)
+             ("C-c s C-d" . org-super-links-delete-link))
+      :config (setq org-super-links-backlink-prefix nil
+                    ;; org-super-links-search-function #'helm-org-rifle-buffers-and-project
+                    org-super-links-search-function #'my-org-super-links-org-rifle-link-search-interface
+                    ))
+
+    (defun my-org-super-links-org-rifle-link-search-interface ()
+      "Search interface for helm-rifle."
+      (add-to-list 'helm-org-rifle-actions '("super-link-temp" . org-super-links-org-rifle-insert-link-action) nil)
+      (helm-org-rifle-buffers-and-project)
+      (pop helm-org-rifle-actions))
+
+    (helm-org-rifle-define-command
+     "files-and-buffers" (&optional files)
+     ""
+     :sources (let ((dir-sources (--map (helm-org-rifle-get-source-for-file it) files))
+                    (buffer-sources (helm-org-rifle-get-sources-for-open-buffers)))
+                (nconc dir-sources
+                       (loop for source in buffer-sources
+                             when (not (find-if
+                                        (lambda (x) (equal (helm-attr 'name x) (helm-attr 'name source)))
+                                        dir-sources))
+                             collect source)))
+     :let ((files (helm-org-rifle--listify (or files
+                                               (helm-read-file-name "Files: " :marked-candidates t))))
+           (helm-candidate-separator " ")
+           (helm-cleanup-hook (lambda ()
+                                ;; Close new buffers if enabled
+                                (when helm-org-rifle-close-unopened-file-buffers
+                                  (if (= 0 helm-exit-status)
+                                      ;; Candidate selected; close other new buffers
+                                      (let ((candidate-source (helm-attr 'name (helm-get-current-source))))
+                                        (dolist (source helm-sources)
+                                          (unless (or (equal (helm-attr 'name source)
+                                                             candidate-source)
+                                                      (not (helm-attr 'new-buffer source)))
+                                            (kill-buffer (helm-attr 'buffer source)))))
+                                    ;; No candidates; close all new buffers
+                                    (dolist (source helm-sources)
+                                      (when (helm-attr 'new-buffer source)
+                                        (kill-buffer (helm-attr 'buffer source))))))))))
+
+    (defun helm-org-rifle-buffers-and-project ()
+      (interactive)
+      (let* ((directory (or (projectile-project-root) (file-name-directory buffer-file-name)))
+             (files
+              (-flatten
+               (f-files directory
+                        (lambda (file)
+                          (s-matches? helm-org-rifle-directories-filename-regexp (f-filename file))) t))))
+            (helm-org-rifle-files-and-buffers files)))
+
     (add-hook 'org-mode-hook #'turn-on-auto-fill)
     (add-hook 'org-mode-hook #'spacemacs/toggle-spelling-checking-on)
 
@@ -786,6 +850,7 @@ before packages are loaded."
       (concat match "-" (s-join "-" my-org-filter-tags)))
 
     (setq-default
+     org-id-link-to-org-use-id 'create-if-interactive-and-no-custom-id
      org-projectile-capture-template "* TODO %?\n%U\n%a\n"
 
      org-agenda-files '("~/net/gtd/inbox.org"
