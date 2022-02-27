@@ -618,6 +618,7 @@ before packages are loaded."
    lsp-diagnostic-package :none
    ;; yas-inhibit-overlay-modification-protection nil
    importmagic-python-interpreter "python"
+   pytest-cmd-flags ""
 
    ;; vterm settings
    vterm-min-window-width 1
@@ -693,7 +694,9 @@ before packages are loaded."
     (define-key company-active-map (kbd "C-w") nil))
 
   (with-eval-after-load "python"
-    (define-key python-mode-map (kbd "C-o") 'helm-gtags-select))
+    (define-key python-mode-map (kbd "C-o") 'helm-gtags-select)
+    (spacemacs/set-leader-keys-for-major-mode 'python-mode (kbd "tt")
+      (lambda () (interactive) (pytest-one "-s "))))
 
   ;; (with-eval-after-load "ranger"
   (define-key ranger-mode-map (kbd "C-p") nil)
@@ -728,6 +731,7 @@ before packages are loaded."
     (require 'flycheck-mypy)
     (flycheck-add-next-checker 'python-flake8 'python-mypy t))
   (with-eval-after-load "python"
+    (setq-default python-test-runner 'pytest)
     (add-hook 'pyvenv-post-activate-hooks
               #'(lambda ()
                   (call-interactively #'lsp-workspace-restart)))
