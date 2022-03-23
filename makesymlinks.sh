@@ -44,6 +44,9 @@ astroidconfig="config keybindings poll.sh"
 mpvdir=config/mpv/
 mpvdotdir=~/.config/mpv
 mpvconfig="mpv.conf"
+fishdir=config
+fishdotdir=~/.config
+fishconfig="fish"
 
 
 ##########
@@ -104,3 +107,6 @@ move "$astroiddotdir" "$astroidconfig" "$astroiddir"
 
 # move mpv if needed
 move "$mpvdotdir" "$mpvconfig" "$mpvdir"
+
+# move fish if needed
+move "$fishdotdir" "$fishconfig" "$fishdir"
