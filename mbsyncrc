@@ -1,0 +1,69 @@
+# Global configuration section
+#   Values here are used as defaults for any following Channel section that
+#   doesn't specify them.
+Expunge None
+Create Both
+
+MaildirStore personal
+Path ~/mail/personal/
+Trash trash
+SubFolders Verbatim
+Flatten .
+Inbox ~/mail/personal/inbox
+
+IMAPAccount fastmail
+Host imap.fastmail.com
+User fran@franpenedo.com
+Port 993
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+SSLVersions TLSv1.2
+SSLType IMAPS
+# Fetch password from gnome-keyring:
+PassCmd "gnome-keyring-query get fastmail"
+# Fetch password from .netrc:
+#PassCmd "sed -n -e 's,^machine work\\.host\\.com login tehuser password \\(.*\\),\\1,p' < $HOME/.netrc"
+# Fetch password from a gpg-encrypted file:
+#PassCmd "gpg --quiet --for-your-eyes-only --decrypt $HOME/imappassword.gpg"
+# Fetch password from pwmd (http://pwmd.sourceforge.net/):
+#PassCmd "echo -ne 'GET myIsp\\tpassword' | pwmc datafile"
+
+IMAPStore fastmail-remote
+Account fastmail
+
+Channel sync-fastmail-default
+Far :fastmail-remote:
+Near :personal:
+Patterns * !Archive !Drafts !Sent !Spam !Trash !INBOX !archive !drafts !sent !spam !trash !inbox
+
+Channel sync-fastmail-archive
+Far :fastmail-remote:Archive
+Near :personal:archive
+
+Channel sync-fastmail-drafts
+Far :fastmail-remote:Drafts
+Near :personal:drafts
+
+Channel sync-fastmail-sent
+Far :fastmail-remote:Sent
+Near :personal:sent
+
+Channel sync-fastmail-spam
+Far :fastmail-remote:Spam
+Near :personal:spam
+
+Channel sync-fastmail-trash
+Far :fastmail-remote:Trash
+Near :personal:trash
+
+Channel sync-fastmail-inbox
+Far :fastmail-remote:INBOX
+Near :personal:inbox
+
+Group franpenedo
+Channel sync-fastmail-inbox
+Channel sync-fastmail-default
+Channel sync-fastmail-archive
+Channel sync-fastmail-drafts
+Channel sync-fastmail-sent
+Channel sync-fastmail-spam
+Channel sync-fastmail-trash

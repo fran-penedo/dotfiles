@@ -12,8 +12,12 @@
 # Exit as soon as one of the commands fail.
 set -e
 
+SCRIPTS=/home/fran/dotfiles/scripts
+
 # Fetch new mail.
-offlineimap
+$SCRIPTS/maildir-notmuch-sync pre /home/fran/mail/personal
+mbsync -a
+$SCRIPTS/maildir-notmuch-sync post /home/fran/mail/personal
 
 # Import new mail into the notmuch database.
 # notmuch new

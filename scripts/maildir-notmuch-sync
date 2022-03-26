@@ -514,8 +514,9 @@ Notmuch_State_To_Maildir__Move_To_Maildir ()
         done <<< "$THIS_MESSAGE_ALL_SOURCE_PATHS"
 
         if $FOUND; then
+            local NEW_MESSAGE_NAME="$(change_maildir_name.py "$THIS_MESSAGE_SOURCE_PATH")"
 
-            if $RUNCMD "cp -p \"$THIS_MESSAGE_SOURCE_PATH\" \"$THIS_MAILDIR_FULL_PATH/cur\""; then
+            if $RUNCMD "cp -p \"$THIS_MESSAGE_SOURCE_PATH\" \"$THIS_MAILDIR_FULL_PATH/$NEW_MESSAGE_NAME\""; then
                 echo -n "Copied message with new tag to"
                 echo " $(Maildir_Account_Folder_From_Full_Path "$THIS_MAILDIR_FULL_PATH")"
             else
