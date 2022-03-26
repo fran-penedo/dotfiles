@@ -53,6 +53,9 @@ clightconfig="clight.conf"
 toucheggdir=config
 toucheggdotdir=~/.config/touchegg
 toucheggconfig="touchegg.conf"
+imapnotifydir=config
+imapnotifydotdir=~/.config
+imapnotifyconfig="imapnotify"
 
 ##########
 
@@ -122,3 +125,5 @@ move "$clightdotdir" "$clightconfig" "$clightdir"
 # move touchegg if needed
 move "$toucheggdotdir" "$toucheggconfig" "$toucheggdir"
 
+# move imapnotify if needed
+move "$imapnotifydotdir" "$imapnotifyconfig" "$imapnotifydir"
