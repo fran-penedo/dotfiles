@@ -49,6 +49,7 @@ export PYMACS_PYTHON=python2
 export MC_XDG_OPEN=$HOME/dotfiles/.scripts/xdg-open-spawn
 
 export QT_STYLE_OVERRIDE=Adwaita-Dark
+export QT_QPA_PLATFORMTHEME=qt6gtk2
 
 stty -ixon
 
