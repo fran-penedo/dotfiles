@@ -130,10 +130,10 @@ bindsym $win+Shift+z exec playerctl -p "spotify" previous
 bindsym $win+x exec cmus-remote -v -5%; exec xdotool search --class "spotify" key --window %@ ctrl+Down; exec mpc volume | grep -Po '[0-9]+' | awk '{print $1 - 2}' | xargs mpc volume; exec playerctl -p 'strawberry' volume 0.02-
 bindsym $win+v exec cmus-remote -v +5%; exec xdotool search --class "spotify" key --window %@ ctrl+Up; exec mpc volume | grep -Po '[0-9]+' | awk '{print $1 + 2}' | xargs mpc volume; exec playerctl  -p 'strawberry' volume 0.02+
 
-bindsym XFMonBrightnessUp exec xbacklight -inc 5
-bindsym XFMonBrightnessDown exec xbacklight -dec 5
-bindsym XF86MonBrightnessUp exec xbacklight -inc 5
-bindsym XF86MonBrightnessDown exec xbacklight -dec 5
+# bindsym XFMonBrightnessUp exec xbacklight -inc 5
+# bindsym XFMonBrightnessDown exec xbacklight -dec 5
+# bindsym XF86MonBrightnessUp exec xbacklight -inc 5
+# bindsym XF86MonBrightnessDown exec xbacklight -dec 5
 
 bindsym Pause exec systemctl suspend
 
@@ -255,6 +255,7 @@ bindsym $mod+r mode "resize"
 bar {
         output          DVI-I-1
         output          eDP1
+        output          eDP-1
         position        top
         status_command  python ~/.i3/i3status.py
 
@@ -329,6 +330,10 @@ exec --no-startup-id easyeffects
 # exec --no-startup-id urxvt -e tmux new -s newsboat newsboat
 exec --no-startup-id clipit
 exec --no-startup-id redshift-gtk
+exec --no-startup-id clight
+exec --no-startup-id clight-gui --tray
+exec --no-startup-id rot8 --touchscreen "Wacom HID 48EB Finger"
+exec --no-startup-id touchegg
 exec --no-startup-id devmon
 exec --no-startup-id blueberry-tray
 exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd

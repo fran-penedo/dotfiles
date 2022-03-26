@@ -47,7 +47,12 @@ mpvconfig="mpv.conf"
 fishdir=config
 fishdotdir=~/.config
 fishconfig="fish"
-
+clightdir=config
+clightdotdir=~/.config
+clightconfig="clight.conf"
+toucheggdir=config
+toucheggdotdir=~/.config/touchegg
+toucheggconfig="touchegg.conf"
 
 ##########
 
@@ -110,3 +115,10 @@ move "$mpvdotdir" "$mpvconfig" "$mpvdir"
 
 # move fish if needed
 move "$fishdotdir" "$fishconfig" "$fishdir"
+
+# move clight if needed
+move "$clightdotdir" "$clightconfig" "$clightdir"
+
+# move touchegg if needed
+move "$toucheggdotdir" "$toucheggconfig" "$toucheggdir"
+
