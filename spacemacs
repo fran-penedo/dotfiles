@@ -603,6 +603,7 @@ before packages are loaded."
    evil-vsplit-window-right t
    evil-split-window-below t
    vc-follow-symlinks t
+   undo-tree-auto-save-history nil
 
    ;; Latex settings
    TeX-PDF-from-DVI "Dvips"
