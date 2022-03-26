@@ -51,6 +51,8 @@ export MC_XDG_OPEN=$HOME/dotfiles/.scripts/xdg-open-spawn
 export QT_STYLE_OVERRIDE=Adwaita-Dark
 export QT_QPA_PLATFORMTHEME=qt6gtk2
 
+export MOZ_USE_XINPUT2=1
+
 stty -ixon
 
 exec $1
