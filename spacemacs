@@ -979,6 +979,27 @@ before packages are loaded."
     :backends notmuch-company
     :modes notmuch-message-mode)
 
+  ;; shell config
+
+  (defun my-sh-completion-at-point-function ()
+    (save-excursion
+      (skip-chars-forward "[:alnum:]_")
+      (let ((end (point))
+            (_ (skip-chars-backward "[:alnum:]_"))
+            (start (point)))
+        (cond
+         ((eq (char-before) ?$)
+          (list start end (sh--vars-before-point)))
+         ; don't provide completions on empty string
+         ((or (not (char-after)) (eq (char-after) $\n)) nil)
+         ((sh-smie--keyword-p)
+          (list start end #'sh--cmd-completion-table))))))
+
+  (add-hook 'sh-mode-hook
+            #'(lambda ()
+                (remove-hook 'completion-at-point-functions #'sh-completion-at-point-function t)
+                (add-hook 'completion-at-point-functions #'my-sh-completion-at-point-function nil t)))
+
   ;; fixes to git-gutter+ when using tramp
   (with-eval-after-load 'git-gutter+
     ;; https://github.com/syl20bnr/spacemacs/issues/12860#issuecomment-602084919
