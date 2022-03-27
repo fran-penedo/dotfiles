@@ -334,6 +334,7 @@ exec --no-startup-id clight
 exec --no-startup-id clight-gui --tray
 exec --no-startup-id rot8 --touchscreen "Wacom HID 48EB Finger"
 exec --no-startup-id touchegg
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 
 exec --no-startup-id devmon
 exec --no-startup-id blueberry-tray
 exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd
