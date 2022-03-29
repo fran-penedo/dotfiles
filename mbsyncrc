@@ -3,6 +3,7 @@
 #   doesn't specify them.
 Expunge None
 Create Both
+CopyArrivalDate yes
 
 MaildirStore personal
 Path ~/mail/personal/

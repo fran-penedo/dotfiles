@@ -382,13 +382,35 @@ eval "MAILDIR_ACCOUNT_ROOT=${1%/}"
 # TODO: maybe make this the primary method and create pairings?
 # find $MAILDIR -name "cur" -type d -exec dirname '{}' \; | sed "s/^$MAILDIR\///" | sort
 
-MAILBOXES_FULL_PATHS="$(echo "$(find $MAILDIR_ACCOUNT_ROOT -name "cur" -type d -exec dirname '{}' \;)" | sort;)"
+# MAILBOXES_FULL_PATHS="$(echo "$(find $MAILDIR_ACCOUNT_ROOT -name "cur" -type d -exec dirname '{}' \;)" | sort;)"
  # | sed "s/^$MAILDIR\///" | sort
 
+# Ignore these notmuch tags when creating new mailboxes
+IGNORED_TAGS='^attachment$|^draft$|^passed$|^replied$|^signed$|^unread$'
 
 # ----------------------------------------------------------------------
 # Helper Functions
 # ----------------------------------------------------------------------
+
+Mailboxes_Full_Paths ()
+{
+    echo "$(find $MAILDIR_ACCOUNT_ROOT -name "cur" -type d -exec dirname '{}' \;)" | sort
+}
+
+Maildir_Create_Missing_Mailboxes ()
+{
+    local missing_mailboxes=$(
+        comm -23 <(notmuch search --output=tags '*' | ag -v "$IGNORED_TAGS" | sort) <(
+            echo $(Mailboxes_Full_Paths) |
+            xargs -I _ basename _ |
+            sort
+        )
+    )
+    for box in $missing_mailboxes; do
+        $RUNCMD "mkdir -p $MAILDIR_ACCOUNT_ROOT/$box/{cur,new,tmp}";
+    done
+}
+
 
 Notmuch_Tag_From_Full_Path ()
 {
@@ -596,6 +618,7 @@ Notmuch_State_To_Maildir__Remove_From_Maildir ()
 Notmuch_Update ()
 {
     $RUNCMD "notmuch new";
+    $RUNCMD "notmuch search --output=files tag:new | xargs -P0 -i ~/dotfiles/scripts/fix_maildir_mtime.py {}";
     # FIXME pass TAG_SCRIPT as an argument
     if [[ -e "$TAG_SCRIPT" ]]; then
         $RUNCMD $TAG_SCRIPT
@@ -730,7 +753,8 @@ echo "ACCOUNT ROOT: $MAILDIR_ACCOUNT_ROOT"
 # Review the notmuch database state and sync up any changes first
 # (e.g. any retagged messages that need refiling)
 if [ "$SUBCMD" == "pre" ]; then
-    for MAILBOX_FULL_PATH in $MAILBOXES_FULL_PATHS; do
+    Maildir_Create_Missing_Mailboxes
+    for MAILBOX_FULL_PATH in $(Mailboxes_Full_Paths); do
         Notmuch_State_To_Maildir__Move_To_Maildir $MAILBOX_FULL_PATH
         Notmuch_State_To_Maildir__Remove_From_Maildir $MAILBOX_FULL_PATH
     done
@@ -743,7 +767,7 @@ if [ "$SUBCMD" == "post" ]; then
 
     # local FAKE_READ=$(Notmuch_Fake_Read $MAILDIR_ACCOUNT_ROOT)
     Notmuch_Fake_Read $MAILDIR_ACCOUNT_ROOT
-    for MAILBOX_FULL_PATH in $MAILBOXES_FULL_PATHS; do
+    for MAILBOX_FULL_PATH in $(Mailboxes_Full_Paths); do
         Maildir_State_To_Notmuch__Add_Tags_To_Notmuch $MAILBOX_FULL_PATH
         Maildir_State_To_Notmuch__Remove_Tags_From_Notmuch $MAILBOX_FULL_PATH
     done
