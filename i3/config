@@ -98,7 +98,7 @@ bindsym $mod+Control+f exec urxvt -e ranger
 # bindsym $mod+Control+m exec "[ \\"$(i3-msg '[class=\\"Astroid\\"] scratchpad show', floating disable)\\" = \\"[{\\\\"success\\\\":true},{\\\\"success\\\\":true}]\\" ] || i3-msg '[class=\\"Astroid\\"] move scratchpad'"
 # bindsym $mod+Control+m [class="Astroid"] scratchpad show; [class="URxvt" title="astroid@"] scratchpad show
 bindsym $mod+Control+x exec ~/dotfiles/scripts/i3_minimize_toggle '[class="Astroid"]'; exec ~/dotfiles/scripts/i3_minimize_toggle '[class="URxvt" title="astroid@"]'
-bindsym Control+Shift+p exec systemd-cat ~/dotfiles/scripts/mail-poll.sh -a
+bindsym $mod+Control+c exec systemd-cat ~/dotfiles/scripts/mail-poll.sh -a
 bindsym $mod+Control+e exec ~/dotfiles/scripts/i3_minimize_toggle '[class="easyeffects"]'; exec ~/dotfiles/scripts/i3_minimize_toggle '[class="URxvt" title="easyeffects@"]'
 bindsym $mod+Control+z exec zotero
 # bindsym $mod+Control+p exec offlineimap -1 -o -u quiet
