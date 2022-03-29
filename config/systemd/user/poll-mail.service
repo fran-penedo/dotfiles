@@ -1,0 +1,7 @@
+[Unit]
+Description=Poll mail job
+Wants=wait-for-network.service
+After=wait-for-network.service
+
+[Service]
+ExecStart=/home/fran/dotfiles/scripts/mail-poll.sh -a
