@@ -7,9 +7,9 @@ set -g fish_greeting ''
 set -gx PATH $HOME/.local/bin $HOME/bin /usr/local/bin $HOME/dotfiles/scripts $PATH
 
 if set -q SSH_CONNECTION
-    set -gx EDITOR 'emacsclient -s daemon'
-else
     set -gx EDITOR 'vim'
+else
+    set -gx EDITOR 'emacsclient -s daemon'
 end
 
 # GUROBI
