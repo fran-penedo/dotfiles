@@ -3,4 +3,5 @@ config/systemd/user/timers.target.wants/ytmusic.timer
 config/systemd/user/timers.target.wants/archivebox-history.timer
 config/systemd/user/timers.target.wants/nextcloud-backups.timer
 config/systemd/user/default.target.wants/archivebox-server.service
+config/systemd/user/default.target.wants/mail-rssify.service
 config/fish/fish_variables

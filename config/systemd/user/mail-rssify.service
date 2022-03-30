@@ -1,0 +1,19 @@
+[Unit]
+Description=Watch rss mailbox and rssify it
+# Documentation=
+# Wants=wait-for-network.service
+# After=wait-for-network.service
+
+[Service]
+# Type: simple, exec, forking, oneshot, dbus, notify or idle
+Type=simple
+WorkingDirectory=/home/fran/mail/personal/rss/cur/
+ExecStart=/bin/watchexec --on-busy-update=queue -- 'sleep 1; /home/fran/dotfiles/scripts/mail-rssify.py'
+# ExecStop=
+# Environment=
+# Restart: no, on-success, on-failure, on-abnormal, on-watchdog, on-abort, or always
+# Restart=on-failure
+# RestartPreventExitStatus=SIGKILL
+
+[Install]
+WantedBy=default.target
