@@ -334,7 +334,7 @@ exec --no-startup-id devmon
 exec --no-startup-id pactl load-module module-switch-on-connect
 exec --no-startup-id blueberry-tray
 exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd
-exec --no-startup-id zsh -c "sshfs fserver-vpn ~/fserver"
+# exec --no-startup-id zsh -c "sshfs fserver-vpn ~/fserver"
 exec --no-startup-id i3-msg "workspace 9; \
     append_layout /home/fran/dotfiles/i3/monitor.json; \
     exec urxvt -T htop -e htop; \
