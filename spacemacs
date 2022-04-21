@@ -886,7 +886,7 @@ before packages are loaded."
                                          ((org-agenda-files '("~/net/gtd/gtd.org"))
                                           (org-agenda-overriding-header "Waiting")))
                                   ("o" "To do"
-                                   ((agenda "" ((org-agenda-files '("~/net/gtd/calendar.org"))
+                                   ((agenda "" ((org-agenda-files '("~/net/gtd/calendar.org" "~/net/gtd/gtd.org"))
                                                 (org-agenda-overriding-header "Today's appointments")
                                                 (org-agenda-span 2)))
                                     (tags-todo (my-org-add-filter  "+CATEGORY=\"Tasks\"+SCHEDULED<=\"<now>\"|+CATEGORY=\"Tasks\"+SCHEDULED=\"\"")
