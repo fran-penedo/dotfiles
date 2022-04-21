@@ -102,7 +102,7 @@ bindsym $mod+Control+c exec systemd-cat ~/dotfiles/scripts/mail-poll.sh -a
 bindsym $mod+Control+e exec ~/dotfiles/scripts/i3_minimize_toggle '[class="easyeffects"]'; exec ~/dotfiles/scripts/i3_minimize_toggle '[class="URxvt" title="easyeffects@"]'
 bindsym $mod+Control+z exec zotero
 # bindsym $mod+Control+p exec offlineimap -1 -o -u quiet
-bindsym $mod+Control+n exec urxvt -e ncmpcpp
+# bindsym $mod+Control+n exec urxvt -e ncmpcpp
 bindsym $mod+Control+m exec strawberry
 bindsym $mod+Control+t exec urxvt -e trackma-curses
 # bindsym $mod+Control+r exec urxvt -e tmux new-session -A -s newsboat newsboat
