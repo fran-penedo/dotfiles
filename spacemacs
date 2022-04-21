@@ -48,8 +48,8 @@ This function should only modify configuration layer settings."
             latex-enable-folding t)
      gtags
      (python :variables
-             python-formatter 'black
-             python-format-on-save t
+             ;; python-formatter 'black
+             ;; python-format-on-save t
              python-shell-interpreter-args "-i"
              python-sort-imports-on-save t
              python-backend 'lsp
@@ -111,7 +111,8 @@ This function should only modify configuration layer settings."
      org-caldav
      (org-super-links :location (recipe
                                  :fetcher github
-                                 :repo "toshism/org-super-links")))
+                                 :repo "toshism/org-super-links"))
+     py-autopep8)
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -738,6 +739,7 @@ before packages are loaded."
               #'(lambda ()
                   (call-interactively #'lsp-workspace-restart)))
     ;; (add-hook 'python-mode-hook #'(lambda () (push '(company-capf company-yasnippet) company-backends))) ; breaks lsp?
+    (add-hook 'python-mode-hook 'py-autopep8-enable-on-save)
     )
 
   (with-eval-after-load 'dap-mode
