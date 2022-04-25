@@ -63,9 +63,9 @@
 # Maildir Information
 # ----------------------------------
 
-INBOX="inbox"       # (mutt's spool dir)  - both the tag and folder
-SENT="sent"         # (mutt's record dir) - both the tag and folder
-TRASH="trash"       # trash maildir, gmail requires for real deletion
+INBOX="personal/inbox"       # (mutt's spool dir)  - both the tag and folder
+SENT="personal/sent"         # (mutt's record dir) - both the tag and folder
+TRASH="personal/trash"       # trash maildir, gmail requires for real deletion
 
 # Note that the tag/folder values (INBOX/SENT/etc) must match
 # your local maildir names, after any nametrans by offlineimap. For
