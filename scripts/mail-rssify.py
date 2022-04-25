@@ -1,6 +1,7 @@
 #!/usr/bin/python
 
 import os
+import subprocess
 import sys
 import re
 import traceback
@@ -105,4 +106,8 @@ for title, mails in mail_map.items():
     except Exception as e:
         traceback.print_exc()
 
-os.system(f'rsync --timeout=5 -PAa "{OUT_DIR}" {OUT_SERVER}:"{OUT_SERVER_DIR}"')
+ret = subprocess.call(
+    f'rsync --timeout=5 -PAa "{OUT_DIR}" {OUT_SERVER}:"{OUT_SERVER_DIR}"', shell=True
+)
+
+exit(ret)
