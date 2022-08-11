@@ -48,9 +48,9 @@ This function should only modify configuration layer settings."
             latex-enable-folding t)
      gtags
      (python :variables
-             ;; python-formatter 'black
-             ;; python-format-on-save t
-             python-shell-interpreter-args "-i"
+             python-formatter 'black
+             python-format-on-save t
+             python-shell-interpreter-args "-i --simple-prompt"
              python-sort-imports-on-save t
              python-backend 'lsp
              python-lsp-server 'pyright)
@@ -112,7 +112,9 @@ This function should only modify configuration layer settings."
      (org-super-links :location (recipe
                                  :fetcher github
                                  :repo "toshism/org-super-links"))
-     py-autopep8)
+     py-autopep8
+     numpydoc
+     )
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -622,6 +624,7 @@ before packages are loaded."
    ;; yas-inhibit-overlay-modification-protection nil
    importmagic-python-interpreter "python"
    pytest-cmd-flags ""
+   ;; blacken-line-length 79
 
    ;; vterm settings
    vterm-min-window-width 1
@@ -713,6 +716,12 @@ before packages are loaded."
           lsp-ui-doc-show-with-mouse nil
           lsp-ui-peek-always-show t)
 
+    (lsp-register-client
+     (make-lsp-client :new-connection (lsp-tramp-connection "pyright")
+                      :major-modes '(python-mode)
+                      :remote? t
+                      :server-id 'pyright-remote))
+
     (advice-add 'lsp :before (lambda (&rest _args) (eval '(setf (lsp-session-server-id->folders (lsp-session)) (ht))))))
 
   ;; recentf config
@@ -732,17 +741,23 @@ before packages are loaded."
   ;; Python config
   (with-eval-after-load "flycheck"
     (require 'flycheck-mypy)
-    (flycheck-add-next-checker 'python-flake8 'python-mypy t))
+    (flycheck-add-next-checker 'python-flake8 'python-mypy t)
+    (flycheck-add-next-checker 'python-pyright 'python-flake8 t)
+    (flycheck-remove-next-checker 'python-flake8 'python-pylint))
   (with-eval-after-load "python"
     (setq-default python-test-runner 'pytest)
     (add-hook 'pyvenv-post-activate-hooks
               #'(lambda ()
                   (call-interactively #'lsp-workspace-restart)))
     ;; (add-hook 'python-mode-hook #'(lambda () (push '(company-capf company-yasnippet) company-backends))) ; breaks lsp?
-    (add-hook 'python-mode-hook 'py-autopep8-enable-on-save)
+    ;; (remove-hook 'python-mode-hook 'py-autopep8-enable-on-save)
+    (require 'numpydoc)
+    (setq-default numpydoc-insertion-style 'yas
+                  numpydoc-insert-examples-block nil)
     )
 
   (with-eval-after-load 'dap-mode
+    (setq-default dap-python-debugger 'debugpy)
     (dap-register-debug-template
      "Python :: Run file (buffer)"
      (list :type "python"
@@ -762,6 +777,14 @@ before packages are loaded."
            :program nil
            :request "launch"
            :name "Python :: Run project")))
+
+  ;; (with-eval-after-load 'ein:notebook
+  ;;   (add-hook 'ein:notebook-mode-hook
+  ;;             #'(lambda ()
+  ;;                 (define-key evil-normal-state-local-map "r" 'ein:notebook-save-notebook-command-km))))
+  (with-eval-after-load 'ein:notebook
+    (define-key ein:notebook-mode-map [remap save-buffer] 'ein:notebook-save-notebook-command-km))
+
 
   ;; Terminal config
   ;; (with-eval-after-load 'term
