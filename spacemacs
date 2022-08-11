@@ -117,6 +117,7 @@ This function should only modify configuration layer settings."
      py-autopep8
      numpydoc
      envrc
+     multi-vterm
      )
 
    ;; A list of packages that cannot be updated.
@@ -694,7 +695,7 @@ before packages are loaded."
   (spacemacs/set-leader-keys (kbd "bc") 'clone-indirect-buffer-other-window)
   (spacemacs/set-leader-keys (kbd "rw") 'window-configuration-to-register)
   (spacemacs/set-leader-keys (kbd "rj") 'jump-to-register)
-  (spacemacs/set-leader-keys (kbd "aa") 'vterm)
+  (spacemacs/set-leader-keys (kbd "aa") 'multi-vterm)
   (spacemacs/set-leader-keys (kbd "as") 'eww)
 
 
@@ -792,6 +793,8 @@ before packages are loaded."
   ;; Terminal config
   ;; (with-eval-after-load 'term
   ;;   (evil-set-initial-state 'term-mode 'emacs))
+  (require 'vterm)
+  (require 'multi-vterm)
   (defun scroll-hook nil
     (make-local-variable 'scroll-margin)
     (setq scroll-margin 0))
@@ -807,8 +810,53 @@ before packages are loaded."
       (find-file fn)
       (write-file fn)
       (set-file-modes fn #o755)))
-  (with-eval-after-load 'vterm 
-    (spacemacs/set-leader-keys-for-major-mode 'vterm-mode "p" 'start-pipe-script))
+
+  (defun last-term-buffer (l)
+    "Return most recently used term buffer."
+    (when l
+      (if (eq 'vterm-mode (with-current-buffer (car l) major-mode))
+          (car l) (last-term-buffer (cdr l)))))
+
+  (defun get-term ()
+    "Switch to the term buffer last used, or create a new one if
+  none exists, or if the current buffer is already a term."
+    (interactive)
+    (let ((b (last-term-buffer (buffer-list))))
+      (if (or (not b) (eq 'vterm-mode major-mode))
+          (multi-vterm)
+        (switch-to-buffer b))))
+
+  (spacemacs/set-leader-keys-for-major-mode 'vterm-mode "p" 'start-pipe-script)
+  (define-key evil-normal-state-map (kbd "M-t") 'get-term)
+  (define-key evil-normal-state-map (kbd "M-C-t") 'multi-vterm)
+  (evil-define-key 'insert vterm-mode-map (kbd "C-e")      #'vterm--self-insert)
+  (evil-define-key 'insert vterm-mode-map (kbd "C-f")      #'vterm--self-insert)
+  (evil-define-key 'insert vterm-mode-map (kbd "C-a")      #'vterm--self-insert)
+  (evil-define-key 'insert vterm-mode-map (kbd "C-v")      #'vterm--self-insert)
+  (evil-define-key 'insert vterm-mode-map (kbd "C-x")      #'vterm--self-insert)
+  (evil-define-key 'insert vterm-mode-map (kbd "C-b")      #'vterm--self-insert)
+  (evil-define-key 'insert vterm-mode-map (kbd "C-w")      #'vterm--self-insert)
+  (evil-define-key 'insert vterm-mode-map (kbd "C-u")      #'vterm--self-insert)
+  (evil-define-key 'insert vterm-mode-map (kbd "C-d")      #'vterm--self-insert)
+  (evil-define-key 'insert vterm-mode-map (kbd "C-n")      #'vterm--self-insert)
+  (evil-define-key 'insert vterm-mode-map (kbd "C-m")      #'vterm--self-insert)
+  (evil-define-key 'insert vterm-mode-map (kbd "C-o")      #'vterm--self-insert)
+  (evil-define-key 'insert vterm-mode-map (kbd "C-p")      #'vterm--self-insert)
+  (evil-define-key 'insert vterm-mode-map (kbd "C-j")      #'vterm--self-insert)
+  (evil-define-key 'insert vterm-mode-map (kbd "C-k")      #'vterm--self-insert)
+  (evil-define-key 'insert vterm-mode-map (kbd "C-r")      #'vterm--self-insert)
+  (evil-define-key 'insert vterm-mode-map (kbd "C-t")      #'vterm--self-insert)
+  (evil-define-key 'insert vterm-mode-map (kbd "C-g")      #'vterm--self-insert)
+  (evil-define-key 'insert vterm-mode-map (kbd "C-c")      #'vterm--self-insert)
+  (evil-define-key 'insert vterm-mode-map (kbd "C-SPC")    #'vterm--self-insert)
+  (evil-define-key 'normal vterm-mode-map (kbd "C-d")      #'vterm--self-insert)
+  (evil-define-key 'normal vterm-mode-map (kbd ",c")       #'multi-vterm)
+  (evil-define-key 'normal vterm-mode-map (kbd ",l")       #'multi-vterm-next)
+  (evil-define-key 'normal vterm-mode-map (kbd ",,")       #'multi-vterm-next)
+  (evil-define-key 'normal vterm-mode-map (kbd ",h")       #'multi-vterm-prev)
+  ;; (evil-define-key 'normal vterm-mode-map (kbd "i")        #'evil-insert-resume)
+  ;; (evil-define-key 'normal vterm-mode-map (kbd "o")        #'evil-insert-resume)
+  ;; (evil-define-key 'normal vterm-mode-map (kbd "<return>") #'evil-insert-resume)
 
   ;; Haskell config
   (with-eval-after-load 'intero
@@ -1063,7 +1111,7 @@ This function is called at the very end of Spacemacs initialization."
  '(auth-source-save-behavior nil)
  '(evil-want-Y-yank-to-eol nil)
  '(package-selected-packages
-   '(csv-mode sqlup-mode sql-indent seeing-is-believing rvm ruby-tools ruby-test-mode ruby-refactor ruby-hash-syntax rubocopfmt rubocop rspec-mode robe rbenv rake minitest enh-ruby-mode counsel-gtags chruby bundler inf-ruby systemd company-quickhelp realgud test-simple loc-changes load-relative flyspell-correct-helm flyspell-correct auto-dictionary selectric-mode ibuffer-projectile web-mode web-beautify tagedit slim-mode scss-mode sass-mode pug-mode prettier-js impatient-mode simple-httpd helm-css-scss haml-mode emmet-mode counsel-css counsel swiper ivy company-web web-completion-data add-node-modules-path ranger pdf-tools tablist company-reftex auctex origami yasnippet-snippets yapfify xterm-color ws-butler writeroom-mode winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org symon symbol-overlay string-inflection spaceline-all-the-icons smeargle shell-pop restart-emacs rainbow-delimiters pytest pyenv-mode py-isort popwin pippel pipenv pip-requirements persp-mode pcre2el password-generator paradox overseer orgit org-projectile org-present org-pomodoro org-mime org-download org-cliplink org-bullets org-brain open-junk-file neotree nameless multi-term move-text mmm-mode markdown-toc magit-svn magit-gitflow macrostep lsp-haskell lorem-ipsum live-py-mode link-hint intero indent-guide importmagic hungry-delete htmlize hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-pydoc helm-purpose helm-projectile helm-org-rifle helm-mode-manager helm-make helm-hoogle helm-gitignore helm-git-grep helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag haskell-snippets google-translate golden-ratio gnuplot gitignore-templates gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md fuzzy font-lock+ flycheck-pos-tip flycheck-package flycheck-mypy flycheck-haskell flx-ido fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-org evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help elisp-slime-nav editorconfig dumb-jump dotenv-mode doom-modeline diminish diff-hl devdocs define-word dante cython-mode company-statistics company-ghci company-ghc company-cabal company-anaconda column-enforce-mode cmm-mode clean-aindent-mode centered-cursor-mode browse-at-remote blacken auto-yasnippet auto-highlight-symbol auto-compile attrap aggressive-indent ace-window ace-link ace-jump-helm-line ac-ispell))
+   '(import-js grizzl js-doc js2-refactor multiple-cursors livid-mode nodejs-repl npm-mode skewer-mode js2-mode tern yaml-mode csv-mode sqlup-mode sql-indent seeing-is-believing rvm ruby-tools ruby-test-mode ruby-refactor ruby-hash-syntax rubocopfmt rubocop rspec-mode robe rbenv rake minitest enh-ruby-mode counsel-gtags chruby bundler inf-ruby systemd company-quickhelp realgud test-simple loc-changes load-relative flyspell-correct-helm flyspell-correct auto-dictionary selectric-mode ibuffer-projectile web-mode web-beautify tagedit slim-mode scss-mode sass-mode pug-mode prettier-js impatient-mode simple-httpd helm-css-scss haml-mode emmet-mode counsel-css counsel swiper ivy company-web web-completion-data add-node-modules-path ranger pdf-tools tablist company-reftex auctex origami yasnippet-snippets yapfify xterm-color ws-butler writeroom-mode winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org symon symbol-overlay string-inflection spaceline-all-the-icons smeargle shell-pop restart-emacs rainbow-delimiters pytest pyenv-mode py-isort popwin pippel pipenv pip-requirements persp-mode pcre2el password-generator paradox overseer orgit org-projectile org-present org-pomodoro org-mime org-download org-cliplink org-bullets org-brain open-junk-file neotree nameless multi-term move-text mmm-mode markdown-toc magit-svn magit-gitflow macrostep lsp-haskell lorem-ipsum live-py-mode link-hint intero indent-guide importmagic hungry-delete htmlize hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-pydoc helm-purpose helm-projectile helm-org-rifle helm-mode-manager helm-make helm-hoogle helm-gitignore helm-git-grep helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag haskell-snippets google-translate golden-ratio gnuplot gitignore-templates gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md fuzzy font-lock+ flycheck-pos-tip flycheck-package flycheck-mypy flycheck-haskell flx-ido fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-org evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help elisp-slime-nav editorconfig dumb-jump dotenv-mode doom-modeline diminish diff-hl devdocs define-word dante cython-mode company-statistics company-ghci company-ghc company-cabal company-anaconda column-enforce-mode cmm-mode clean-aindent-mode centered-cursor-mode browse-at-remote blacken auto-yasnippet auto-highlight-symbol auto-compile attrap aggressive-indent ace-window ace-link ace-jump-helm-line ac-ispell))
  '(paradox-github-token t)
  '(safe-local-variable-values
    '((org-latex-format-options quote
