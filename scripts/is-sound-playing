@@ -1,0 +1,5 @@
+#! /bin/sh
+# Checks for audio playing
+
+pactl list short sinks | grep -qF 'RUNNING' && exit 254
+exit 0
