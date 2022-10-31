@@ -745,6 +745,7 @@ before packages are loaded."
     )
 
   (with-eval-after-load 'dap-mode
+    (setq-default dap-python-debugger 'debugpy)
     (dap-register-debug-template
      "Python :: Run file (buffer)"
      (list :type "python"
