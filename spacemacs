@@ -113,6 +113,8 @@ This function should only modify configuration layer settings."
                                  :fetcher github
                                  :repo "toshism/org-super-links"))
      multi-vterm
+     numpydoc
+     envrc
      )
 
    ;; A list of packages that cannot be updated.
@@ -1065,6 +1067,9 @@ before packages are loaded."
     (defun git-gutter+-remote-file-path (dir file)
       (let ((file (tramp-file-name-localname (tramp-dissect-file-name file))))
         (replace-regexp-in-string (concat "\\`" dir) "" file))))
+
+  ;; direnv and envrc
+  (envrc-global-mode)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
