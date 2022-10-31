@@ -90,7 +90,7 @@ bindsym $mod+F3 exec i3-input
 bindsym Control+q exec true
 
 # Launchers
-bindsym Print exec xfce4-screenshooter
+bindsym Print exec flameshot gui
 bindsym $mod+Control+w exec firefox
 # bindsym $mod+Control+s exec ~/dotfiles/scripts/wtoggle catfish
 # bindsym $mod+Control+c [title="calcurse"] scratchpad show
