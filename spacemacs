@@ -747,7 +747,8 @@ before packages are loaded."
     (require 'flycheck-mypy)
     (flycheck-add-next-checker 'python-flake8 'python-mypy t)
     (flycheck-add-next-checker 'python-pyright 'python-flake8 t)
-    (flycheck-remove-next-checker 'python-flake8 'python-pylint))
+    ;; (flycheck-remove-next-checker 'python-flake8 'python-pylint)
+    )
   (with-eval-after-load "python"
     (setq-default python-test-runner 'pytest)
     (add-hook 'pyvenv-post-activate-hooks
