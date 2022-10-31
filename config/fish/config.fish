@@ -60,6 +60,9 @@ end
 set fish_color_command normal --bold
 set fish_color_param normal
 
+# Direnv
+direnv hook fish | source
+
 # Advanced Aliases.
 # Use with caution
 #
