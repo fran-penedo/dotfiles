@@ -40,6 +40,7 @@ def get_cc_rows(wb, sh):
             last_confirmed = i - 1
             break
 
+    first_pending = sh.nrows
     for i in range(last_confirmed + 1, sh.nrows):
         if sh[i][0].ctype == xlrd.XL_CELL_DATE:
             first_pending = i
@@ -84,7 +85,7 @@ def to_homebank_csv(fn):
         raise Exception("Unsupported excel file")
 
     header = ("date", "payment", "info", "payee", "memo", "amount", "category", "tags")
-    now = datetime.now().strftime("%Y%m%d%H%M")
+    now = datetime.now().strftime("%Y%m%d%H%M%S")
 
     with open(
         fn.with_stem(f"{fn.stem}-{now}").with_suffix(".csv"), "w", newline=""
