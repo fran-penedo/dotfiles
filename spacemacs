@@ -112,7 +112,6 @@ This function should only modify configuration layer settings."
    ;; Also include the dependencies as they will not be resolved automatically.
    dotspacemacs-additional-packages
    '(
-     flycheck-mypy
      org-caldav
      (org-super-links :location (recipe
                                  :fetcher github
@@ -750,10 +749,33 @@ before packages are loaded."
 
   ;; Python config
   (with-eval-after-load "flycheck"
-    (require 'flycheck-mypy)
-    (flycheck-add-next-checker 'python-flake8 'python-mypy t)
-    (flycheck-add-next-checker 'python-pyright 'python-flake8 t)
-    ;; (flycheck-remove-next-checker 'python-flake8 'python-pylint)
+    (flycheck-define-checker python-ruff
+      "A Python syntax and style checker using the ruff utility.
+      To override the path to the ruff executable, set
+      `flycheck-python-ruff-executable'.
+      See URL `http://pypi.python.org/pypi/ruff'."
+      :command ("ruff"
+                "--format=text"
+                (eval (when buffer-file-name
+                        (concat "--stdin-filename=" buffer-file-name)))
+                "-")
+      :standard-input t
+      ;; :error-filter (lambda (errors)
+      ;;                 (let ((errors (flycheck-sanitize-errors errors)))
+      ;;                   (seq-map #'flycheck-flake8-fix-error-level errors)))
+      :error-patterns
+      ((warning line-start
+                (file-name) ":" line ":" (optional column ":") " "
+                (id (one-or-more (any alpha)) (one-or-more digit)) " "
+                (message (one-or-more not-newline))
+                line-end))
+      :modes python-mode)
+
+    (add-to-list 'flycheck-checkers 'python-ruff)
+    (flycheck-remove-next-checker 'python-pylint 'python-mypy)
+    (flycheck-add-next-checker 'python-ruff 'python-mypy t)
+    (flycheck-add-next-checker 'python-mypy 'python-pylint t)
+    (flycheck-add-next-checker 'python-pyright 'python-ruff t)
     )
   (with-eval-after-load "python"
     (setq-default python-test-runner 'pytest)
