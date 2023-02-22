@@ -646,6 +646,9 @@ before packages are loaded."
    org-caldav-delete-calendar-entries 'always
    org-caldav-delete-org-entries 'always
    org-caldav-show-sync-results nil
+
+   ;; git settings
+   git-commit-fill-column 72
    )
 
   ;; Window management
