@@ -278,6 +278,7 @@ bar {
         output          HDMI1
         output          HDMI-0
         output          Virtual2
+        output          Virtual3
         tray_output     none
         position        top
         status_command  python ~/.i3/i3status2.py
@@ -347,6 +348,6 @@ exec --no-startup-id i3-msg "workspace 9; \
     exec urxvt -T sysmonitor -e sh -c 'watch --color -t -n60 ~/dotfiles/scripts/sysmonitor.sh --color'; \
     exec urxvt -T lnav -e sh -c 'journalctl --since -1h -f | lnav -I ~/dotfiles/lnav/'"
 
-exec --no-startup-id slack
+# exec --no-startup-id slack
 exec --no-startup-id fish -c "xinput disable 9; xinput enable 9; imwheel -b 45"
-exec --no-startup-id onedrive-gui
+# exec --no-startup-id onedrive-gui
