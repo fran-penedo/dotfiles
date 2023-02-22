@@ -8,6 +8,7 @@ GRTAGS
 
 # Common Python build, test and auxiliary files
 .coverage
+.coverage.*
 cover/
 *.egg-info
 
@@ -219,3 +220,5 @@ sympy-plots-for-*.tex/
 # WinEdt
 *.bak
 *.sav
+/.idea/
+.envrc
