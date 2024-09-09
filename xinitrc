@@ -30,8 +30,7 @@ xset b off
 
 xfce4-power-manager &
 nitrogen --restore &
-eval $(gnome-keyring-daemon --start)
-export SSH_AUTH_SOCK
+export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/gcr/ssh
 export GPG_AGENT_INFO
 systemctl --user set-environment SSH_AUTH_SOCK=${SSH_AUTH_SOCK}
 #pasystray &
@@ -43,7 +42,7 @@ syndaemon -i 1 -t -k &
 export GTK_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 export QT_IM_MODULE=fcitx
-fcitx
+# fcitx
 
 export PYMACS_PYTHON=python2
 export MC_XDG_OPEN=$HOME/dotfiles/.scripts/xdg-open-spawn

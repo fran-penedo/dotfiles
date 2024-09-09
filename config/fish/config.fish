@@ -91,9 +91,6 @@ alias mv='mv -i'
 # archlinux aliases
 alias yalocs='yay -Qs'
 
-# fzf
-fzf_key_bindings
-
 # misc
 alias em="emacsclient -s daemon -c"
 alias vim="vim --servername VIM"

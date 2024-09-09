@@ -81,7 +81,7 @@ bindsym $mod+F4 kill
 bindsym $mod+Control+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+F2 exec fish -ic gmrun
+bindsym $mod+F2 exec fish -ic "rofi -show drun"
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -94,15 +94,15 @@ bindsym Print exec flameshot gui
 bindsym $mod+Control+w exec firefox
 # bindsym $mod+Control+s exec ~/dotfiles/scripts/wtoggle catfish
 # bindsym $mod+Control+c [title="calcurse"] scratchpad show
-bindsym $mod+Control+f exec urxvt -e ranger
+bindsym $mod+Control+f exec kitty -e ranger
 # bindsym $mod+Control+m exec "[ \\"$(i3-msg '[class=\\"Astroid\\"] scratchpad show', floating disable)\\" = \\"[{\\\\"success\\\\":true},{\\\\"success\\\\":true}]\\" ] || i3-msg '[class=\\"Astroid\\"] move scratchpad'"
 # bindsym $mod+Control+m [class="Astroid"] scratchpad show; [class="URxvt" title="astroid@"] scratchpad show
 bindsym $mod+Control+x exec ~/dotfiles/scripts/i3_minimize_toggle '[class="Astroid"]'; exec ~/dotfiles/scripts/i3_minimize_toggle '[class="URxvt" title="astroid@"]'
-bindsym $mod+Control+c exec systemd-cat ~/dotfiles/scripts/mail-poll.sh -a
-bindsym $mod+Control+e exec ~/dotfiles/scripts/i3_minimize_toggle '[class="easyeffects"]'; exec ~/dotfiles/scripts/i3_minimize_toggle '[class="URxvt" title="easyeffects@"]'
+bindsym $mod+Control+c exec --no-startup-id rofi -show calc -modi calc -no-show-match -no-sort -calc-command "echo -n {result}' | xclip -sel clip" > /dev/null
+# bindsym $mod+Control+e exec ~/dotfiles/scripts/i3_minimize_toggle '[class="easyeffects"]'; exec ~/dotfiles/scripts/i3_minimize_toggle '[class="URxvt" title="easyeffects@"]'
 bindsym $mod+Control+z exec zotero
 # bindsym $mod+Control+p exec offlineimap -1 -o -u quiet
-bindsym $mod+Control+n exec urxvt -e ncmpcpp
+# bindsym $mod+Control+n exec urxvt -e ncmpcpp
 bindsym $mod+Control+m exec strawberry
 # bindsym $mod+Control+t exec urxvt -e trackma-curses
 # bindsym $mod+Control+r exec urxvt -e tmux new-session -A -s newsboat newsboat
@@ -257,6 +257,7 @@ bar {
         output          DVI-I-1
         output          eDP1
         output          eDP-1
+        output          Virtual1
         position        top
         status_command  python ~/.i3/i3status.py
 
@@ -276,6 +277,9 @@ bar {
 bar {
         output          HDMI1
         output          HDMI-0
+        output          DP2-1
+        output          Virtual2
+        output          Virtual3
         tray_output     none
         position        top
         status_command  python ~/.i3/i3status2.py
@@ -315,7 +319,10 @@ for_window [class="easyeffects" window_type="normal"] move scratchpad
 
 assign [class="sun-applet-AppletViewer"] $w7
 
+assign [class="slack"] $w3
+
 # Start up
+exec --no-startup-id fcitx
 exec --no-startup-id pasystray -a
 exec --no-startup-id nm-applet
 exec --no-startup-id picom -CGb
@@ -325,10 +332,10 @@ exec --no-startup-id astroid
 exec --no-startup-id easyeffects
 exec --no-startup-id clipit
 exec --no-startup-id redshift-gtk
-exec --no-startup-id clight
-exec --no-startup-id clight-gui --tray
-exec --no-startup-id rot8 --touchscreen "Wacom HID 48EB Finger"
-exec --no-startup-id touchegg
+# exec --no-startup-id clight
+# exec --no-startup-id clight-gui --tray
+# exec --no-startup-id rot8 --touchscreen "Wacom HID 48EB Finger"
+# exec --no-startup-id touchegg
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 
 exec --no-startup-id devmon
 exec --no-startup-id pactl load-module module-switch-on-connect
@@ -337,8 +344,13 @@ exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd
 # exec --no-startup-id zsh -c "sshfs fserver-vpn ~/fserver"
 exec --no-startup-id i3-msg "workspace 9; \
     append_layout /home/fran/dotfiles/i3/monitor.json; \
-    exec urxvt -T htop -e htop; \
-    exec urxvt -T atop1 -e sh -c 'sleep 1 && atop -lp'; \
-    exec urxvt -T atop2 -e sh -c 'sleep 2 && atop -lpM'; \
-    exec urxvt -T sysmonitor -e sh -c 'watch --color -t -n60 ~/dotfiles/scripts/sysmonitor.sh --color'; \
-    exec urxvt -T lnav -e sh -c 'journalctl --since -1h -f | lnav -I ~/dotfiles/lnav/'"
+    exec kitty -T htop -e htop; \
+    exec kitty -T atop1 -e sh -c 'sleep 1 && atop -lp'; \
+    exec kitty -T atop2 -e sh -c 'sleep 2 && atop -lpM'; \
+    exec kitty -T sysmonitor -e sh -c 'watch --color -t -n60 ~/dotfiles/scripts/sysmonitor.sh --color'; \
+    exec kitty -T lnav -e sh -c 'journalctl --since -1h -f | lnav -I ~/dotfiles/lnav/'"
+
+# exec --no-startup-id slack
+# exec --no-startup-id fish -c "xinput disable 9; xinput enable 9; imwheel -b 45"
+exec --no-startup-id onedrivegui
+exec --no-startup-id emote
