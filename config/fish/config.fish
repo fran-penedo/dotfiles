@@ -22,7 +22,7 @@ set -gx GRB_LICENSE_FILE $HOME/.gurobi/gurobi.lic
 set -gx LC_NUMERIC en_US.utf8
 
 # qt
-set -gx QT_QPA_PLATFORMTHEME qt6ct
+# set -gx QT_QPA_PLATFORMTHEME qt6ct
 
 # thefuck
 set -x THEFUCK_OVERRIDDEN_ALIASES 'rm,mv,cp'
@@ -90,9 +90,6 @@ alias mv='mv -i'
 
 # archlinux aliases
 alias yalocs='yay -Qs'
-
-# fzf
-fzf_key_bindings
 
 # misc
 alias em="emacsclient -s daemon -c"

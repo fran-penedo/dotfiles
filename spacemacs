@@ -32,11 +32,20 @@ This function should only modify configuration layer settings."
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(csv
+   '(
+     (javascript :variables
+                 js2-mode-show-strict-warnings nil
+                 javascript-fmt-tool 'prettier
+                 javascript-fmt-on-save t
+                 node-add-modules-path t)
+     (vue :variables vue-backend 'lsp)
+     csv
      sql
      ruby
      notmuch
-     html
+     (html :variables
+           web-fmt-tool 'prettier)
+
      systemd
      (debug :variables
             debug-additional-debuggers '("pdb"))
@@ -291,7 +300,7 @@ It should only modify the values of Spacemacs settings."
    ;; Default font or prioritized list of fonts. The `:size' can be specified as
    ;; a non-negative integer (pixel size), or a floating-point (point size).
    ;; Point size is recommended, because it's device independent. (default 10.0)
-   dotspacemacs-default-font '("DejaVuSansMono Nerd Font"
+   dotspacemacs-default-font '("DejaVuSansM Nerd Font"
                                :size 10.0
                                :weight normal
                                :width normal)
@@ -628,6 +637,7 @@ before packages are loaded."
 
    ;; vterm settings
    vterm-min-window-width 1
+   vterm-max-scrollback 100000
 
    ;; org caldav settings
    org-caldav-url "https://cloud.franpenedo.com/remote.php/dav/calendars/fran"
@@ -721,6 +731,16 @@ before packages are loaded."
   ;; recentf config
   (with-eval-after-load "recentf"
     (add-to-list 'recentf-exclude "/tmp/"))
+
+  ;; web mode config
+  (setq-default web-mode-markup-indent-offset 2
+                web-mode-css-indent-offset 2
+                css-indent-offset 2
+                web-mode-code-indent-offset 2
+                web-mode-attr-indent-offset 2)
+  (add-hook 'web-mode-hook (lambda () (add-hook 'before-save-hook 'prettier-js nil 'make-it-local)))
+  (add-hook 'css-mode-hook (lambda () (add-hook 'before-save-hook 'prettier-js nil 'make-it-local)))
+  (add-hook 'js2-mode-hook (lambda () (add-hook 'before-save-hook 'prettier-js nil 'make-it-local)))
 
   ;; Latex config
   (add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer)
@@ -1100,7 +1120,8 @@ This function is called at the very end of Spacemacs initialization."
      (org-html-postamble . t)
      (org-html-postamble-format
       ("en" " <p class=\"date\">Last Updated: %d</p>"))
-     (eval spacemacs/toggle-spelling-checking-on))))
+     (eval spacemacs/toggle-spelling-checking-on)))
+ '(warning-suppress-types '((lsp-mode) (lsp-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

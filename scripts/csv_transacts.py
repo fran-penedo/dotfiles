@@ -54,7 +54,7 @@ def get_cc_rows(wb, sh):
                 None,
                 None,
                 sh[i][1].value,
-                sh[i][2].value,
+                sh[i][2].value if sh[i][2].ctype == xlrd.XL_CELL_NUMBER else sh[i][3],
                 None,
                 None,
             )

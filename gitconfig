@@ -1,7 +1,7 @@
 [user]
 	email = fran@franpenedo.com
 	name = Francisco Penedo
-  signingkey = A3198FD716A360D0! 
+  # signingkey = A3198FD716A360D0!
 [push]
 	default = simple
 [core]
@@ -12,4 +12,6 @@
 [github]
 	user = fran-penedo
 [commit]
-	gpgsign = true
+	# gpgsign = true
+[init]
+	defaultBranch = main

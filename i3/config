@@ -73,7 +73,7 @@ focus_on_window_activation urgent
 floating_modifier $mod
 
 # Launch terminal
-bindsym $win+Return exec i3-sensible-terminal
+bindsym $win+Return exec kitty
 bindsym $mod+Return exec emacsclient -s daemon -c -e "(multi-vterm)"
 
 # kill focused window
@@ -81,7 +81,7 @@ bindsym $mod+F4 kill
 bindsym $mod+Control+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+F2 exec fish -ic gmrun
+bindsym $mod+F2 exec fish -ic "rofi -show drun"
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -97,8 +97,9 @@ bindsym $mod+Control+w exec firefox
 bindsym $mod+Control+f exec urxvt -e ranger
 # bindsym $mod+Control+m exec "[ \\"$(i3-msg '[class=\\"Astroid\\"] scratchpad show', floating disable)\\" = \\"[{\\\\"success\\\\":true},{\\\\"success\\\\":true}]\\" ] || i3-msg '[class=\\"Astroid\\"] move scratchpad'"
 # bindsym $mod+Control+m [class="Astroid"] scratchpad show; [class="URxvt" title="astroid@"] scratchpad show
-bindsym $mod+Control+x exec ~/dotfiles/scripts/i3_minimize_toggle '[class="Astroid"]'; exec ~/dotfiles/scripts/i3_minimize_toggle '[class="URxvt" title="astroid@"]'
-bindsym $mod+Control+c exec systemd-cat ~/dotfiles/scripts/mail-poll.sh -a
+bindsym $mod+Control+x exec ~/dotfiles/scripts/i3_minimize_toggle '[class="thunderbird"]'; exec ~/dotfiles/scripts/i3_minimize_toggle '[class="URxvt" title="thunderbird@"]'
+bindsym $mod+Control+c exec --no-startup-id rofi -show calc -modi calc -no-show-match -no-sort -calc-command "echo -n '{result}' | xclip -sel clip" > /dev/null
+bindsym $win+Tab exec rofi -show window
 bindsym $mod+Control+e exec ~/dotfiles/scripts/i3_minimize_toggle '[class="easyeffects"]'; exec ~/dotfiles/scripts/i3_minimize_toggle '[class="URxvt" title="easyeffects@"]'
 bindsym $mod+Control+z exec zotero
 # bindsym $mod+Control+p exec offlineimap -1 -o -u quiet
@@ -151,11 +152,6 @@ bindsym $mod+k focus up
 bindsym $mod+l focus right
 
 # move focused window
-bindsym $win+Shift+Tab move left
-bindsym $win+q move down
-bindsym $win+Shift+q move up
-bindsym $win+Tab move right
-
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
@@ -297,7 +293,7 @@ bar {
 
 workspace $w3 output DVI-I-1
 
-assign [class="Spotify"] $w9
+assign [class="Spotify"] $w8
 assign [title="i3_7"] $w7
 
 for_window [title="^Messenger — Mozilla Firefox"] move to workspace $w3
@@ -309,7 +305,7 @@ for_window [class="gimp"] floating enable
 for_window [class="(?i)pavucontrol"] floating enable
 for_window [class="Catfish"] floating enable
 for_window [class="ssh-askpass"] floating enable
-for_window [class="Astroid" window_type="normal"] move scratchpad
+for_window [class="thunderbird" window_type="normal"] move scratchpad
 for_window [class="easyeffects" window_type="normal"] move scratchpad
 # for_window [title="^calcurse$"] move scratchpad
 
@@ -321,8 +317,7 @@ exec --no-startup-id nm-applet
 exec --no-startup-id picom -CGb
 exec --no-startup-id xset dpms 0 0 0
 exec --no-startup-id xset -dpms
-exec --no-startup-id astroid
-exec --no-startup-id easyeffects
+exec --no-startup-id thunderbird
 exec --no-startup-id clipit
 exec --no-startup-id redshift-gtk
 exec --no-startup-id clight
@@ -337,8 +332,8 @@ exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd
 # exec --no-startup-id zsh -c "sshfs fserver-vpn ~/fserver"
 exec --no-startup-id i3-msg "workspace 9; \
     append_layout /home/fran/dotfiles/i3/monitor.json; \
-    exec urxvt -T htop -e htop; \
-    exec urxvt -T atop1 -e sh -c 'sleep 1 && atop -lp'; \
-    exec urxvt -T atop2 -e sh -c 'sleep 2 && atop -lpM'; \
-    exec urxvt -T sysmonitor -e sh -c 'watch --color -t -n60 ~/dotfiles/scripts/sysmonitor.sh --color'; \
-    exec urxvt -T lnav -e sh -c 'journalctl --since -1h -f | lnav -I ~/dotfiles/lnav/'"
+    exec kitty -T htop htop; \
+    exec kitty -T atop1 sh -c 'sleep 1 && atop -lp'; \
+    exec kitty -T atop2 sh -c 'sleep 2 && atop -lpM'; \
+    exec kitty -T sysmonitor sh -c 'watch --color -t -n60 ~/dotfiles/scripts/sysmonitor.sh --color'; \
+    exec kitty -T lnav sh -c 'journalctl --since -1h -f | lnav -I ~/dotfiles/lnav/'"
