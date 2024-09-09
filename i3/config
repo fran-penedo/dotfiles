@@ -73,7 +73,7 @@ focus_on_window_activation urgent
 floating_modifier $mod
 
 # Launch terminal
-bindsym $win+Return exec kitty
+bindsym $win+Return exec i3-sensible-terminal
 bindsym $mod+Return exec emacsclient -s daemon -c -e "(multi-vterm)"
 
 # kill focused window

@@ -1,0 +1,19 @@
+[Unit]
+Description=Watch homebank folder and convert excel files to csv
+# Documentation=
+# Wants=wait-for-network.service
+# After=wait-for-network.service
+
+[Service]
+# Type: simple, exec, forking, oneshot, dbus, notify or idle
+Type=simple
+WorkingDirectory=/home/fran/net/homebank/
+ExecStart=/bin/watchexec --postpone --exts ".xls" --on-busy-update=queue -- 'sleep 1; /home/fran/dotfiles/scripts/csv_transacts.py $WATCHEXEC_COMMON_PATH/$WATCHEXEC_CREATED_PATH'
+# ExecStop=
+# Environment=
+# Restart: no, on-success, on-failure, on-abnormal, on-watchdog, on-abort, or always
+# Restart=on-failure
+# RestartPreventExitStatus=SIGKILL
+
+[Install]
+WantedBy=default.target
