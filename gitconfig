@@ -13,5 +13,4 @@
 	user = fran-penedo
 [commit]
 	# gpgsign = true
-[init]
-	defaultBranch = main
+	verbose = 1

@@ -1,129 +1,129 @@
 // vim:ts=4:sw=4:et
 {
-    // splitv split container with 3 children
-    "border": "pixel",
-    "floating": "auto_off",
-    "layout": "splitv",
-    "marks": [],
-    "percent": 0.5,
-    "type": "con",
-    "nodes": [
+  // splitv split container with 3 children
+  "border": "pixel",
+  "floating": "auto_off",
+  "layout": "splitv",
+  "marks": [],
+  "percent": 0.5,
+  "type": "con",
+  "nodes": [
+    {
+      "border": "pixel",
+      "current_border_width": 3,
+      "floating": "auto_off",
+      "geometry": {
+        "height": 388,
+        "width": 564,
+        "x": 0,
+        "y": 0
+      },
+      "marks": [],
+      "name": "kitty",
+      "percent": 0.24,
+      "swallows": [
         {
-            "border": "pixel",
-            "current_border_width": 3,
-            "floating": "auto_off",
-            "geometry": {
-               "height": 388,
-               "width": 564,
-               "x": 0,
-               "y": 0
-            },
-            "marks": [],
-            "name": "kitty",
-            "percent": 0.24,
-            "swallows": [
-               {
-               "class": "^kitty",
-               "title": "^htop$"
-               }
-            ],
-            "type": "con"
-        },
-        {
-            "border": "pixel",
-            "current_border_width": 3,
-            "floating": "auto_off",
-            "geometry": {
-               "height": 388,
-               "width": 564,
-               "x": 0,
-               "y": 0
-            },
-            "marks": [],
-            "name": "kitty",
-            "percent": 0.38,
-            "swallows": [
-               {
-               "class": "^kitty",
-               "title": "^atop1$"
-               }
-            ],
-            "type": "con"
-        },
-        {
-            // splith split container with 2 children
-            "border": "pixel",
-            "floating": "auto_off",
-            "layout": "splith",
-            "marks": [],
-            "percent": 0.38,
-            "type": "con",
-            "nodes": [
-            {
-                "border": "pixel",
-                "current_border_width": 3,
-                "floating": "auto_off",
-                "geometry": {
-                  "height": 388,
-                  "width": 564,
-                  "x": 0,
-                  "y": 0
-                },
-                "marks": [],
-                "name": "kitty",
-                "percent": 0.5,
-                "swallows": [
-                  {
-                  "class": "^kitty",
-                  "title": "^atop2$"
-                  }
-                ],
-                "type": "con"
-            },
-            {
-                "border": "pixel",
-                "current_border_width": 3,
-                "floating": "auto_off",
-                "geometry": {
-                  "height": 388,
-                  "width": 564,
-                  "x": 0,
-                  "y": 0
-                },
-                "marks": [],
-                "name": "kitty",
-                "percent": 0.5,
-                "swallows": [
-                  {
-                  "class": "^kitty",
-                  "title": "^sysmonitor$"
-                  }
-                ],
-                "type": "con"
-            }]
+          "class": "^kitty$",
+          "title": "^htop$"
         }
-    ]
+      ],
+      "type": "con"
+    },
+    {
+      "border": "pixel",
+      "current_border_width": 3,
+      "floating": "auto_off",
+      "geometry": {
+        "height": 388,
+        "width": 564,
+        "x": 0,
+        "y": 0
+      },
+      "marks": [],
+      "name": "kitty",
+      "percent": 0.38,
+      "swallows": [
+        {
+          "class": "^kitty$",
+          "title": "^atop1$"
+        }
+      ],
+      "type": "con"
+    },
+    {
+      // splith split container with 2 children
+      "border": "pixel",
+      "floating": "auto_off",
+      "layout": "splith",
+      "marks": [],
+      "percent": 0.38,
+      "type": "con",
+      "nodes": [
+        {
+          "border": "pixel",
+          "current_border_width": 3,
+          "floating": "auto_off",
+          "geometry": {
+            "height": 388,
+            "width": 564,
+            "x": 0,
+            "y": 0
+          },
+          "marks": [],
+          "name": "kitty",
+          "percent": 0.5,
+          "swallows": [
+            {
+              "class": "^kitty$",
+              "title": "^atop2$"
+            }
+          ],
+          "type": "con"
+        },
+        {
+          "border": "pixel",
+          "current_border_width": 3,
+          "floating": "auto_off",
+          "geometry": {
+            "height": 388,
+            "width": 564,
+            "x": 0,
+            "y": 0
+          },
+          "marks": [],
+          "name": "kitty",
+          "percent": 0.5,
+          "swallows": [
+            {
+              "class": "^kitty$",
+              "title": "^sysmonitor$"
+            }
+          ],
+          "type": "con"
+        }
+      ]
+    }
+  ]
 }
 
 {
-    "border": "pixel",
-    "current_border_width": 3,
-    "floating": "auto_off",
-    "geometry": {
-       "height": 388,
-       "width": 564,
-       "x": 0,
-       "y": 0
-    },
-    "marks": [],
-    "name": "kitty",
-    "percent": 0.5,
-    "swallows": [
-       {
-       "class": "^kitty",
-       "title": "^lnav$"
-       }
-    ],
-    "type": "con"
+  "border": "pixel",
+  "current_border_width": 3,
+  "floating": "auto_off",
+  "geometry": {
+    "height": 388,
+    "width": 564,
+    "x": 0,
+    "y": 0
+  },
+  "marks": [],
+  "name": "kitty",
+  "percent": 0.5,
+  "swallows": [
+    {
+      "class": "^kitty$",
+      "title": "^lnav$"
+    }
+  ],
+  "type": "con"
 }
-

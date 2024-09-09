@@ -57,6 +57,12 @@ status.register(
     format="SWP:{free}M",
 )
 
+# status.register(
+#     "mail",
+#     hide_if_null=False,
+#     backends=[notmuchmail.Notmuch(query="tag:inbox and tag:unread and -tag:spam")],
+# )
+
 status.register(
     "network",
     format_up="{interface} u:{bytes_sent}KB/s d:{bytes_recv}KB/s",

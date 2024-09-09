@@ -32,20 +32,20 @@ This function should only modify configuration layer settings."
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(
+   '(rust
      (javascript :variables
                  js2-mode-show-strict-warnings nil
                  javascript-fmt-tool 'prettier
                  javascript-fmt-on-save t
                  node-add-modules-path t)
      (vue :variables vue-backend 'lsp)
+     yaml
      csv
      sql
      ruby
-     notmuch
+     ;; notmuch
      (html :variables
            web-fmt-tool 'prettier)
-
      systemd
      (debug :variables
             debug-additional-debuggers '("pdb"))
@@ -59,7 +59,8 @@ This function should only modify configuration layer settings."
      (python :variables
              python-formatter 'black
              python-format-on-save t
-             python-shell-interpreter-args "-i"
+             python-shell-interpreter "ipython"
+             python-shell-interpreter-args "-i --simple-prompt"
              python-sort-imports-on-save t
              python-backend 'lsp
              python-lsp-server 'pyright)
@@ -71,6 +72,8 @@ This function should only modify configuration layer settings."
               haskell-enable-hindent t)
      (ipython-notebook :variables ein-backend 'jupyter)
      neotree
+     (restclient :variables
+                 restclient-use-org t)
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
@@ -116,14 +119,14 @@ This function should only modify configuration layer settings."
    ;; Also include the dependencies as they will not be resolved automatically.
    dotspacemacs-additional-packages
    '(
-     flycheck-mypy
      org-caldav
      (org-super-links :location (recipe
                                  :fetcher github
                                  :repo "toshism/org-super-links"))
-     multi-vterm
+     py-autopep8
      numpydoc
      envrc
+     multi-vterm
      )
 
    ;; A list of packages that cannot be updated.
@@ -634,6 +637,7 @@ before packages are loaded."
    ;; yas-inhibit-overlay-modification-protection nil
    importmagic-python-interpreter "python"
    pytest-cmd-flags ""
+   ;; blacken-line-length 79
 
    ;; vterm settings
    vterm-min-window-width 1
@@ -649,6 +653,9 @@ before packages are loaded."
    org-caldav-delete-calendar-entries 'always
    org-caldav-delete-org-entries 'always
    org-caldav-show-sync-results nil
+
+   ;; git settings
+   git-commit-fill-column 72
    )
 
   ;; Window management
@@ -726,13 +733,18 @@ before packages are loaded."
           lsp-ui-doc-show-with-mouse nil
           lsp-ui-peek-always-show t)
 
+    (lsp-register-client
+     (make-lsp-client :new-connection (lsp-tramp-connection "pyright")
+                      :major-modes '(python-mode)
+                      :remote? t
+                      :server-id 'pyright-remote))
+
     (advice-add 'lsp :before (lambda (&rest _args) (eval '(setf (lsp-session-server-id->folders (lsp-session)) (ht))))))
 
   ;; recentf config
   (with-eval-after-load "recentf"
     (add-to-list 'recentf-exclude "/tmp/"))
 
-  ;; web mode config
   (setq-default web-mode-markup-indent-offset 2
                 web-mode-css-indent-offset 2
                 css-indent-offset 2
@@ -741,7 +753,6 @@ before packages are loaded."
   (add-hook 'web-mode-hook (lambda () (add-hook 'before-save-hook 'prettier-js nil 'make-it-local)))
   (add-hook 'css-mode-hook (lambda () (add-hook 'before-save-hook 'prettier-js nil 'make-it-local)))
   (add-hook 'js2-mode-hook (lambda () (add-hook 'before-save-hook 'prettier-js nil 'make-it-local)))
-
   ;; Latex config
   (add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer)
   (with-eval-after-load "tex-buf"
@@ -754,14 +765,43 @@ before packages are loaded."
 
   ;; Python config
   (with-eval-after-load "flycheck"
-    (require 'flycheck-mypy)
-    (flycheck-add-next-checker 'python-flake8 'python-mypy t))
+    (flycheck-define-checker python-ruff
+      "A Python syntax and style checker using the ruff utility.
+      To override the path to the ruff executable, set
+      `flycheck-python-ruff-executable'.
+      See URL `http://pypi.python.org/pypi/ruff'."
+      :command ("ruff"
+                "--format=text"
+                (eval (when buffer-file-name
+                        (concat "--stdin-filename=" buffer-file-name)))
+                "-")
+      :standard-input t
+      ;; :error-filter (lambda (errors)
+      ;;                 (let ((errors (flycheck-sanitize-errors errors)))
+      ;;                   (seq-map #'flycheck-flake8-fix-error-level errors)))
+      :error-patterns
+      ((warning line-start
+                (file-name) ":" line ":" (optional column ":") " "
+                (id (one-or-more (any alpha)) (one-or-more digit)) " "
+                (message (one-or-more not-newline))
+                line-end))
+      :modes python-mode)
+
+    (add-to-list 'flycheck-checkers 'python-ruff)
+    (flycheck-remove-next-checker 'python-pylint 'python-mypy)
+    (flycheck-add-next-checker 'python-ruff 'python-mypy t)
+    (flycheck-add-next-checker 'python-pyright 'python-ruff t)
+    )
   (with-eval-after-load "python"
     (setq-default python-test-runner 'pytest)
     (add-hook 'pyvenv-post-activate-hooks
               #'(lambda ()
                   (call-interactively #'lsp-workspace-restart)))
     ;; (add-hook 'python-mode-hook #'(lambda () (push '(company-capf company-yasnippet) company-backends))) ; breaks lsp?
+    ;; (remove-hook 'python-mode-hook 'py-autopep8-enable-on-save)
+    (require 'numpydoc)
+    (setq-default numpydoc-insertion-style 'yas
+                  numpydoc-insert-examples-block nil)
     )
 
   (with-eval-after-load 'dap-mode
@@ -785,6 +825,14 @@ before packages are loaded."
            :program nil
            :request "launch"
            :name "Python :: Run project")))
+
+  ;; (with-eval-after-load 'ein:notebook
+  ;;   (add-hook 'ein:notebook-mode-hook
+  ;;             #'(lambda ()
+  ;;                 (define-key evil-normal-state-local-map "r" 'ein:notebook-save-notebook-command-km))))
+  (with-eval-after-load 'ein:notebook
+    (define-key ein:notebook-mode-map [remap save-buffer] 'ein:notebook-save-notebook-command-km))
+
 
   ;; Terminal config
   ;; (with-eval-after-load 'term
@@ -956,7 +1004,7 @@ before packages are loaded."
                                          ((org-agenda-files '("~/net/gtd/gtd.org"))
                                           (org-agenda-overriding-header "Waiting")))
                                   ("o" "To do"
-                                   ((agenda "" ((org-agenda-files '("~/net/gtd/calendar.org"))
+                                   ((agenda "" ((org-agenda-files '("~/net/gtd/calendar.org" "~/net/gtd/gtd.org"))
                                                 (org-agenda-overriding-header "Today's appointments")
                                                 (org-agenda-span 2)))
                                     (tags-todo (my-org-add-filter  "+CATEGORY=\"Tasks\"+SCHEDULED<=\"<now>\"|+CATEGORY=\"Tasks\"+SCHEDULED=\"\"")
@@ -1044,13 +1092,12 @@ before packages are loaded."
     (add-hook 'markdown-mode-hook #'turn-on-auto-fill))
 
   ;; notmuch config
-  (require 'notmuch) ;; not much I can do about this I think (hehe)
-  (add-to-list 'auto-mode-alist '("astroid@[[:alnum:]]+\\.none" . notmuch-message-mode))
-  (add-hook 'notmuch-message-mode-hook #'turn-on-auto-fill)
-  (setq notmuch-address-internal-completion '(received nil))
-  (spacemacs|add-company-backends
-    :backends notmuch-company
-    :modes notmuch-message-mode)
+  ;; (require 'notmuch) ;; not much I can do about this I think (hehe)
+  ;; (add-to-list 'auto-mode-alist '("astroid@[[:alnum:]]+\\.none" . notmuch-message-mode))
+  ;; (add-hook 'notmuch-message-mode-hook #'turn-on-auto-fill)
+  ;; (spacemacs|add-company-backends
+  ;;   :backends notmuch-company
+  ;;   :modes notmuch-message-mode)
 
   ;; shell config
 
@@ -1108,7 +1155,7 @@ This function is called at the very end of Spacemacs initialization."
  '(auth-source-save-behavior nil)
  '(evil-want-Y-yank-to-eol nil)
  '(package-selected-packages
-   '(import-js grizzl js-doc js2-refactor multiple-cursors livid-mode nodejs-repl npm-mode skewer-mode js2-mode tern yaml-mode csv-mode sqlup-mode sql-indent seeing-is-believing rvm ruby-tools ruby-test-mode ruby-refactor ruby-hash-syntax rubocopfmt rubocop rspec-mode robe rbenv rake minitest enh-ruby-mode counsel-gtags chruby bundler inf-ruby systemd company-quickhelp realgud test-simple loc-changes load-relative flyspell-correct-helm flyspell-correct auto-dictionary selectric-mode ibuffer-projectile web-mode web-beautify tagedit slim-mode scss-mode sass-mode pug-mode prettier-js impatient-mode simple-httpd helm-css-scss haml-mode emmet-mode counsel-css counsel swiper ivy company-web web-completion-data add-node-modules-path ranger pdf-tools tablist company-reftex auctex origami yasnippet-snippets yapfify xterm-color ws-butler writeroom-mode winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org symon symbol-overlay string-inflection spaceline-all-the-icons smeargle shell-pop restart-emacs rainbow-delimiters pytest pyenv-mode py-isort popwin pippel pipenv pip-requirements persp-mode pcre2el password-generator paradox overseer orgit org-projectile org-present org-pomodoro org-mime org-download org-cliplink org-bullets org-brain open-junk-file neotree nameless multi-term move-text mmm-mode markdown-toc magit-svn magit-gitflow macrostep lsp-haskell lorem-ipsum live-py-mode link-hint intero indent-guide importmagic hungry-delete htmlize hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-pydoc helm-purpose helm-projectile helm-org-rifle helm-mode-manager helm-make helm-hoogle helm-gitignore helm-git-grep helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag haskell-snippets google-translate golden-ratio gnuplot gitignore-templates gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md fuzzy font-lock+ flycheck-pos-tip flycheck-package flycheck-mypy flycheck-haskell flx-ido fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-org evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help elisp-slime-nav editorconfig dumb-jump dotenv-mode doom-modeline diminish diff-hl devdocs define-word dante cython-mode company-statistics company-ghci company-ghc company-cabal company-anaconda column-enforce-mode cmm-mode clean-aindent-mode centered-cursor-mode browse-at-remote blacken auto-yasnippet auto-highlight-symbol auto-compile attrap aggressive-indent ace-window ace-link ace-jump-helm-line ac-ispell))
+   '(cargo flycheck-rust racer ron-mode rust-mode toml-mode import-js grizzl js-doc js2-refactor multiple-cursors livid-mode nodejs-repl npm-mode skewer-mode js2-mode tern yaml-mode csv-mode sqlup-mode sql-indent seeing-is-believing rvm ruby-tools ruby-test-mode ruby-refactor ruby-hash-syntax rubocopfmt rubocop rspec-mode robe rbenv rake minitest enh-ruby-mode counsel-gtags chruby bundler inf-ruby systemd company-quickhelp realgud test-simple loc-changes load-relative flyspell-correct-helm flyspell-correct auto-dictionary selectric-mode ibuffer-projectile web-mode web-beautify tagedit slim-mode scss-mode sass-mode pug-mode prettier-js impatient-mode simple-httpd helm-css-scss haml-mode emmet-mode counsel-css counsel swiper ivy company-web web-completion-data add-node-modules-path ranger pdf-tools tablist company-reftex auctex origami yasnippet-snippets yapfify xterm-color ws-butler writeroom-mode winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org symon symbol-overlay string-inflection spaceline-all-the-icons smeargle shell-pop restart-emacs rainbow-delimiters pytest pyenv-mode py-isort popwin pippel pipenv pip-requirements persp-mode pcre2el password-generator paradox overseer orgit org-projectile org-present org-pomodoro org-mime org-download org-cliplink org-bullets org-brain open-junk-file neotree nameless multi-term move-text mmm-mode markdown-toc magit-svn magit-gitflow macrostep lsp-haskell lorem-ipsum live-py-mode link-hint intero indent-guide importmagic hungry-delete htmlize hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-pydoc helm-purpose helm-projectile helm-org-rifle helm-mode-manager helm-make helm-hoogle helm-gitignore helm-git-grep helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag haskell-snippets google-translate golden-ratio gnuplot gitignore-templates gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md fuzzy font-lock+ flycheck-pos-tip flycheck-package flycheck-mypy flycheck-haskell flx-ido fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-org evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help elisp-slime-nav editorconfig dumb-jump dotenv-mode doom-modeline diminish diff-hl devdocs define-word dante cython-mode company-statistics company-ghci company-ghc company-cabal company-anaconda column-enforce-mode cmm-mode clean-aindent-mode centered-cursor-mode browse-at-remote blacken auto-yasnippet auto-highlight-symbol auto-compile attrap aggressive-indent ace-window ace-link ace-jump-helm-line ac-ispell))
  '(paradox-github-token t)
  '(safe-local-variable-values
    '((org-latex-format-options quote
@@ -1121,11 +1168,11 @@ This function is called at the very end of Spacemacs initialization."
      (org-html-postamble-format
       ("en" " <p class=\"date\">Last Updated: %d</p>"))
      (eval spacemacs/toggle-spelling-checking-on)))
- '(warning-suppress-types '((lsp-mode) (lsp-mode))))
+ '(warning-suppress-types '((emacsql) (emacsql) (use-package) (ein))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(highlight-parentheses-highlight ((nil (:weight ultra-bold))) t))
 )

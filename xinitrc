@@ -43,7 +43,7 @@ syndaemon -i 1 -t -k &
 export GTK_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 export QT_IM_MODULE=fcitx
-fcitx
+# fcitx
 
 export PYMACS_PYTHON=python2
 export MC_XDG_OPEN=$HOME/dotfiles/.scripts/xdg-open-spawn
