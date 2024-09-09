@@ -13,3 +13,4 @@
 	user = fran-penedo
 [commit]
 	# gpgsign = true
+	verbose = 1

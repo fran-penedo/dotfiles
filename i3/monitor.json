@@ -19,11 +19,11 @@
                "y": 0
             },
             "marks": [],
-            "name": "urxvt",
+            "name": "kitty",
             "percent": 0.24,
             "swallows": [
                {
-               "class": "^URxvt$",
+               "class": "^kitty$",
                "title": "^htop$"
                }
             ],
@@ -40,11 +40,11 @@
                "y": 0
             },
             "marks": [],
-            "name": "urxvt",
+            "name": "kitty",
             "percent": 0.38,
             "swallows": [
                {
-               "class": "^URxvt$",
+               "class": "^kitty$",
                "title": "^atop1$"
                }
             ],
@@ -70,11 +70,11 @@
                   "y": 0
                 },
                 "marks": [],
-                "name": "urxvt",
+                "name": "kitty",
                 "percent": 0.5,
                 "swallows": [
                   {
-                  "class": "^URxvt$",
+                  "class": "^kitty$",
                   "title": "^atop2$"
                   }
                 ],
@@ -91,11 +91,11 @@
                   "y": 0
                 },
                 "marks": [],
-                "name": "urxvt",
+                "name": "kitty",
                 "percent": 0.5,
                 "swallows": [
                   {
-                  "class": "^URxvt$",
+                  "class": "^kitty$",
                   "title": "^sysmonitor$"
                   }
                 ],
@@ -116,11 +116,11 @@
        "y": 0
     },
     "marks": [],
-    "name": "urxvt",
+    "name": "kitty",
     "percent": 0.5,
     "swallows": [
        {
-       "class": "^URxvt$",
+       "class": "^kitty$",
        "title": "^lnav$"
        }
     ],

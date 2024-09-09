@@ -33,13 +33,19 @@ This function should only modify configuration layer settings."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(rust
-     javascript
+     (javascript :variables
+                 js2-mode-show-strict-warnings nil
+                 javascript-fmt-tool 'prettier
+                 javascript-fmt-on-save t
+                 node-add-modules-path t)
+     (vue :variables vue-backend 'lsp)
      yaml
      csv
      sql
      ruby
      ;; notmuch
-     html
+     (html :variables
+           web-fmt-tool 'prettier)
      systemd
      (debug :variables
             debug-additional-debuggers '("pdb"))
@@ -53,6 +59,7 @@ This function should only modify configuration layer settings."
      (python :variables
              python-formatter 'black
              python-format-on-save t
+             python-shell-interpreter "ipython"
              python-shell-interpreter-args "-i --simple-prompt"
              python-sort-imports-on-save t
              python-backend 'lsp
@@ -634,6 +641,7 @@ before packages are loaded."
 
    ;; vterm settings
    vterm-min-window-width 1
+   vterm-max-scrollback 100000
 
    ;; org caldav settings
    org-caldav-url "https://cloud.franpenedo.com/remote.php/dav/calendars/fran"
@@ -737,6 +745,14 @@ before packages are loaded."
   (with-eval-after-load "recentf"
     (add-to-list 'recentf-exclude "/tmp/"))
 
+  (setq-default web-mode-markup-indent-offset 2
+                web-mode-css-indent-offset 2
+                css-indent-offset 2
+                web-mode-code-indent-offset 2
+                web-mode-attr-indent-offset 2)
+  (add-hook 'web-mode-hook (lambda () (add-hook 'before-save-hook 'prettier-js nil 'make-it-local)))
+  (add-hook 'css-mode-hook (lambda () (add-hook 'before-save-hook 'prettier-js nil 'make-it-local)))
+  (add-hook 'js2-mode-hook (lambda () (add-hook 'before-save-hook 'prettier-js nil 'make-it-local)))
   ;; Latex config
   (add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer)
   (with-eval-after-load "tex-buf"
@@ -774,7 +790,6 @@ before packages are loaded."
     (add-to-list 'flycheck-checkers 'python-ruff)
     (flycheck-remove-next-checker 'python-pylint 'python-mypy)
     (flycheck-add-next-checker 'python-ruff 'python-mypy t)
-    (flycheck-add-next-checker 'python-mypy 'python-pylint t)
     (flycheck-add-next-checker 'python-pyright 'python-ruff t)
     )
   (with-eval-after-load "python"
@@ -1153,7 +1168,7 @@ This function is called at the very end of Spacemacs initialization."
      (org-html-postamble-format
       ("en" " <p class=\"date\">Last Updated: %d</p>"))
      (eval spacemacs/toggle-spelling-checking-on)))
- '(warning-suppress-types '((ein))))
+ '(warning-suppress-types '((emacsql) (emacsql) (use-package) (ein))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

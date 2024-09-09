@@ -3,8 +3,8 @@
 # GPL v2.0 applies
 
 # Set terminal
-Terminal = urxvt
-TermExec = ${Terminal} -e
+Terminal = kitty
+TermExec = ${Terminal}
 AlwaysInTerm = ssh telnet ftp lynx mc vi vim pine centericq perldoc man finch rtorrent cmus weechat sup ncmpcpp trackma-curses ranger
 
 # Set window geometry (except height)

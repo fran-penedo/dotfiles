@@ -9,6 +9,7 @@ GRTAGS
 # Common Python build, test and auxiliary files
 .coverage
 .coverage.*
+coverage.xml
 cover/
 *.egg-info
 
@@ -91,6 +92,7 @@ Session.vim
 # python
 *.pyc
 .ropeproject/
+.env
 .env/
 
 ## Core latex/pdflatex auxiliary files:
@@ -220,5 +222,8 @@ sympy-plots-for-*.tex/
 # WinEdt
 *.bak
 *.sav
+
 /.idea/
+.vscode/
 .envrc
+.direnv/
