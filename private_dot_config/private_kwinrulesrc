@@ -1,0 +1,31 @@
+[1]
+Description=title bar
+noborderrule=2
+types=1
+
+[2]
+Description=Firefox Private
+skippager=true
+skippagerrule=2
+skipswitcher=true
+skipswitcherrule=2
+title=Mozilla Firefox Private Browsing
+titlematch=2
+
+[General]
+count=2
+rules=1,2
+
+[b9fb6c92-c6ca-47c5-a635-ef6a858f9abf]
+Description=New window settings
+noborderrule=2
+types=1
+
+[f9d81011-09b4-43bf-811b-eac3fd690e1a]
+Description=Firefox Private
+skippager=true
+skippagerrule=2
+skipswitcher=true
+skipswitcherrule=2
+title=Mozilla Firefox Private Browsing
+titlematch=2

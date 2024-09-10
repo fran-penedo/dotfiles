@@ -1,0 +1,7 @@
+[Applets][3]
+immutability=1
+plugin=com.github.davide-sd.ip_address
+
+[Applets][3][Configuration]
+PreloadWeight=34
+geometry=879,536,518,249

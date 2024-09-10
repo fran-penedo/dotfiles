@@ -1,0 +1,11 @@
+[Desktop Entry]
+Categories=Utility;TrayIcon;DesktopUtility
+Comment=Temporarily deactivate the screensaver and sleep mode
+Encoding=UTF-8
+Exec=caffeine
+Icon=caffeine
+Keywords=Screensaver,Power,DPMS,Blank,Idle
+Name=Caffeine-ng
+StartupNotify=false
+Terminal=false
+Type=Application

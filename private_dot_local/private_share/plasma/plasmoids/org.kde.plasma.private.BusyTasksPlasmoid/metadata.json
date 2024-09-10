@@ -1,0 +1,20 @@
+{
+    "KPackageStructure": "Plasma/Applet",
+    "KPlugin": {
+        "Authors": [
+            {
+                "Email": "unknown_spirit@gmx.at",
+                "Name": "Bernhard Mayr"
+            }
+        ],
+        "Category": "Utilities",
+        "Description": "A small process monitor",
+        "Icon": "applications-system",
+        "Id": "org.kde.plasma.private.BusyTasksPlasmoid",
+        "License": "GPL-3.0",
+        "Name": "BusyTasksPlasmoid",
+        "Version": "4.4",
+        "Website": "https://www.pling.com/p/2153869/"
+    },
+    "X-Plasma-API-Minimum-Version": "6.0"
+}

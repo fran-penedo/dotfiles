@@ -1,0 +1,2 @@
+module BusyTasksPlugin
+plugin QMLBusyTasksPlugin ./imports/BusyTasksPlugin

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Categories=System;GNOME;GTK;
+Comment=An unofficial GUI wrapper around the Tailscale CLI.
+Exec=trayscale
+Icon=dev.deedles.Trayscale
+Name=Trayscale
+SingleMainWindow=true
+Terminal=false
+Type=Application
+Version=1.0
+X-GNOME-UsesNotifications=true
