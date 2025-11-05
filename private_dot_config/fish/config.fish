@@ -61,7 +61,7 @@ set fish_color_command normal --bold
 set fish_color_param normal
 
 # Direnv
-direnv hook fish | source
+# direnv hook fish | source
 
 # Advanced Aliases.
 # Use with caution
@@ -81,7 +81,7 @@ alias lsn='ls -1'     #A column contains name of files and directories
 
 alias t='tail -f'
 
-alias dud='du -d 1 -h'
+alias dud='du -d 1 -h | sort -h'
 alias duf='du -sh *'
 
 alias rm='rm -i'
@@ -93,10 +93,11 @@ alias yalocs='yay -Qs'
 
 # misc
 alias em="emacsclient -s daemon -c"
-alias vim="vim --servername VIM"
-alias vimrc="vim ~/.vimrc"
-alias vi="vim"
+alias vim="nvim"
+alias vimrc="nvim ~/.vimrc"
+alias vi="nvim"
 alias op="xdg-open"
 alias tml="tmuxp load ."
 alias ytdlm="youtube-dl -f 'bestaudio' --extract-audio --audio-format mp3 --audio-quality 0"
 alias mpvm="mpv --no-video"
+alias code="DISPLAY=:1 code"

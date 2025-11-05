@@ -2,7 +2,7 @@
 Default Calendar=-1
 
 [CollectionTreeView]
-Expansion=c11
+Expansion=
 HorizontalScroll=0
 VerticalScroll=0
 
@@ -14,16 +14,19 @@ Range Mode=5
 
 [GlobalCollectionSelection]
 Current=x-1
-Selection=c12
+Selection=c8,c2,c11
 
 [GlobalCollectionView]
-Expansion=c11
+Expansion=
 HorizontalScroll=0
 VerticalScroll=0
 
+[Internal Settings]
+DefaultResourceColorSeed=3
+
 [KOrganizer Geometry]
-Separator1=781,1138
-Separator2=440,0,275,352
+Separator1=408,594
+Separator2=234,0,146,187
 
 [MainWindow]
 ToolBarsMovable=Disabled

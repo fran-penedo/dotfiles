@@ -11,7 +11,6 @@ RemoveWindowTitleBarAndFrame=true
 
 [MainWindow]
 MenuBar=Disabled
-ToolBarsMovable=Disabled
 
 [UiSettings]
 ColorScheme=

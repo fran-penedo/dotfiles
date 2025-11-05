@@ -24,8 +24,8 @@ IntensityAmount=0
 IntensityEffect=0
 
 [Colors:Button]
-BackgroundAlternate=57,164,43
-BackgroundNormal=49,54,59
+BackgroundAlternate=55,161,40
+BackgroundNormal=41,44,48
 DecorationFocus=61,212,37
 DecorationHover=61,212,37
 ForegroundActive=61,212,37
@@ -39,7 +39,7 @@ ForegroundVisited=155,89,182
 
 [Colors:Complementary]
 BackgroundAlternate=30,87,116
-BackgroundNormal=42,46,50
+BackgroundNormal=32,35,38
 DecorationFocus=61,212,37
 DecorationHover=61,212,37
 ForegroundActive=61,212,37
@@ -52,8 +52,8 @@ ForegroundPositive=39,174,96
 ForegroundVisited=155,89,182
 
 [Colors:Header]
-BackgroundAlternate=42,46,50
-BackgroundNormal=49,54,59
+BackgroundAlternate=32,35,38
+BackgroundNormal=41,44,48
 DecorationFocus=61,212,37
 DecorationHover=61,212,37
 ForegroundActive=61,212,37
@@ -66,8 +66,8 @@ ForegroundPositive=39,174,96
 ForegroundVisited=155,89,182
 
 [Colors:Header][Inactive]
-BackgroundAlternate=49,54,59
-BackgroundNormal=42,46,50
+BackgroundAlternate=41,44,48
+BackgroundNormal=32,35,38
 DecorationFocus=61,174,233
 DecorationHover=61,174,233
 ForegroundActive=61,174,233
@@ -80,8 +80,8 @@ ForegroundPositive=39,174,96
 ForegroundVisited=155,89,182
 
 [Colors:Selection]
-BackgroundAlternate=50,157,35
-BackgroundNormal=50,157,35
+BackgroundAlternate=48,155,33
+BackgroundNormal=48,155,33
 DecorationFocus=61,212,37
 DecorationHover=61,212,37
 ForegroundActive=61,212,37
@@ -94,8 +94,8 @@ ForegroundPositive=23,104,57
 ForegroundVisited=155,89,182
 
 [Colors:Tooltip]
-BackgroundAlternate=42,46,50
-BackgroundNormal=49,54,59
+BackgroundAlternate=32,35,38
+BackgroundNormal=41,44,48
 DecorationFocus=61,212,37
 DecorationHover=61,212,37
 ForegroundActive=61,212,37
@@ -108,8 +108,8 @@ ForegroundPositive=39,174,96
 ForegroundVisited=155,89,182
 
 [Colors:View]
-BackgroundAlternate=35,38,41
-BackgroundNormal=27,30,32
+BackgroundAlternate=29,31,34
+BackgroundNormal=20,22,24
 DecorationFocus=61,212,37
 DecorationHover=61,212,37
 ForegroundActive=61,212,37
@@ -122,8 +122,8 @@ ForegroundPositive=39,174,96
 ForegroundVisited=155,89,182
 
 [Colors:Window]
-BackgroundAlternate=49,54,59
-BackgroundNormal=42,46,50
+BackgroundAlternate=41,44,48
+BackgroundNormal=32,35,38
 DecorationFocus=61,212,37
 DecorationHover=61,212,37
 ForegroundActive=61,212,37
@@ -136,12 +136,13 @@ ForegroundPositive=39,174,96
 ForegroundVisited=155,89,182
 
 [DirSelect Dialog]
-DirSelectDialog Size=820,584
-History Items[$e]=file:$HOME/games/eg
+DirSelectDialog Size=960,540
+History Items[$e]=file:$HOME/dev/hype/local/ml-experiments/prototypes/hypeml-similaritysearch-testbench,file:$HOME/dev/hype/local/ml-experiments/prototypes/ideation-campaign-chat,file:$HOME/onedrive/Documents/dev/hype/local/ml-experiments/prototypes/suite-chatbot/embed_cache,file:$HOME/dev,file:$HOME/onedrive/Documents/dev/hype/local/ml-experiments/prototypes/suite-chatbot,file:$HOME/onedrive/Documents/dev/innospot/innospot,file:$HOME/dev/innospot,file:$HOME/dev/innospot,file:$HOME/ldev/test-namespaces,file:$HOME/dev/core/microservices,file:$HOME/onedrive/Documents/dev/core/microservices/common,file:$HOME/dev/hype/local/ml-experiments,file:$HOME/dev/hype/local/ml-experiments,file:$HOME/onedrive/Documents/dev/core/microservices/backend,file:$HOME/onedrive/Documents/dev/core/microservices/backend,file:$HOME/onedrive/Documents/dev/core/microservices/pipeline,file:$HOME/onedrive/Documents/dev/core/microservices/microservices,file:$HOME/onedrive/Documents/dev/core/microservices/pipeline,file:$HOME/onedrive/Documents/dev/core/microservices/microservices,file:$HOME/onedrive/Documents/dev/core/microservices/pipeline,file:$HOME/onedrive/Documents/dev/hype/local/ml-experiments/prototypes/ideation-clustering/data,file:$HOME/onedrive/Documents/dev/core/datascience/data,file:$HOME/dev/hype/local/ml-experiments/prototypes/ideation-clustering/data,file:$HOME/dev/core/datascience/data,file:$HOME/games/eg
+Splitter State=\x00\x00\x00\xff\x00\x00\x00\x01\x00\x00\x00\x02\x00\x00\x00\x8c\x00\x00\x02\xf6\x00\xff\xff\xff\xff\x01\x00\x00\x00\x01\x00
 
 [General]
 AccentColor=61,212,37
-ColorSchemeHash=4a48bd34ba53d580d8594cb0216221e77518509f
+ColorSchemeHash=2c3f86428c11011a7c64ee1e7f47c274d498ff10
 LastUsedCustomAccentColor=61,212,37
 
 [KDE]
@@ -154,9 +155,6 @@ Allow Expansion=false
 Automatically select filename extension=true
 Breadcrumb Navigation=true
 Decoration position=2
-LocationCombo Completionmode=5
-PathCombo Completionmode=5
-Show Bookmarks=false
 Show Full Path=false
 Show Inline Previews=true
 Show Preview=false
@@ -176,9 +174,9 @@ Dialog Size=600,480
 MaximumRemoteSize=0
 
 [WM]
-activeBackground=49,54,59
+activeBackground=39,44,49
 activeBlend=252,252,252
 activeForeground=252,252,252
-inactiveBackground=42,46,50
+inactiveBackground=32,36,40
 inactiveBlend=161,169,177
 inactiveForeground=161,169,177

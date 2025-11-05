@@ -32,7 +32,7 @@ audio/x-wav=mpv.desktop;vlc.desktop;
 image/avif=org.nomacs.ImageLounge.desktop;
 image/heif=org.nomacs.ImageLounge.desktop;
 image/webp=org.nomacs.ImageLounge.desktop;
-inode/directory=org.kde.dolphin.desktop;thunar.desktop;
+inode/directory=org.kde.dolphin.desktop;thunar.desktop;org.kde.kate.desktop;org.kde.filelight.desktop;ranger.desktop;kitty-open.desktop;org.kde.gwenview.desktop;kfmclient_dir.desktop;
 text/html=firefox.desktop;
 text/markdown=nvim.desktop;emacsclient.desktop;
 text/plain=nvim.desktop;emacsclient.desktop;
@@ -69,12 +69,13 @@ video/x-ogm=mpv.desktop;
 video/x-ogm+ogg=mpv.desktop;
 video/x-theora=mpv.desktop;
 video/x-theora+ogg=mpv.desktop;
-x-scheme-handler/bitwarden=bitwarden.desktop;
+x-scheme-handler/bitwarden=bitwarden.desktop;Bitwarden.desktop;
 x-scheme-handler/chrome=firefox.desktop;
 x-scheme-handler/http=firefox.desktop;
 x-scheme-handler/https=firefox.desktop;
 x-scheme-handler/mailto=userapp-Thunderbird-BRRN41.desktop;
 x-scheme-handler/mid=userapp-Thunderbird-BRRN41.desktop;
+x-scheme-handler/postman=Postman.desktop;
 x-scheme-handler/webcal=userapp-Thunderbird-RX6A41.desktop;
 x-scheme-handler/webcals=userapp-Thunderbird-RX6A41.desktop;
 
@@ -186,5 +187,9 @@ x-scheme-handler/https=firefox.desktop
 x-scheme-handler/mailto=userapp-Thunderbird-BRRN41.desktop
 x-scheme-handler/mid=userapp-Thunderbird-BRRN41.desktop
 x-scheme-handler/msteams=teams.desktop
+x-scheme-handler/postman=Postman.desktop
 x-scheme-handler/webcal=userapp-Thunderbird-RX6A41.desktop
 x-scheme-handler/webcals=userapp-Thunderbird-RX6A41.desktop
+
+[Removed Associations]
+inode/directory=org.gnome.Nautilus.desktop;

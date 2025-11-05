@@ -1,0 +1,86 @@
+/* === Global === */
+* {
+  font-family: "JetBrainsMono Nerd Font", monospace;
+  font-size: 14px;
+  color: #dcdcdc;
+}
+
+window#waybar {
+  background: rgba(15, 15, 15, 0.8); /* Transparent dark background */
+  border: none;
+  transition: background 0.3s ease;
+}
+
+/* === Modules === */
+#niri-workspaces button {
+  background: transparent;
+  color: #aaaaaa;
+  border-radius: 6px;
+  margin: 2px 3px;
+  padding: 0 8px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+#niri-workspaces button.focused {
+  background: rgba(40, 100, 40, 0.6);
+  color: #ffffff;
+}
+
+#niri-workspaces button.urgent {
+  background: rgba(150, 40, 40, 0.8);
+  color: #fff;
+}
+
+#niri-workspaces button:hover {
+  background: rgba(50, 120, 50, 0.4);
+  color: #fff;
+}
+
+/* === Generic Module Boxes === */
+#clock,
+#network,
+#custom-ip,
+#cpu,
+#memory,
+#disk,
+#backlight,
+#battery,
+#pulseaudio,
+#tray,
+#custom-notification,
+#custom-weather {
+  background: rgba(25, 25, 25, 0.6);
+  border-radius: 6px;
+  padding: 0 10px;
+  margin: 0 3px;
+  border: 1px solid rgba(0, 100, 0, 0.4);
+}
+
+/* === Tray icons === */
+#tray > .item {
+  padding: 0 3px;
+}
+
+/* === Tooltip === */
+tooltip {
+  background: rgba(20, 20, 20, 0.9);
+  color: #eee;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 150, 0, 0.4);
+}
+
+/* === Hover effects === */
+#clock:hover,
+#network:hover,
+#custom-ip:hover,
+#cpu:hover,
+#memory:hover,
+#disk:hover,
+#backlight:hover,
+#battery:hover,
+#pulseaudio:hover,
+#custom-notification:hover,
+#custom-weather:hover {
+  background: rgba(35, 35, 35, 0.7);
+  border-color: rgba(0, 180, 0, 0.8);
+}

@@ -3,3 +3,7 @@ historyBehavior=ImmediateCompletion
 
 [Plugins]
 baloosearchEnabled=true
+krunner_powerdevilEnabled=false
+
+[Plugins][Favorites]
+plugins=krunner_sessions,krunner_services,krunner_systemsettings

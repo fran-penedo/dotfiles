@@ -1,3 +1,6 @@
+[Activities][LastVirtualDesktop]
+ee7c8ed3-920f-4e30-bdc7-c63b5a729b75=58101c71-ade6-49bf-869f-0fb1ba82d9b3
+
 [Desktops]
 Id_1=0b5ed217-8f60-4670-82ce-403b7df5c711
 Id_10=d8fd593b-23f1-4474-81dd-1f732298e073
@@ -22,10 +25,26 @@ LongitudeAuto=-4
 NightTemperature=5000
 
 [Plugins]
+karouselEnabled=false
+kwin4_effect_geometry_changeEnabled=true
 slideEnabled=false
+
+[Script-karousel]
+gapsOuterBottom=8
+gapsOuterTop=8
+presetWidths=33.33%, 50%, 66.66%, 100%
 
 [Tiling]
 padding=4
+
+[Tiling][29a86da6-7ad6-5116-baad-624c79eac87a]
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
+[Tiling][32f575d7-a6d9-5f35-8d64-a6120aba36f7]
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.6916666666666667},{"width":0.30833333333333335}]}
+
+[Tiling][5b7a5ba4-43cc-5910-8e98-f358f9d54b43]
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
 
 [Tiling][788251c5-ec42-5b4f-a436-f76096d0e265]
 tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
@@ -33,7 +52,12 @@ tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"wi
 [Tiling][ccf25698-6b86-53f3-b4fa-8d75629ee9e6]
 tiles={"layoutDirection":"horizontal","tiles":[{"layoutDirection":"floating","tiles":[{"height":0.25,"width":0.2,"x":0.05,"y":0.05}],"width":0.25},{"width":0.5},{"width":0.25}]}
 
+[Tiling][cdbb9a41-b206-587c-bb18-38e8b9d5cb7f]
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
+[Tiling][e9fc585e-cdfb-52fa-b686-a9042ba8e7a8]
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
 [Windows]
 AutoRaiseInterval=200
 DelayFocusInterval=200
-FocusPolicy=FocusFollowsMouse
