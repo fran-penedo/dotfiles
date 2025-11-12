@@ -13,14 +13,15 @@ input {
             // For more information, see xkeyboard-config(7).
 
             // For example:
-            // layout "us,ru"
+            layout "us,es"
             // options "grp:win_space_toggle,compose:ralt,ctrl:nocaps"
-	    options "ctrl:swapcaps"
+	    options "grp:lctrl_lwin_toggle,ctrl:swapcaps"
 
             // If this section is empty, niri will fetch xkb settings
             // from org.freedesktop.locale1. You can control these using
             // localectl set-x11-keymap.
         }
+        track-layout "window"
 
         // Enable numlock on startup, omitting this setting disables it.
         //numlock
@@ -400,6 +401,7 @@ binds {
     Ctrl+Semicolon { spawn "rofi-cliphist"; }
     Ctrl+Alt+W { spawn "firefox"; }
     Ctrl+Alt+F { spawn "dolphin"; }
+    Pause { spawn-sh "systemctl suspend"; }
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument. It's passed verbatim to `sh -c`.

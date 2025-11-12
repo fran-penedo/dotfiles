@@ -12,7 +12,7 @@ window#waybar {
 }
 
 /* === Modules === */
-#niri-workspaces button {
+#workspaces button {
   background: transparent;
   color: #aaaaaa;
   border-radius: 6px;
@@ -21,17 +21,17 @@ window#waybar {
   transition: background 0.2s ease, color 0.2s ease;
 }
 
-#niri-workspaces button.focused {
+#workspaces button.focused {
   background: rgba(40, 100, 40, 0.6);
   color: #ffffff;
 }
 
-#niri-workspaces button.urgent {
+#workspaces button.urgent {
   background: rgba(150, 40, 40, 0.8);
   color: #fff;
 }
 
-#niri-workspaces button:hover {
+#workspaces button:hover {
   background: rgba(50, 120, 50, 0.4);
   color: #fff;
 }
