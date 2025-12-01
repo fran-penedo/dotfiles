@@ -36,8 +36,8 @@ input {
         // dwt
         // dwtp
         // drag false
-        // drag-lock
-        natural-scroll
+        drag-lock
+        // natural-scroll
         // accel-speed 0.2
         // accel-profile "flat"
         // scroll-method "two-finger"
@@ -289,6 +289,8 @@ spawn-at-startup "swaync"
 spawn-sh-at-startup "swaybg --image /usr/share/wallpapers/Path/contents/images/1920x1080.jpg"
 spawn-sh-at-startup "wl-paste --watch cliphist store"
 spawn-sh-at-startup "swayidle -w before-sleep 'loginctl lock-session $XDG_SESSION_ID' lock 'playerctl -a pause ; gtklock'"
+spawn-sh-at-startup "fusuma -d --log /tmp/fusuma.log"
+spawn-at-startup "kdeconnect-indicator"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
@@ -424,8 +426,8 @@ binds {
     // Example brightness key mappings for brightnessctl.
     // You can use regular spawn with multiple arguments too (to avoid going through "sh"),
     // but you need to manually put each argument in separate "" quotes.
-    XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
-    XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
+    XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+5%"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "5%-"; }
 
     // Open/close the Overview: a zoomed-out view of workspaces and windows.
     Mod+O repeat=false { toggle-overview; }
